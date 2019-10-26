@@ -31,14 +31,9 @@ header {
   height: 0px;
 }
 
-/* .header__menu > ul > li,.galery__pictures>ul>li,.footer__social>ul>li {
-  display: inline;
-  cursor: pointer;
-} */
-
 ul>li{
     display: inline;
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .header__menu > ul > li:hover {
@@ -72,17 +67,17 @@ ul>li{
 }
 
 .delimiter {
-  display: block;
-  background-image: url(/img/divider-pattern.png);
+  background-image: url(/itvdn_HomeWork/img/divider-pattern.png);
   background-repeat: repeat-x;
   height: 40px;
-  width: 100%;
+  margin: 40px 30px 40px 30px;
+
 }
 
 article{
     display: flex;
-    padding: 30px;
     align-items: flex-start;
+    padding: 30px 30px 30px 30px;
 }
 
 .article-image{
@@ -91,13 +86,13 @@ article{
 }
 
 .article-image>img{
-    /* height: 100px; */
-    width: 200px;
+    width: 400px;
+    height: 200px;
 }
 
 .article-text{
     flex-direction: column;
-    padding: 0px 0px 50px 20px;
+    padding: 0px 20px 50px 20px;
 }
 
 .article-text__abzac{
@@ -108,20 +103,21 @@ article{
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
 
 .galery__pictures img{
-    height: 100px;
-    margin: 10px;
-    padding: 3px;
-    border: 0.5px solid #ccc;
+    height: 170px;
+    width: 170px;
+    padding: 4px; 
+    outline: 0.5px solid #ccc;
+    margin: 4px;
 }
 
 .features{
     display: flex;
-    padding: 0px 40px 0px 40px;
+    padding: 0px 30px 0px 30px;
     justify-content: space-around;
 
 }
@@ -136,7 +132,7 @@ article{
 
 .features__feature__text-header{
     font-weight: bold;
-    margin:20px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
     font-size: 30px;
 }
 
@@ -147,7 +143,7 @@ article{
 }
 
 .buttons__button{
-margin:10px;
+margin: 0px 10px 0px 0px;
 }
 
 button{
@@ -155,6 +151,9 @@ button{
     font-size: 17.5px;
     border-radius: 6px;
     color:whitesmoke;
+    width: 190px;
+    border: 1px solid gray;
+    font-weight: bold;
 }
 
 button:hover{
@@ -165,9 +164,19 @@ button:hover{
     background:#5bb75b;
 }
 
+.tryFree:hover{
+  background-image: linear-gradient(to bottom,rgb(88, 177, 88),rgb(58, 143, 58));
+}
+
 .buyNow{
     background:#49afcd;
 }
+
+.buyNow:hover{
+  background-image: linear-gradient(rgb(81, 169, 196), rgb(40, 124, 150));
+
+}
+
 
 footer{
     display: flex;
@@ -201,26 +210,64 @@ margin: 10px;
     color:whitesmoke;
 }
 
+#email{
+  border-radius: 5px;
+  padding: 6px 0px;
+  margin-left:8px;
+  width: 35%;
+}
+
+#email::placeholder{
+padding-left:15px;
+}
+
 
 .footer__copiright{
-    border: 1px solid red;
     align-self: center;
 }
 
 .footer__social{
-    align-self: center;
-    border: 1px solid red;
-
+  align-self: center; 
+  margin: 20px;
+  
 }
 
-#email{
-    border-radius: 5px;
-    padding: 6px 0px;
-    margin-left:8px;
-    width: 35%;
+
+.footer__social__li{
+  display: flex;
+  justify-content: space-around;
+  
+} 
+
+.facebook{
+  margin-right:30px;
+  width: 30px;
+  height: 30px;
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  left top;
 }
 
 .facebook:hover{
-    background: red;
-    border-radius: 10px;
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  left bottom;
+
+}
+
+.twitter{
+  margin-right:30px;
+  width: 30px;
+  height: 30px;
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  center top;
+}
+
+.twitter:hover{
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  center bottom;
+}
+
+.googlePlus{
+  width: 30px;
+  height: 30px;
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  right top;
+}
+
+.googlePlus:hover{
+  background: url(/itvdn_HomeWork/img/social-media-icons.png)  right bottom;
 }
