@@ -1,3 +1,8 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
 header {
   display: flex;
   position: fixed;
@@ -26,8 +31,13 @@ header {
   height: 0px;
 }
 
-.header__menu > ul > li {
+/* .header__menu > ul > li,.galery__pictures>ul>li,.footer__social>ul>li {
   display: inline;
+  cursor: pointer;
+} */
+
+ul>li{
+    display: inline;
   cursor: pointer;
 }
 
@@ -40,9 +50,8 @@ header {
 }
 
 .carousele {
-  width: 100%;
   background-color: yellow;
-  height: 550px;
+  /* height: 550px; */
 }
 
 .header-tail {
@@ -53,6 +62,8 @@ header {
   font-family: "Fjalla One";
   color: #47adcb;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .header-tail__second {
@@ -62,8 +73,154 @@ header {
 
 .delimiter {
   display: block;
-  background-image: url(img/divider-pattern.png);
+  background-image: url(/img/divider-pattern.png);
   background-repeat: repeat-x;
   height: 40px;
   width: 100%;
+}
+
+article{
+    display: flex;
+    padding: 30px;
+    align-items: flex-start;
+}
+
+.article-image{
+    padding: 4px;
+    border: 0.5px solid #ccc;
+}
+
+.article-image>img{
+    /* height: 100px; */
+    width: 200px;
+}
+
+.article-text{
+    flex-direction: column;
+    padding: 0px 0px 50px 20px;
+}
+
+.article-text__abzac{
+    margin-bottom: 20px;
+}
+
+.galery{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.galery__pictures img{
+    height: 100px;
+    margin: 10px;
+    padding: 3px;
+    border: 0.5px solid #ccc;
+}
+
+.features{
+    display: flex;
+    padding: 0px 40px 0px 40px;
+    justify-content: space-around;
+
+}
+
+.features__feature{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.features__feature__text-header{
+    font-weight: bold;
+    margin:20px 0px 20px 0px;
+    font-size: 30px;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons__button{
+margin:10px;
+}
+
+button{
+    padding: 11px 19px;
+    font-size: 17.5px;
+    border-radius: 6px;
+    color:whitesmoke;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.tryFree{
+    background:#5bb75b;
+}
+
+.buyNow{
+    background:#49afcd;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    background:#1b1b1b;
+    color:#999999;
+    padding: 20px 30px 20px 30px;
+    font-family: 'Fjalla One', sans-serif;    
+}
+
+.footer__context{
+    display: flex;
+    justify-content: center;
+}
+
+.footer__col-header{
+    margin-bottom: 10px;
+}
+
+.footer__subscribe{
+width:50%;
+align-self: flex-end;
+height: 40px;
+margin: 10px;
+
+}
+
+.footer__subscribe button{
+    padding: 4px 10px;
+    margin-left:2px;
+    color:whitesmoke;
+}
+
+
+.footer__copiright{
+    border: 1px solid red;
+    align-self: center;
+}
+
+.footer__social{
+    align-self: center;
+    border: 1px solid red;
+
+}
+
+#email{
+    border-radius: 5px;
+    padding: 6px 0px;
+    margin-left:8px;
+    width: 35%;
+}
+
+.facebook:hover{
+    background: red;
+    border-radius: 10px;
 }
