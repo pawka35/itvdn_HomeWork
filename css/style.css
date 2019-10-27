@@ -51,7 +51,7 @@ ul > li {
 
 .carousele {
   padding-top: 90px;
-  background-image: url(/itvdn_HomeWork/img/main_logo.jpg);
+  background-image: url(../img/main_logo.jpg);
   height: 550px;
   background-size: cover;
   display: flex;
@@ -121,7 +121,7 @@ ul > li {
 }
 
 .delimiter {
-  background-image: url(/itvdn_HomeWork/img/divider-pattern.png);
+  background-image: url(../img/divider-pattern.png);
   background-repeat: repeat-x;
   height: 40px;
   margin: 40px 30px 40px 30px;
@@ -291,30 +291,30 @@ footer {
   margin-right: 30px;
   width: 30px;
   height: 30px;
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) left top;
+  background: url(../img/social-media-icons.png) left top;
 }
 
 .facebook:hover {
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) left bottom;
+  background: url(../img/social-media-icons.png) left bottom;
 }
 
 .twitter {
   margin-right: 30px;
   width: 30px;
   height: 30px;
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) center top;
+  background: url(../img/social-media-icons.png) center top;
 }
 
 .twitter:hover {
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) center bottom;
+  background: url(../img/social-media-icons.png) center bottom;
 }
 
 .googlePlus {
   width: 30px;
   height: 30px;
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) right top;
+  background: url(../img/social-media-icons.png) right top;
 }
 
 .googlePlus:hover {
-  background: url(/itvdn_HomeWork/img/social-media-icons.png) right bottom;
+  background: url(../img/social-media-icons.png) right bottom;
 }
