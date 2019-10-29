@@ -1,16 +1,23 @@
-//exc2();
+exc2();
+writeDeliter();
 exc3();
+writeDeliter();
+exc4();
 
 
 function exc2(){
     let a = checkNumber(prompt("Введите число А"));
     let b;
     let result = null;
-    do{
-    b = checkNumber(prompt("Введите число B(меньшее чем А)"));
-    if (a<b){alert(`Число B должно быть меньше А!(${a}>${b})`)}
+    
+    
+    while (true){
+        b = checkNumber(prompt("Введите число B(меньшее чем А)"));
+        if (a>b){ break;}
+        alert(`Число B должно быть меньше А!(${a}>${b})`);
+        continue;
     }
-    while (a<b)
+    
     a = Math.trunc(a), b = Math.trunc(b); //отбрасываем дробные части (по условию задачи)
     console.log(a);console.log(b);
     for (let i=b; i<a; i++)
@@ -54,10 +61,64 @@ function exc3(){
     document.write(`Факториал числа ${forOtvet} равен ${result}`)
 }
 
+function exc4(){
+    let maxFiled=10;
+    //str.repeat(count)
+    //рисуем квадрат
+    writeDeliter();
+    for (let i = 0; i < maxFiled-1; i++){
+        if (i == 0){
+            document.write(`${'*'.repeat(maxFiled-1)}*<br>`); 
+            continue;
+        }
+        document.write(`*${'&nbsp;'.repeat(maxFiled)}*<br>`);
+    }
+    document.write(`${'*'.repeat(maxFiled-1)}*<br>`); 
+    
+     //рисуем прямоугольный треугольник
+    writeDeliter();
+    for (let i = 0; i < maxFiled; i++){
+        if (i==0){document.write(`*<br>`); }
+        document.write(`*${'&nbsp'.repeat(i)}*<br>`); 
+    }
+    document.write(`*${'*'.repeat(maxFiled-2)}*<br>`); 
+
+     //рисуем равнобедренный треугольник
+    writeDeliter();
+    document.write(`${'&nbsp;'.repeat(maxFiled+2)}*<br>`);
+    for (let i = maxFiled; i > 0; i--){
+       document.write(`${'&nbsp;'.repeat(i)} * ${'&nbsp;'.repeat(maxFiled*2-i*2)}*<br>`);
+    }
+    document.write(`&nbsp;${'*'.repeat(maxFiled*2-1)}<br>`);
+
+     //рисуем параллепипед
+    writeDeliter();
+    document.write(`${'&nbsp;'.repeat(maxFiled+3)}*<br>`);
+    for (let i = maxFiled; i > 0; i--){
+       document.write(`${'&nbsp;'.repeat(i+1)} * ${'&nbsp;'.repeat(maxFiled*2-i*2)}*<br>`);
+    }
+
+    for (let i = 0; i < maxFiled+1; i++){
+        if (i==0){
+            document.write(`${'&nbsp;'.repeat(i+1)} * ${'&nbsp;'.repeat(maxFiled*2-i*2)}*<br>`);
+            continue;
+        }
+        document.write(`${'&nbsp;'.repeat(i+1)} * ${'&nbsp;'.repeat(maxFiled*2-i*2)}*<br>`);
+     }
+     document.write(`${'&nbsp;'.repeat(maxFiled+3)}*<br>`);
+}
+
+//функция для проверки введено ли число
 function checkNumber(a){
     if (isNaN(parseInt(a)) && (isNaN(parseFloat(a)))){
         alert("Вы ввели не число. !")
         a = checkNumber(prompt("Введите число:"));
     }
-    return a;
+    return parseInt(a);
+}
+
+// рисуем разделители между заданиями
+function writeDeliter(){
+    document.write(`${'='.repeat(30)}<br>`);
+    document.write(`<br>`);
 }
