@@ -1,0 +1,29 @@
+.main-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.container-document{
+border: 1px solid red;
+width: 60%;
+padding: 10px;
+}
+
+.input-container{
+border: 1px solid green;
+width: 40%;
+margin-left: 15px;
+/* display: flex; */
+/* flex-direction: column; */
+}
+
+.document-inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.app-inputs{
+    display: flex;
+    flex-direction: column;
+}
