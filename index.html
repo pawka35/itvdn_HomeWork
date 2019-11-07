@@ -6,38 +6,71 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Calculator</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Marck+Script|Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="main-container">
       <div class="container-document">
-        <div class="header" id="headerDocText">header doc</div>
-        <div class="body" id="bodyDocText">body doc</div>
-        <div class="footer" id="footerDocText">footer doc</div>
-      </div>
-      <div class="input-container">
-          <div class="document-inputs">
-            <label for="docHeader">Заголовок документа</label>
-            <input type="text" id="docHeader">
-            <label for="docBody">Тело документа</label>
-            <input type="text" id="docBody">
-            <label for="docFooter">Подвал документа</label>
-            <input type="text" id="docFooter">
-            <button id="docButton">Enter</button>
+        <div class="documentText">
+          <div class="header" id="headerDocText">Header doc here</div>
+          <div class="body" id="bodyDocText">Main document text here</div>
+          <div class="footer" id="footerDocText">Footer doc here</div>
+        </div>
+        <div class="attachmentText">
+          <div class="attLabel">Attachment</div>
+          <div class="headerApp" id="headerAppText">
+            Header attachment here.
           </div>
-          <div class="app-inputs">
-              <label for="appHeader">Заголовок приложения</label>
-              <input type="text" id="appHeader">
-              <label for="appBody">Тело приложения</label>
-              <input type="text" id="appBody">
-              <label for="appFooter">Подвал приложения</label>
-              <input type="text" id="appFooter">
-              <label for="appDate">Дата приложения</label>
-              <input type="text" id="appDate">
-              <button id="appButton" disabled>Enter</button>
-            </div>
+          <div class="bodyApp" id="bodyAppText">Body attachment here.</div>
+          <div class="footerApp" id="footerAppText">
+            Footer attachment here.
+          </div>
+          <div class="dateApp" id="dateAppText">Date attachment here.</div>
+        </div>
       </div>
-      
+
+      <div class="input-container">
+          <button id="genButton" >Сгенерировать</button>
+        <div class="inpLable">Поля для ввода данных для документа.</div>
+        <div class="document-inputs">
+          <label for="docHeader">Заголовок документа</label>
+          <input type="text" id="docHeader" placeholder="Введите заголовок" />
+          <label for="docBody">Тело документа</label>
+          <textarea placeholder="Здесь введите основной текст документа"
+            class="textArea"
+            id="docBody"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <label for="docFooter">Подвал документа</label>
+          <input type="text" id="docFooter" placeholder="Введите информацию для подвала документа"/>
+          <button id="docButton">Внести информацию</button>
+        </div>
+
+        <div class="inpLable">Поля для ввода данных для вложения.</div>
+        <div class="app-inputs">
+          <label for="appHeader">Заголовок вложения.</label>
+          <input type="text" id="appHeader" />
+          <label for="appBody">Тело вложения.</label>
+          <textarea
+            class="textArea"
+            id="appBody"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <label for="appFooter">Подвал вложения.</label>
+          <input type="text" id="appFooter" />
+          <label for="appDate">Дата вложения.</label>
+          <input type="date" id="appDate" />
+          <button id="appButton" disabled>Внести информацию</button>
+        </div>
+      </div>
     </div>
     <script src="js/script.js"></script>
   </body>
 </html>
+
+

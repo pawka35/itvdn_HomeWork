@@ -1,29 +1,186 @@
-.main-container{
-    display: flex;
-    width: 100%;
-    margin-bottom: 20px;
+/* font-family: 'Marck Script', cursive;
+font-family: 'Press Start 2P', cursive; */
+
+.main-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.container-document{
-border: 1px solid red;
-width: 60%;
-padding: 10px;
+.container-document {
+  width: 60%;
+  padding: 10px;
 }
 
-.input-container{
-border: 1px solid green;
-width: 40%;
-margin-left: 15px;
-/* display: flex; */
-/* flex-direction: column; */
+.input-container {
+  border: 1px solid green;
+  border-radius: 10px;
+
+  width: 40%;
+  margin-left: 15px;
+  padding: 10px;
 }
 
-.document-inputs{
-    display: flex;
-    flex-direction: column;
+.document-inputs {
+  display: flex;
+  flex-direction: column;
 }
 
-.app-inputs{
-    display: flex;
-    flex-direction: column;
+.app-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.body,
+.bodyApp {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.documentText > div {
+  border-radius: 10px;
+  border-bottom: 0.7px gray solid;
+  border-top: 0.7px gray solid;
+  word-wrap: break-word;
+}
+
+.header {
+  font-family: "Press Start 2P";
+  font-size: 30px;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.body {
+  padding: 10px;
+  font-family: "Marck Script";
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.footer {
+  padding: 10px;
+  text-align: right;
+  font-family: "Marck Script", cursive;
+  margin-bottom: 10px;
+}
+
+.attachmentText {
+  border: 0.7px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+.attachmentText > div {
+  margin-bottom: 10px;
+  border-bottom: 0.5px gray solid;
+}
+
+.attLabel {
+  align-self: flex-end;
+  width: 25%;
+  text-align: right;
+  font-family: "Press Start 2P";
+  font-size: 12px;
+  text-decoration: underline;
+  border-bottom: none !important;
+}
+
+.headerApp {
+  font-family: "Press Start 2P";
+  font-size: 18px;
+  text-align: center;
+  padding: 12px;
+}
+
+.bodyApp {
+  padding: 16px;
+  font-family: "Marck Script";
+}
+
+.footerApp {
+  padding: 10px;
+  text-align: right;
+  font-family: "Marck Script", cursive;
+}
+
+.dateApp {
+  padding: 10px;
+  font-family: "Press Start 2P";
+  font-size: 12px;
+  border-bottom: none !important;
+}
+
+.input-container > div {
+  margin-bottom: 20px;
+  font-family: "Press Start 2P";
+}
+
+.inpLable {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.document-inputs label,
+.app-inputs label {
+  margin: 10px;
+  font-size: 10px;
+}
+
+button {
+  width: 40%;
+  height: 30px;
+  margin-top: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  background: lightgray;
+  color: grey;
+  word-wrap: break-word;
+}
+
+button:hover:disabled {
+  cursor: auto;
+  background: lightgray;
+  color: grey;
+}
+
+button:hover {
+  cursor: pointer;
+  background: gray;
+  color: whitesmoke;
+}
+
+input,
+textarea {
+  border: 0.5 solid gray;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+#genButton {
+  margin-bottom: 10px;
+  background-color: lightgreen;
+}
+
+#genButton:hover {
+    background-color: greenyellow;
+  }
+
+button:hover:disabled:after {
+  content: "Добавить вложение можно только после добавления документа";
+  font-family: Arial;
+  position: relative;
+  top: -20px;
+  display: flex;
+  width: 300px;
+  background-color: red;
+  color: white;
+  align-self: center;
+  border-radius: 10px;
 }
