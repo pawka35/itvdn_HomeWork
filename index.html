@@ -9,64 +9,76 @@
   </head>
   <body>
     <html>
-
       <head>
-          <title>Обьекты, создание</title>
-        
+        <title>Обьекты, создание</title>
       </head>
-      
+
       <body>
-          <div>
-              <button id="left">на лево</button>
-              <button id="right">в лес</button>
-              <button id="top">в магазин</button>
-              <button id="bottom">вниз</button>
-          </div>
-      
-      
-          <div class="stat-container">
-            <div class="kolobok-stat">
-              <div class="foto">
-                  foto here
-                </div>
-              <div class="info">
-                  <ul>
-                      <li id="name"></li>
-                      <li id="damage"></li>
-                      <li id="armor"></li>
-                      <li id="many"></li>
-                      <li id="live"></li>
-                  </ul>
-              </div>
-            </div>
-              <div class="animal-stat">
-                <div id="animalFoto" class="foto">
-                  foto here
-                </div>
-              <div class="info">
-                  <ul>
-                      <li id="animal-name"></li>
-                      <li id="animal-damage"></li>
-                      <li id="animal-armor"></li>
-                      <li id="animal-cost"></li>
-                      <li id="animal-live"></li>
-                  </ul>
-              </div>
-            </div>
-              
-          </div>
-          <div id="button-block" class="button-block">
-            <button id="hit">ударить</button>
-            <button id="close">отмена</button>
+        <div id="actionChoise">
+          Доступные действия:
+          <button id="left">Босс</button>
+          <button id="right">В лес</button>
+          <button id="top">В магазин</button>
+          <!-- <button id="bottom">вниз</button> -->
         </div>
 
-      
-      
+        <div class="stat-container">
+          <div class="kolobok-stat">
+            <div class="hero-card">
+              <div>Колобок</div>
+              <div id="wins">Побед:0</div>
+              <div class="foto-kolobok"></div>
+              <div id="kolobok-change"></div>
+            </div>
+            <div class="info">
+              <ul>
+                <li id="name"></li>
+                <li id="damage"></li>
+                <li id="armor"></li>
+                <li id="many"></li>
+                <!-- <li id="live"> -->
+                <progress id="live" max="100" value="80"></progress>
+                <!-- </li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="animal-stat">
+            <div class="hero-card">
+              <div id="personName"></div>
+              <div id="animalFoto" class="foto"></div>
+              <div id="animal-change"></div>
+            </div>
+            <div class="info">
+              <ul>
+                <li id="animal-name"></li>
+                <li id="animal-damage"></li>
+                <li id="animal-armor"></li>
+                <li id="animal-cost"></li>
+                <!-- <li id="animal-live"></li> -->
+                <progress id="animal-live" max="100"></progress>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="button-block" class="button-block">
+          <button id="hit"> Начать бой! </button>
+          <button id="close"> Бежать с позором </button>
+        </div>
+        <div class="warField">
+          Ход боя:
+          <div id="warDescription"></div>
+        </div>
+        <div id="levelUp" class="levelUp" >
+          <div class="congr">Поздравляю! Вам присваивается новый уровень!</div>
+          <div class="levelStat">Ваши текущие параметры:</div>
+          <div id="levels" class="levels"></div>
+          <div class="closeLevelUp">
+            <button id="closeLevelUp">Ура!</button>
+          </div>
+          
+        </div>
       </body>
-     <script src="js/script.js"></script>
-      
-      </html>
+      <script src="js/script.js"></script>
+    </html>
   </body>
 </html>
-
-
