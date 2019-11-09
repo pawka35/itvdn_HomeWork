@@ -1,150 +1,268 @@
-exc_pre1();
+let kolName = document.getElementById("name");
+let kolDamage = document.getElementById("damage");
+let kolArmor = document.getElementById("armor");
+let kolMany = document.getElementById("many");
+let kolLive = document.getElementById("live");
 
-/*Создать объект «Менеджер» с помощью блока инициализации, задать свойства «Имя, Фамилия,
-возраст …».
-Создать объект «Секретарь» с помощью конструктора, задать свойства «Имя, Фамилия, возраст …».*/ 
-function exc_pre1() {
-  document.write(`=========Задание 1====================<br>`);
-  let manager = exc1("manager");
-  for (let prop in manager) {
-    document.write(`${prop}: ${manager[prop]}<br>`);
+let animalName = document.getElementById("animal-name");
+let animalDamage = document.getElementById("animal-damage");
+let animalArmor = document.getElementById("animal-armor");
+let animalCost = document.getElementById("animal-cost");
+let animalLive = document.getElementById("animal-live");
+let buttonBlock = document.getElementById("button-block");
+
+let hit = document.getElementById("hit");
+let close = document.getElementById("close");
+
+let right = document.getElementById("right");
+let top1 = document.getElementById("top");
+
+let marker = false;
+
+let oneAnimal;
+let arrItems = ["Удача", "Палка", "Проклятье", "Мораль", "Ярость"];
+let hare = {
+  name: "Заяц",
+  color: "Gray",
+  damage: 10,
+  armor: 0.9,
+  live: 100,
+  many: 2,
+  mod: "animal"
+};
+let wolf = {
+  name: "Волк",
+  color: "Gray",
+  damage: 15,
+  armor: 0.8,
+  live: 10,
+  many: 5,
+  mod: "animal"
+};
+
+let animal = [wolf, hare];
+
+let kolobok = {
+  name: "kolobok",
+  color: "yellow",
+  damage: 11,
+  armor: 1,
+  live: 100,
+  many: 10,
+  mod: "kolobok"
+};
+updateInfo(kolobok);
+
+function getRandomItem(param) {
+  let randomPercent = randomInteger(0, 100);
+
+  if (randomPercent >= 0 && randomPercent < 25) {
+    let item = new Object();
+    item.damage = 0;
+    item.armor = 0;
+    item.live = 0;
+    item.many = 0;
+    item.name = arrItems[randomInteger(0, arrItems.length - 1)];
+    let createStat = randomInteger(0, 100);
+    if (createStat >= 0 && createStat < 25) {
+      item.damage = randomInteger(-10, 10);
+    } else if (createStat >= 25 && createStat < 50) {
+      item.armor = randomInteger(-10, 10);
+    } else if (createStat >= 50 && createStat < 75) {
+      item.live = randomInteger(-10, 10);
+    } else if (createStat >= 75 && createStat < 100) {
+      item.many = randomInteger(-10, 10);
+    }
+    return item;
   }
-  document.write(`=============================<br>`);
-  let secr = exc1("secretary");
-  for (let prop in secr) {
-    document.write(`${prop}: ${secr[prop]}<br>`);
-  }
-  document.write(`=============================<br>`);
 }
 
-function exc1(who) {
-  switch (who) {
-    case "manager":
-      //создаем объект с помощью блока инициализации
-      let manager = {
-        firstName: "Petr",
-        lastName: "Petrov",
-        age: 27
-      };
-      return manager;
-    case "secretary":
-      // создание блока с помощью конструктора
-      let secretar = new Object();
-      secretar.firstName = "Olga";
-      secretar.LastName = "Volkova";
-      secretar.age = 25;
-      return secretar;
+hit.onclick = function() {
+  damgeDiller(oneAnimal, kolobok);
+};
+close.onclick = function() {
+  kolobok.live = kolobok.live - oneAnimal.damage * kolobok.armor;
+  alert(`Kolobok сбжал! Вы потеряли ${oneAnimal.damage * kolobok.armor}`);
+  updateInfo(kolobok);
+};
+
+function damgeDiller(animl, kol) {
+  if (kol.damage > animl.damage) {
+    animl.live = animl.live - kol.damage * animl.armor;
+
+    if (checkLiveAnim(animl, kol)) {
+      updateInfo(kol);
+      return checkLiveAnim(animl, kol);
+    }
+    updateInfo(kol);
+    updateInfo(animl);
+  } else {
+    kol.live = kol.live - animl.damage * kol.armor;
+
+    if (!checkLiveAnim(animl, kol)) {
+      updateInfo(kol);
+      return checkLiveAnim(animl, kol);
+    }
+    updateInfo(kol);
+    updateInfo(animl);
   }
 }
-//конец задания 1
 
-/* 
-Создать объект «Документ», в котором определить свойства «Заголовок, Тело, Футер, Дата». Создать в
-объекте вложенный объект – «Приложение». Создать в объекте «Приложение», вложенные объекты,
-«Заголовок, Тело, Футер, Дата». Создать методы для заполнения и отображения документа.
-*/
+function checkLiveAnim(anim, kol) {
+  if (kol.live <= 0) {
+    checkAlive(kol.live);
+    return false;
+  }
+  if (anim.live <= 0) {
+    kol.many += anim.many;
+    updateInfo(kol);
+    alert(`вы победили ${anim.name}`);
+    return true;
+  }
+}
 
-let doc; 
-
-// Ищем кнопку для формирования документа
-let docButton = document.getElementById("docButton");
-docButton.onclick = () => { // весим на нее событие
-  let docHeader = document.getElementById("docHeader").value; //ищем инпуты в которых инфа для документа
-  let docFooter = document.getElementById("docFooter").value;
-  let docBody = document.getElementById("docBody").value;
-  doc = createDocument(); // создаем документ
-  doc.makeDoc(docHeader, docBody, docFooter); //заполняем значениями из полей ввода
-  writeDocument(); // переносим документ в поля для вывода
-  document.getElementById("appButton").disabled = false; //делаем активной кнопку добавить вложение
-
+let animalPictures = {
+  Волк: "/itvdn_HomeWork/image/volk.png",
+  Заяц: "/itvdn_HomeWork/image/zayc.png"
 };
 
-let appButton = document.getElementById("appButton"); //ищем кнопку для добавления инфы во вложение
-appButton.onclick = () => {
-  let appHeader = document.getElementById("appHeader").value; //далее тоже что и для документа, только для вложения
-  let appFooter = document.getElementById("appFooter").value;
-  let appBody = document.getElementById("appBody").value;
-  let appDate = document.getElementById("appDate").value;
 
-  doc.makeApp(appHeader, appBody, appFooter, appDate); //заполняем значениями из полей ввода
-  writeApp();
+function lickeChoise() {
+  let animalPic = document.getElementById("animalFoto");
+  for (let i = 0; i < 30; i++) {
+    setTimeout(function() {
+      if (i % 2) {
+        console.log(i);
+        animalPic.style.backgroundImage = `url(${animalPictures["Волк"]})`;
+      } else {
+        console.log(i);
+        animalPic.style.backgroundImage = `url(${animalPictures["Заяц"]})`;
+      }
+    }, i * 200);
+  }
+}
+
+right.onclick = function() {
+   
+    lickeChoise();
+
+  oneAnimal = animal[randomInteger(0, animal.length - 1)];
+  //   console.log(animalPictures[oneAnimal.name]);
+  let animalPic = document.getElementById("animalFoto");
+  animalPic.style.backgroundImage = `url(${animalPictures[oneAnimal.name]})`;
+
+  buttonBlock.classList.remove("button-block");
+  buttonBlock.classList.add("show");
+  updateInfo(oneAnimal);
+  let newItem = getRandomItem();
+  if (newItem) {
+    if (randomInteger(0, 1)) {
+      kolobok.damage += newItem.damage;
+      kolobok.live += newItem.live;
+      kolobok.armor += newItem.armor;
+      kolobok.many += newItem.many;
+      getNameElem(kolobok.name);
+      updateInfo(kolobok);
+    } else {
+      oneAnimal.damage += newItem.damage;
+      oneAnimal.live += newItem.live;
+      oneAnimal.armor += newItem.armor;
+      oneAnimal.many += newItem.many;
+      getNameElem(oneAnimal.name);
+      updateInfo(oneAnimal);
+    }
+  }
+
+  function getNameElem(name) {
+    for (elem in newItem) {
+      if (newItem[elem] > 0) {
+        console.log(newItem);
+        alert(
+          `${name} нашел ${newItem.name} его ${elem} изменилось на ${newItem[elem]}`
+        );
+      }
+    }
+  }
 };
 
-let genButton = document.getElementById("genButton"); //кнопка для авт. заполнения полей
-genButton.onclick = () => {
-  let appHeader = document.getElementById("appHeader").value;
-  let appFooter = document.getElementById("appFooter").value;
-  let appBody = document.getElementById("appBody").value;
-  let appDate = document.getElementById("appDate").value;
-
-  document.getElementById("docHeader").value = "Lorem ipsum dolor.";
-  document.getElementById("docBody").value = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit modi velit earum voluptatum iure cum, accusamus qui. Enim necessitatibus ipsum officia mollitia rem voluptas explicabo, distinctio, optio aperiam omnis vel."+
-  "Sed sint incidunt enim, facilis saepe aut dolor error quaerat illo. Neque dolor nihil unde illo totam autem atque adipisci, architecto, eius dolorum incidunt facilis sunt, nam suscipit officiis voluptas."+
-  "Perferendis cum dolor minima veritatis distinctio accusamus, recusandae ab dicta cumque earum, fugiat, eos nostrum nesciunt! Iure harum, similique repudiandae reiciendis fuga velit repellat pariatur fugit dignissimos, molestias numquam officiis!"+
-  "Culpa inventore repellat commodi. Eius labore itaque quam nostrum saepe, unde repudiandae libero. Sunt ex eaque ad nam omnis fuga, ipsam eligendi! Dolores deleniti cum illo quam enim ducimus labore."+
-  "Ipsam ut magni tempora repellat modi tenetur nam unde eaque, culpa illum, in fugiat vitae sed earum dignissimos nostrum, saepe quas sequi aliquam molestiae deserunt fugit doloribus dolore. Quisquam, accusamus!";
-  document.getElementById("docFooter").value = "Neque dolor nihil unde illo totam autem .";
-
-  document.getElementById("appHeader").value = "Eius labore itaque quam";
-  document.getElementById("appBody").value = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit modi velit earum voluptatum iure cum, accusamus qui. Enim necessitatibus ipsum officia mollitia rem voluptas explicabo, distinctio, optio aperiam omnis vel."+
-  "Sed sint incidunt enim, facilis saepe aut dolor error quaerat illo. Neque dolor nihil unde illo totam autem atque adipisci, architecto, eius dolorum incidunt facilis sunt, nam suscipit officiis voluptas."+
-  "Perferendis cum dolor minima veritatis distinctio accusamus, recusandae ab dicta cumque earum, fugiat, eos nostrum nesciunt! Iure harum, similique repudiandae reiciendis fuga velit repellat pariatur fugit dignissimos, molestias numquam officiis!"+
-  "Culpa inventore repellat commodi. Eius labore itaque quam nostrum saepe, unde repudiandae libero. Sunt ex eaque ad nam omnis fuga, ipsam eligendi! Dolores deleniti cum illo quam enim ducimus labore."+
-  "Ipsam ut magni tempora repellat modi tenetur nam unde eaque, culpa illum, in fugiat vitae sed earum dignissimos nostrum, saepe quas sequi aliquam molestiae deserunt fugit doloribus dolore. Quisquam, accusamus!";
-  document.getElementById("appFooter").value = "Quisquam, accusamus!";
-  document.getElementById("appDate").value = '2019-11-07';
-
-};
-
-//создаем документ с вложенным объектом "вложение", также делаем функции для заполнения свойтств объектов
-//возвращаем созданный объект (конструктор в классическом понимании)
-function createDocument() {
-  let document = {
-    header:"",
-    body: "",
-    footer:"",
-    app:{
-      header: "",
-      body: "",
-      footer: "",
-      date: ""
+top1.onclick = function() {
+  let getItem = prompt(
+    "Магазин: Жизнь - 10 (10 live) Броню - 15 (10 armor) Атака - 20 (10 damage)"
+  );
+  let items = {
+    damage: {
+      cost: 20,
+      count: 10,
+      name: "damage"
     },
-
-    makeDoc: function(docHeader, docBody, docFooter){ //для заполнения полей документа
-      this.header = docHeader,
-      this.body = docBody,
-      this.footer = docFooter
+    live: {
+      cost: 10,
+      count: 10,
+      name: "live"
     },
-
-    makeApp: function (header,body,footer,date){ //для заполнения полей вложенного объекта "вложение"
-      this.app.header = header;
-      this.app.body = body;
-      this.app.footer=footer;
-      this.app.date = date;
+    armor: {
+      cost: 15,
+      count: 10,
+      name: "armor"
     }
   };
-  return document;
+
+  if (getItem in items) {
+    let element = items[getItem];
+    console.log(element);
+    if (kolobok.many >= element.cost) {
+      switch (element.name) {
+        case "damage":
+          kolobok.damage += element.count;
+          kolobok.many -= element.cost;
+
+          break;
+        case "live":
+          kolobok.live += element.count;
+          kolobok.many -= element.cost;
+
+          break;
+        case "armor":
+          kolobok.armor += element.count;
+          kolobok.many -= element.cost;
+
+          break;
+      }
+      updateInfo(kolobok);
+    } else {
+      alert(
+        `у вас не хватает денег на ${element.name}! у вас всего: ${kolobok.many}`
+      );
+    }
+  }
+
+  // updateInfo()
 };
 
-//вывод документа в соотв. области разметки
-function writeDocument() {
-  let docHeader = document.getElementById("headerDocText");
-  let docFooter = document.getElementById("footerDocText");
-  let docBody = document.getElementById("bodyDocText");
-  docHeader.innerHTML = doc.header;
-  docFooter.innerHTML = doc.footer;
-  docBody.innerHTML = doc.body;
-};
+function randomInteger(min, max) {
+  let rand = min + Math.random() * (max - min);
+  return Math.round(rand);
+}
 
-//вывод вложения в соотв. области разметки
-function writeApp(){
-  let appHeader = document.getElementById("headerAppText");
-  let appFooter = document.getElementById("footerAppText");
-  let appBody = document.getElementById("bodyAppText");
-  let appDate = document.getElementById("dateAppText");
+function checkAlive(live) {
+  if (live <= 0) {
+    alert("вы проиграли!");
+    window.location.reload();
+  }
+}
 
-  appHeader.innerHTML = doc.app.header;
-  appFooter.innerHTML = doc.app.footer;
-  appBody.innerHTML = doc.app.body;
-  appDate.innerHTML = doc.app.date;
-};
+function updateInfo(item) {
+  if (item.mod === "kolobok") {
+    kolName.innerHTML = `Имя: ${item.name}`;
+    kolDamage.innerHTML = `Урон: ${item.damage}`;
+    kolArmor.innerHTML = `Броня: ${item.armor}`;
+    kolMany.innerHTML = `Деньги: ${item.many}`;
+    kolLive.innerHTML = `Жизнь: ${item.live}`;
+  } else {
+    animalName.innerHTML = `Имя: ${item.name}`;
+    animalDamage.innerHTML = `Урон: ${item.damage}`;
+    animalArmor.innerHTML = `Броня: ${item.armor}`;
+    animalCost.innerHTML = `Стоимость: ${item.many}`;
+    animalLive.innerHTML = `Жизнь: ${item.live}`;
+  }
+}

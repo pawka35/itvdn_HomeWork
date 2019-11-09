@@ -4,72 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Calculator</title>
+    <title>Kolobok Fighter</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Marck+Script|Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <div class="main-container">
-      <div class="container-document">
-        <div class="documentText">
-          <div class="header" id="headerDocText">Header doc here</div>
-          <div class="body" id="bodyDocText">Main document text here</div>
-          <div class="footer" id="footerDocText">Footer doc here</div>
-        </div>
-        <div class="attachmentText">
-          <div class="attLabel">Attachment</div>
-          <div class="headerApp" id="headerAppText">
-            Header attachment here.
-          </div>
-          <div class="bodyApp" id="bodyAppText">Body attachment here.</div>
-          <div class="footerApp" id="footerAppText">
-            Footer attachment here.
-          </div>
-          <div class="dateApp" id="dateAppText">Date attachment here.</div>
-        </div>
-      </div>
+    <html>
 
-      <div class="input-container">
-          <button id="genButton" >Сгенерировать</button>
-        <div class="inpLable">Поля для ввода данных для документа.</div>
-        <div class="document-inputs">
-          <label for="docHeader">Заголовок документа</label>
-          <input type="text" id="docHeader" placeholder="Введите заголовок" />
-          <label for="docBody">Тело документа</label>
-          <textarea placeholder="Здесь введите основной текст документа"
-            class="textArea"
-            id="docBody"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <label for="docFooter">Подвал документа</label>
-          <input type="text" id="docFooter" placeholder="Введите информацию для подвала документа"/>
-          <button id="docButton">Внести информацию</button>
+      <head>
+          <title>Обьекты, создание</title>
+        
+      </head>
+      
+      <body>
+          <div>
+              <button id="left">на лево</button>
+              <button id="right">в лес</button>
+              <button id="top">в магазин</button>
+              <button id="bottom">вниз</button>
+          </div>
+      
+      
+          <div class="stat-container">
+            <div class="kolobok-stat">
+              <div class="foto">
+                  foto here
+                </div>
+              <div class="info">
+                  <ul>
+                      <li id="name"></li>
+                      <li id="damage"></li>
+                      <li id="armor"></li>
+                      <li id="many"></li>
+                      <li id="live"></li>
+                  </ul>
+              </div>
+            </div>
+              <div class="animal-stat">
+                <div id="animalFoto" class="foto">
+                  foto here
+                </div>
+              <div class="info">
+                  <ul>
+                      <li id="animal-name"></li>
+                      <li id="animal-damage"></li>
+                      <li id="animal-armor"></li>
+                      <li id="animal-cost"></li>
+                      <li id="animal-live"></li>
+                  </ul>
+              </div>
+            </div>
+              
+          </div>
+          <div id="button-block" class="button-block">
+            <button id="hit">ударить</button>
+            <button id="close">отмена</button>
         </div>
 
-        <div class="inpLable">Поля для ввода данных для вложения.</div>
-        <div class="app-inputs">
-          <label for="appHeader">Заголовок вложения.</label>
-          <input type="text" id="appHeader" />
-          <label for="appBody">Тело вложения.</label>
-          <textarea
-            class="textArea"
-            id="appBody"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <label for="appFooter">Подвал вложения.</label>
-          <input type="text" id="appFooter" />
-          <label for="appDate">Дата вложения.</label>
-          <input type="date" id="appDate" />
-          <button id="appButton" disabled>Внести информацию</button>
-        </div>
-      </div>
-    </div>
-    <script src="js/script.js"></script>
+      
+      
+      </body>
+     <script src="js/script.js"></script>
+      
+      </html>
   </body>
 </html>
 
