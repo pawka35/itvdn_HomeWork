@@ -90,11 +90,11 @@ let kolobok = {
 updateInfo(kolobok);
 
 let animalPictures = {
-  Волк: "/image/volk.png",
-  Заяц: "/image/zayc.png",
-  death: "/image/death.png",
-  Лиса:"/image/fox.png",
-  Медведь: "/image/bear.png"
+  Волк: "image/volk.png",
+  Заяц: "image/zayc.png",
+  death: "image/death.png",
+  Лиса:"image/fox.png",
+  Медведь: "image/bear.png"
 };
 
 function getRandomItem(param) {

@@ -29,7 +29,7 @@
 .foto-kolobok{
   height: 200px;
   width: 182px;
-  background-image: url(/image/happy_kol.png);
+  background-image: url(../image/happy_kol.png);
   background-repeat: no-repeat;
 
 }
@@ -64,7 +64,7 @@
 .animal-stat .foto{
   height: 200px;
   width: 182px;
-  background-image: url(/image/volk.png);
+  background-image: url(../image/volk.png);
   background-repeat: no-repeat;
 }
 
