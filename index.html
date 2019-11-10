@@ -16,7 +16,7 @@
       <body>
         <div id="actionChoise">
           Доступные действия:
-          <button id="left">Босс</button>
+          <button id="left">Битва с дедом</button>
           <button id="right">В лес</button>
           <button id="top">В магазин</button>
           <!-- <button id="bottom">вниз</button> -->
@@ -44,16 +44,16 @@
           </div>
           <div class="animal-stat">
             <div class="hero-card">
-              <div id="personName"></div>
+              <div id="personName">Противник неизвестен</div>
               <div id="animalFoto" class="foto"></div>
               <div id="animal-change"></div>
             </div>
             <div class="info">
               <ul>
-                <li id="animal-name"></li>
-                <li id="animal-damage"></li>
-                <li id="animal-armor"></li>
-                <li id="animal-cost"></li>
+                <li id="animal-name">?</li>
+                <li id="animal-damage">?</li>
+                <li id="animal-armor">?</li>
+                <li id="animal-cost">?</li>
                 <!-- <li id="animal-live"></li> -->
                 <progress id="animal-live" max="100"></progress>
               </ul>
@@ -61,22 +61,54 @@
           </div>
         </div>
         <div id="button-block" class="button-block">
-          <button id="hit"> Начать бой! </button>
-          <button id="close"> Бежать с позором </button>
+          <button id="hit">Начать бой!</button>
+          <button id="close">Бежать с позором</button>
         </div>
         <div class="warField">
           Ход боя:
           <div id="warDescription"></div>
         </div>
-        <div id="levelUp" class="levelUp" >
+        <div id="levelUp" class="levelUp">
           <div class="congr">Поздравляю! Вам присваивается новый уровень!</div>
           <div class="levelStat">Ваши текущие параметры:</div>
           <div id="levels" class="levels"></div>
           <div class="closeLevelUp">
             <button id="closeLevelUp">Ура!</button>
           </div>
-          
         </div>
+        <div class="shop" id="shop">
+          <div class="shop-description">
+            Сегодня в наличии:
+          </div>
+          <div class="goods">
+            <div id="live" class="goods-description">
+              <div class="shop-good-picture">
+                  <img src="/image/life.jpg" alt="">
+              </div>
+              <div class="goods-one-description">+10 ед. к жизни</div>
+              <div class="goods-one-cost">10$</div>
+              <button id="live" class="buyBtn">Приобрести</button>
+            </div>
+            <div id="armor" class="goods-description">
+              <div class="shop-good-picture">
+                  <img src="/image//armor.jpg" alt="">
+              </div>
+              <div class="goods-one-description">+10% к броне</div>
+              <div class="goods-one-cost">15$</div>
+              <button id="armor" class="buyBtn">Приобрести</button>
+            </div>
+            <div id="damage" class="goods-description">
+              <div class="shop-good-picture">
+                <img src="/image/knife.jpg" alt="">
+              </div>
+              <div class="goods-one-description"> +10% к урону</div>
+              <div class="goods-one-cost">20$</div>
+              <button class="buyBtn" id="damage">Приобрести</button>
+            </div>
+          </div>
+          <button id="shop-exit-button">Выйти</button>
+        </div>
+
       </body>
       <script src="js/script.js"></script>
     </html>

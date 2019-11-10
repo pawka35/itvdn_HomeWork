@@ -17,12 +17,27 @@ let close = document.getElementById("close");
 let right = document.getElementById("right");
 let top1 = document.getElementById("top");
 
+let dedBattle = document.getElementById("left");
+
 let marker = false;
 let wins = 0; //количество подеб
 let level = 0; //уровень персонажа
 
 let oneAnimal;
 let arrItems = ["Удача", "Палка", "Проклятье", "Мораль", "Ярость"];
+
+function getDed(damage, armor) {
+  let ded = {
+    name: "Дед",
+    color: "White",
+    damage: damage,
+    armor: armor,
+    live: 100,
+    many: 99999,
+    mod: "Human"
+  };
+  return ded;
+}
 
 function getHare() {
   let hare = {
@@ -93,7 +108,7 @@ let animalPictures = {
   Волк: "image/volk.png",
   Заяц: "image/zayc.png",
   death: "image/death.png",
-  Лиса:"image/fox.png",
+  Лиса: "image/fox.png",
   Медведь: "image/bear.png"
 };
 
@@ -124,86 +139,121 @@ function getRandomItem(param) {
 // начинаем бой
 hit.onclick = function() {
   damgeDiller(oneAnimal, kolobok);
-  if (kolobok.live>0){
-  document.getElementById('actionChoise').style.display = "block"; //восстанавливаем кнопки магазина и прочего после время боя
-  document.getElementById('button-block').style.display = "none"; //убираем кнопки боя 
-  }else{ //если колобок погиб - убираем все кнопки
-    document.getElementById('actionChoise').style.display = "none"; 
-    document.getElementById('button-block').style.display = "none"; 
-
+  if (kolobok.live > 0) {
+    document.getElementById("actionChoise").style.display = "block"; //восстанавливаем кнопки магазина и прочего после время боя
+    document.getElementById("button-block").style.display = "none"; //убираем кнопки боя
+  } else {
+    //если колобок погиб - убираем все кнопки
+    document.getElementById("actionChoise").style.display = "none";
+    document.getElementById("button-block").style.display = "none";
   }
-
 };
 
 //не хотим начинать бой, но все равно теряем жизней как за один удар
 close.onclick = function() {
   kolobok.live = kolobok.live - oneAnimal.damage * kolobok.armor;
   //alert(`Kolobok сбжал! Вы потеряли ${oneAnimal.damage * kolobok.armor}`);
-  warDesctiption(`<p class="animal-heat">Kolobok бежал с поля боя! От пинка ${oneAnimal.name}, Вы потеряли ${oneAnimal.damage  - (oneAnimal.damage* kolobok.armor)}</p>`)
-  document.getElementById('actionChoise').style.display = "block"; //восстанавливаем кнопки магазина и прочего после время боя
-  document.getElementById('button-block').style.display = "none"; //убираем кнопки магазина и прочего на время боя
+  warDesctiption(
+    `<p class="animal-heat">Kolobok бежал с поля боя! От пинка ${
+      oneAnimal.name
+    }, Вы потеряли ${oneAnimal.damage - oneAnimal.damage * kolobok.armor}</p>`
+  );
+  document.getElementById("actionChoise").style.display = "block"; //восстанавливаем кнопки магазина и прочего после время боя
+  document.getElementById("button-block").style.display = "none"; //убираем кнопки магазина и прочего на время боя
 
   updateInfo(kolobok);
 };
 
-function warDesctiption(desc){ //информация с поля боя выводится внизу
-  battleDescription = document.getElementById('warDescription');
-  battleDescription.innerHTML += `${desc}`
-  }
+function warDesctiption(desc) {
+  //информация с поля боя выводится внизу
+  battleDescription = document.getElementById("warDescription");
+  battleDescription.innerHTML += `${desc}`;
+}
 
 //функция описывающая бой
 function damgeDiller(animl, kol) {
-  while (true) {   //бой продолжается пока кто-то из соперников не погибнет
-    animl.live = animl.live - kol.damage - (kol.damage* animl.armor); // колобок бъет первым и отнимает у животного жизни
+  while (true) {
+    //бой продолжается пока кто-то из соперников не погибнет
+    animl.live = animl.live - kol.damage - kol.damage * animl.armor; // колобок бъет первым и отнимает у животного жизни
     updateInfo(animl);
-    warDesctiption(`<p class="kolobok-heat"> Колобок нанес удар, у ${animl.name} осталось ${Math.round(animl.live,2)} жизней </p>`);
+    warDesctiption(
+      `<p class="kolobok-heat"> Колобок нанес удар, у ${
+        animl.name
+      } осталось ${Math.round(animl.live, 2)} жизней </p>`
+    );
 
-    if (!checkAlive(animl.live)) { // если у животного жизни  закончились, выводи информацию и выходим из цикла
-      document.getElementById("animalFoto").style.backgroundImage = `url(${animalPictures["death"]})`;
+    if (!checkAlive(animl.live)) {
+      // если у животного жизни  закончились, выводи информацию и выходим из цикла
+      document.getElementById("animalFoto").style.backgroundImage = `url(${
+        animalPictures["death"]
+      })`;
       document.getElementById("personName").innerHTML = "Противник побежден!";
       let bonusLife = randomInteger(10, 50);
-      kol.live+=bonusLife;
-      if (kol.live>100){kol.live=100}; //чтобы у колобка не стало более 100% жизней
+      kol.live += bonusLife;
+      if (kol.live > 100) {
+        kol.live = 100;
+      } //чтобы у колобка не стало более 100% жизней
       kol.many += animl.many;
       updateInfo(kol);
-      warDesctiption(`<p class="kolobok-heat"> Колобок победил  ${animl.name}! Пообедав печенью врага восстановил ${bonusLife} жизней (теперь ${Math.round(kol.live,2)}) </p>`);
-      warDesctiption(`<p class="kolobok-heat"> Колобок заработал  ${animl.many} $</p>`);
-      wins++;//увеличиваем счетчик побед
-      document.getElementById('wins').innerHTML = `Побед: ${wins} Уровень: ${level}`;
-      checkLeveUp(kol,wins); //проверяем не пора ли увеличивать скилы (увеличиваем за каждые 3 победы)
+      warDesctiption(
+        `<p class="kolobok-heat"> Колобок победил  ${
+          animl.name
+        }! Пообедав печенью врага восстановил ${bonusLife} жизней (теперь ${Math.round(
+          kol.live,
+          2
+        )}) </p>`
+      );
+      warDesctiption(
+        `<p class="kolobok-heat"> Колобок заработал  ${animl.many} $</p>`
+      );
+      wins++; //увеличиваем счетчик побед
+      document.getElementById(
+        "wins"
+      ).innerHTML = `Побед: ${wins} Уровень: ${level}`;
+      checkLeveUp(kol, wins); //проверяем не пора ли увеличивать скилы (увеличиваем за каждые 3 победы)
       break;
     }
 
-    kol.live = kol.live - animl.damage  - (animl.damage* kol.armor); // животное бъет колобка
+    kol.live = kol.live - animl.damage - animl.damage * kol.armor; // животное бъет колобка
     updateInfo(kol);
-    warDesctiption(`<p class="animal-heat">${animl.name} нанес удар, у колобка осталось ${Math.round(kol.live,2)} жизней </p>`);
+    warDesctiption(
+      `<p class="animal-heat">${
+        animl.name
+      } нанес удар, у колобка осталось ${Math.round(kol.live, 2)} жизней </p>`
+    );
 
-    if (!checkAlive(kol.live)) { // проверяем жив ли еще колобок
-     alert("колобок погиб");
-     warDesctiption(`<p class="animal-heat">Колобок погиб! Обновите страницу, чтобы начать заново</p>`);
-     break;
+    if (!checkAlive(kol.live)) {
+      // проверяем жив ли еще колобок
+      alert("колобок погиб");
+      warDesctiption(
+        `<p class="animal-heat">Колобок погиб! Обновите страницу, чтобы начать заново</p>`
+      );
+      break;
     }
   }
-
-
 }
 
 // повышение навыков за каждые 3 победы
-function checkLeveUp(kol,wins){
-  switch (true){
-    case wins % 3 ==0: 
-    level++;
-    document.getElementById('levelUp') .style.display = "block";
-    let damUp = kol.damage*0.2;
-    let armorUp = kol.armor*0.1;
-    kol.damage += damUp;
-    kol.armor += armorUp;
-    document.getElementById('levels').innerHTML =`<ul><li>Удар: ${kol.damage} (увеличение на ${damUp} ед.) </li><li>Броня: ${kol.armor} (увеличение на ${armorUp} ед.)  </li></ul>`
-    break;
-    
+function checkLeveUp(kol, wins) {
+  switch (true) {
+    case wins % 3 == 0:
+      level++;
+      document.getElementById("levelUp").style.display = "block";
+      let damUp = kol.damage * 0.2;
+      let armorUp = kol.armor * 0.1;
+      kol.damage += damUp;
+      kol.armor += armorUp;
+      document.getElementById(
+        "levels"
+      ).innerHTML = `<ul><li>Удар: ${kol.damage} (увеличение на ${damUp} ед.) </li><li>Броня: ${kol.armor} (увеличение на ${armorUp} ед.)  </li></ul>`;
+      break;
   }
-  document.getElementById('closeLevelUp').onclick = ()=>{document.getElementById('levelUp').style.display='none'; 
-  document.getElementById('wins').innerHTML = `Побед: ${wins} Уровень: ${level}`;};
+  document.getElementById("closeLevelUp").onclick = () => {
+    document.getElementById("levelUp").style.display = "none";
+    document.getElementById(
+      "wins"
+    ).innerHTML = `Побед: ${wins} Уровень: ${level}`;
+  };
   updateInfo(kol);
 }
 
@@ -215,6 +265,14 @@ function checkAlive(live) {
   }
 }
 
+dedBattle.onclick = () => {
+  //битва с дедом (главным босом)
+  if (kolobok.damage < 15) {
+    alert(
+      `Вы еще слишко слабы.\n Минимальное значение Урона для битвы с дедом = 15 (у вас ${kolobok.damage})`
+    );
+  }
+};
 
 // function lickeChoise() {
 //   let animalPic = document.getElementById("animalFoto");
@@ -231,20 +289,23 @@ function checkAlive(live) {
 //   }
 // }
 
-
 //колобок идет в лес
 right.onclick = function() {
   // lickeChoise();
-  document.getElementById('warDescription').innerHTML=``;
+  getEnemy();
+};
+
+function getEnemy() {
+  document.getElementById("warDescription").innerHTML = ``;
   document.getElementById("kolobok-change").innerHTML = ``;
   document.getElementById("animal-change").innerHTML = ``;
   document.getElementById("kolobok-change").style.display = "none";
   document.getElementById("animal-change").style.display = "none";
-  document.getElementById('actionChoise').style.display = "none"; //убираем кнопки магазина и прочего на время боя
+  document.getElementById("actionChoise").style.display = "none"; //убираем кнопки магазина и прочего на время боя
   buttonBlock.style.display = "block";
-
-
-  oneAnimal = animal[randomInteger(0, animal.length - 1)]();
+  if (oneAnimal == "") {
+    oneAnimal = animal[randomInteger(0, animal.length - 1)]();
+  }
   let animalPic = document.getElementById("animalFoto");
   document.getElementById("personName").innerHTML = oneAnimal.name;
   animalPic.style.backgroundImage = `url(${animalPictures[oneAnimal.name]})`;
@@ -267,7 +328,6 @@ right.onclick = function() {
       getNameElem(oneAnimal.name);
       updateInfo(oneAnimal);
     }
-
   }
 
   function getNameElem(name) {
@@ -289,61 +349,70 @@ right.onclick = function() {
       }
     }
   }
-};
+}
+
+function buyGood(goods) {
+  switch (goods) {
+    case goods == "live": {
+    }
+  }
+}
 
 //магазин
 top1.onclick = function() {
-  let getItem = prompt(
-    "Магазин: Жизнь - 10 (10 live) Броню - 15 (10 armor) Атака - 20 (10 damage)"
-  );
-  let items = {
+  document.getElementById("shop").style.display = "block";
+  document.getElementById("shop-exit-button").onclick = () => {
+    document.getElementById("shop").style.display = "none";
+  };
+
+  let goods = {
     damage: {
       cost: 20,
       count: 10,
-      name: "damage"
+      name: "damage",
+      descr: "увеличение урона"
     },
     live: {
       cost: 10,
       count: 10,
-      name: "live"
+      name: "live",
+      descr: "увеличение жизни"
     },
     armor: {
       cost: 15,
       count: 10,
-      name: "armor"
+      name: "armor",
+      descr: "увеличение брони"
     }
   };
 
-  if (getItem in items) {
-    let element = items[getItem];
-    console.log(element);
-    if (kolobok.many >= element.cost) {
-      switch (element.name) {
-        case "damage":
-          kolobok.damage += element.count;
-          kolobok.many -= element.cost;
-
-          break;
-        case "live":
-          kolobok.live += element.count;
-          kolobok.many -= element.cost;
-
-          break;
-        case "armor":
-          kolobok.armor += element.count;
-          kolobok.many -= element.cost;
-
-          break;
+  let buyButtons = document.getElementsByClassName("buyBtn");
+  for (el in buyButtons) {
+    buyButtons[el].onclick = function() {
+      let wantGoods = goods[this.id];
+      if (kolobok.many >= wantGoods.cost) {
+        kolobok.many -= wantGoods.cost;
+        if (this.id == "live") {
+          //если покупаем жизнь, то увеличиваем на 10 ед
+          kolobok[this.id] += wantGoods.count;
+        } else {
+          // если что-то другое, то увеличиваем на 10%
+          let up = kolobok[this.id] * 0.1;
+          kolobok[this.id] += up;
+        }
+        updateInfo(kolobok);
+        alert(
+          `Ура!\nПреобретено ${wantGoods.descr}! Новое значение: ${
+            kolobok[this.id]
+          }`
+        );
+      } else {
+        alert(
+          `Денег нет, но вы держитесь!\nУ вас ${kolobok.many}$, а ${wantGoods.descr} стоит ${wantGoods.cost}$.`
+        );
       }
-      updateInfo(kolobok);
-    } else {
-      alert(
-        `у вас не хватает денег на ${element.name}! у вас всего: ${kolobok.many}`
-      );
-    }
+    };
   }
-
-  // updateInfo()
 };
 
 // выбор случайной величины
@@ -352,8 +421,7 @@ function randomInteger(min, max) {
   return Math.round(rand);
 }
 
-
-// обновление статистики 
+// обновление статистики
 function updateInfo(item) {
   if (item.mod === "kolobok") {
     kolName.innerHTML = `Имя: ${item.name}`;
