@@ -136,12 +136,23 @@ margin-top: 20px;
 
 #actionChoise, .button-block{
   border: 1px solid red;
-  width: 400px;
+  border-radius: 7px;
+  width: 45%;
   margin: 40px 10% 40px 10%;
   padding: 10px;
   display: flex;
   justify-content: space-between;
 }
+
+#actionChoise > button, .button-block>button{
+  height: 30px;
+  width: 150px;
+  border-radius: 5px;
+  background-color: blanchedalmond;
+  border: 2px solid black;
+}
+
+
 
 .button-block{
   display: none;
@@ -202,7 +213,7 @@ border: 2px solid black;
   border: 3px solid green;
 }
 
-.buyBtn:hover, #shop-exit-button:hover{
+.buyBtn:hover, #shop-exit-button:hover, #actionChoise > button:hover,.button-block>button:hover{
   background-color: blanchedalmond;
   border: 4px solid red;
   background-color: yellow;
@@ -211,3 +222,4 @@ border: 2px solid black;
   cursor: pointer;
 
 }
+
