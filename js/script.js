@@ -1,268 +1,146 @@
-let kolName = document.getElementById("name");
-let kolDamage = document.getElementById("damage");
-let kolArmor = document.getElementById("armor");
-let kolMany = document.getElementById("many");
-let kolLive = document.getElementById("live");
-
-let animalName = document.getElementById("animal-name");
-let animalDamage = document.getElementById("animal-damage");
-let animalArmor = document.getElementById("animal-armor");
-let animalCost = document.getElementById("animal-cost");
-let animalLive = document.getElementById("animal-live");
-let buttonBlock = document.getElementById("button-block");
-
-let hit = document.getElementById("hit");
-let close = document.getElementById("close");
-
-let right = document.getElementById("right");
-let top1 = document.getElementById("top");
-
-let marker = false;
-
-let oneAnimal;
-let arrItems = ["Удача", "Палка", "Проклятье", "Мораль", "Ярость"];
-let hare = {
-  name: "Заяц",
-  color: "Gray",
-  damage: 10,
-  armor: 0.9,
-  live: 100,
-  many: 2,
-  mod: "animal"
-};
-let wolf = {
-  name: "Волк",
-  color: "Gray",
-  damage: 15,
-  armor: 0.8,
-  live: 10,
-  many: 5,
-  mod: "animal"
-};
-
-let animal = [wolf, hare];
-
-let kolobok = {
-  name: "kolobok",
-  color: "yellow",
-  damage: 11,
-  armor: 1,
-  live: 100,
-  many: 10,
-  mod: "kolobok"
-};
-updateInfo(kolobok);
-
-function getRandomItem(param) {
-  let randomPercent = randomInteger(0, 100);
-
-  if (randomPercent >= 0 && randomPercent < 25) {
-    let item = new Object();
-    item.damage = 0;
-    item.armor = 0;
-    item.live = 0;
-    item.many = 0;
-    item.name = arrItems[randomInteger(0, arrItems.length - 1)];
-    let createStat = randomInteger(0, 100);
-    if (createStat >= 0 && createStat < 25) {
-      item.damage = randomInteger(-10, 10);
-    } else if (createStat >= 25 && createStat < 50) {
-      item.armor = randomInteger(-10, 10);
-    } else if (createStat >= 50 && createStat < 75) {
-      item.live = randomInteger(-10, 10);
-    } else if (createStat >= 75 && createStat < 100) {
-      item.many = randomInteger(-10, 10);
-    }
-    return item;
-  }
-}
-
-hit.onclick = function() {
-  damgeDiller(oneAnimal, kolobok);
-};
-close.onclick = function() {
-  kolobok.live = kolobok.live - oneAnimal.damage * kolobok.armor;
-  alert(`Kolobok сбжал! Вы потеряли ${oneAnimal.damage * kolobok.armor}`);
-  updateInfo(kolobok);
-};
-
-function damgeDiller(animl, kol) {
-  if (kol.damage > animl.damage) {
-    animl.live = animl.live - kol.damage * animl.armor;
-
-    if (checkLiveAnim(animl, kol)) {
-      updateInfo(kol);
-      return checkLiveAnim(animl, kol);
-    }
-    updateInfo(kol);
-    updateInfo(animl);
-  } else {
-    kol.live = kol.live - animl.damage * kol.armor;
-
-    if (!checkLiveAnim(animl, kol)) {
-      updateInfo(kol);
-      return checkLiveAnim(animl, kol);
-    }
-    updateInfo(kol);
-    updateInfo(animl);
-  }
-}
-
-function checkLiveAnim(anim, kol) {
-  if (kol.live <= 0) {
-    checkAlive(kol.live);
-    return false;
-  }
-  if (anim.live <= 0) {
-    kol.many += anim.many;
-    updateInfo(kol);
-    alert(`вы победили ${anim.name}`);
-    return true;
-  }
-}
-
-let animalPictures = {
-  Волк: "/itvdn_HomeWork/image/volk.png",
-  Заяц: "/itvdn_HomeWork/image/zayc.png"
-};
-
-
-function lickeChoise() {
-  let animalPic = document.getElementById("animalFoto");
-  for (let i = 0; i < 30; i++) {
-    setTimeout(function() {
-      if (i % 2) {
-        console.log(i);
-        animalPic.style.backgroundImage = `url(${animalPictures["Волк"]})`;
-      } else {
-        console.log(i);
-        animalPic.style.backgroundImage = `url(${animalPictures["Заяц"]})`;
-      }
-    }, i * 200);
-  }
-}
-
-right.onclick = function() {
-   
-    lickeChoise();
-
-  oneAnimal = animal[randomInteger(0, animal.length - 1)];
-  //   console.log(animalPictures[oneAnimal.name]);
-  let animalPic = document.getElementById("animalFoto");
-  animalPic.style.backgroundImage = `url(${animalPictures[oneAnimal.name]})`;
-
-  buttonBlock.classList.remove("button-block");
-  buttonBlock.classList.add("show");
-  updateInfo(oneAnimal);
-  let newItem = getRandomItem();
-  if (newItem) {
-    if (randomInteger(0, 1)) {
-      kolobok.damage += newItem.damage;
-      kolobok.live += newItem.live;
-      kolobok.armor += newItem.armor;
-      kolobok.many += newItem.many;
-      getNameElem(kolobok.name);
-      updateInfo(kolobok);
-    } else {
-      oneAnimal.damage += newItem.damage;
-      oneAnimal.live += newItem.live;
-      oneAnimal.armor += newItem.armor;
-      oneAnimal.many += newItem.many;
-      getNameElem(oneAnimal.name);
-      updateInfo(oneAnimal);
-    }
-  }
-
-  function getNameElem(name) {
-    for (elem in newItem) {
-      if (newItem[elem] > 0) {
-        console.log(newItem);
-        alert(
-          `${name} нашел ${newItem.name} его ${elem} изменилось на ${newItem[elem]}`
-        );
-      }
-    }
-  }
-};
-
-top1.onclick = function() {
-  let getItem = prompt(
-    "Магазин: Жизнь - 10 (10 live) Броню - 15 (10 armor) Атака - 20 (10 damage)"
-  );
-  let items = {
-    damage: {
-      cost: 20,
-      count: 10,
-      name: "damage"
-    },
-    live: {
-      cost: 10,
-      count: 10,
-      name: "live"
-    },
-    armor: {
-      cost: 15,
-      count: 10,
-      name: "armor"
-    }
+//задание 1
+function Begemot(name) {
+  //свойтсво экземляра
+  this.name = name;
+  //метод экземпляра
+  this.sayHello = () => {
+    return `Hello!I am begemot and my name is ${this.name}`;
   };
-
-  if (getItem in items) {
-    let element = items[getItem];
-    console.log(element);
-    if (kolobok.many >= element.cost) {
-      switch (element.name) {
-        case "damage":
-          kolobok.damage += element.count;
-          kolobok.many -= element.cost;
-
-          break;
-        case "live":
-          kolobok.live += element.count;
-          kolobok.many -= element.cost;
-
-          break;
-        case "armor":
-          kolobok.armor += element.count;
-          kolobok.many -= element.cost;
-
-          break;
-      }
-      updateInfo(kolobok);
-    } else {
-      alert(
-        `у вас не хватает денег на ${element.name}! у вас всего: ${kolobok.many}`
-      );
-    }
-  }
-
-  // updateInfo()
+}
+//свойство функции-конструктора
+Begemot.prototype.type = "animal";
+//метод функции-конструктора
+Begemot.prototype.walk = () => {
+  return `Топ-топ-топ`;
 };
 
-function randomInteger(min, max) {
-  let rand = min + Math.random() * (max - min);
-  return Math.round(rand);
+let begemots = [new Begemot("Вася"), new Begemot("Валера")];
+for (number in begemots) {
+  console.log(
+    `Бeгемот ${begemots[number].name} говорит: "${begemots[number].sayHello()}"`
+  );
+  console.log(`Бeгемот ${begemots[number].name} относится к типа ${
+    begemots[number].type
+  }, 
+  бегает он вот так: ${begemots[number].walk()}`);
+}
+//конец задания 1
+
+//задание 2
+function Human(name, age) {
+  this.name = name;
+  this.age = age;
 }
 
-function checkAlive(live) {
-  if (live <= 0) {
-    alert("вы проиграли!");
-    window.location.reload();
-  }
-}
+Human.prototype.toString = function() {
+  return `Имя:${this.name},возраст: ${this.age};`;
+};
 
-function updateInfo(item) {
-  if (item.mod === "kolobok") {
-    kolName.innerHTML = `Имя: ${item.name}`;
-    kolDamage.innerHTML = `Урон: ${item.damage}`;
-    kolArmor.innerHTML = `Броня: ${item.armor}`;
-    kolMany.innerHTML = `Деньги: ${item.many}`;
-    kolLive.innerHTML = `Жизнь: ${item.live}`;
+let myArray = [
+  new Human("Вася", 2),
+  new Human("Петя", 1),
+  new Human("Коля", 3)
+];
+console.log(`Unsort Array: ${myArray}`);
+console.log(`Sort Array: ${sortMyArray(myArray, true)}`);
+console.log(`Sort Array Distinct: ${sortMyArray(myArray, false)}`);
+
+function sortMyArray(array, direction) {
+  let tmpArr = [...array];
+  if (direction) {
+    return tmpArr.sort(function(a, b) {
+      return a.age - b.age;
+    });
   } else {
-    animalName.innerHTML = `Имя: ${item.name}`;
-    animalDamage.innerHTML = `Урон: ${item.damage}`;
-    animalArmor.innerHTML = `Броня: ${item.armor}`;
-    animalCost.innerHTML = `Стоимость: ${item.many}`;
-    animalLive.innerHTML = `Жизнь: ${item.live}`;
+    return tmpArr.sort(function(a, b) {
+      return b.age - a.age;
+    });
   }
 }
+//конец задания 2
+
+//задание 3
+function Human2(name, age, sex) {
+  this.name = name;
+  this.age = age;
+  this.sex = sex;
+  this.say = function() {
+    return `Hello!My name is ${this.name},my age is ${this.age},my sex is ${this.sex}`;
+  };
+}
+
+Human2.prototype.legCount = 2;
+Human2.prototype.walk = function() {
+  return `Go-go-go!`;
+};
+//совместим с заданием 4
+Human2.prototype.toString = function() {
+  return `Это ${this.name}, возраст: ${this.age},пол: ${this.sex}, количество ног: ${this.legCount}.`;
+};
+
+let humans = [
+  new Human2("Вася", 31, "man"),
+  new Human2("Валерия", 23, "woman")
+];
+for (number in humans) {
+  console.log(`${humans[number].name} говорит: "${humans[number].say()}"`);
+  console.log(`У человека ${humans[number].name} количество ног: ${
+    humans[number].legCount
+  }, 
+  побежали: ${humans[number].walk()}`);
+  console.log(`${humans[number]}`);
+}
+//конец задания 3
+
+//самостоятельно поизучаем классы и наследование по статье https://learn.javascript.ru/class-inheritance
+class Car {
+  constructor(type, color) {
+    this.type = type;
+    this.color = color;
+  }
+  get GetSpeed() {
+    return this.speed();
+  }
+
+  speed() {
+    let res;
+    switch (this.type) {
+      case "truck":
+        res = 60;
+        break;
+      case "moto":
+        res = 100;
+        break;
+    }
+    return res;
+  }
+  //переопределяем метод прототипа
+  toString() {
+    return `Any Car=> Type: ${this.type}, Color: ${this.color}, speed: ${this.GetSpeed} `;
+  }
+}
+
+Car.prototype.numberOfWeels = 4;
+
+let car = new Car("truck", "red");
+console.log(`${car}`);
+
+class MyCar extends Car {
+  constructor(type,color,cost) {
+    //вызываем родительский конструктор
+    super(type, color);
+    //теперь работает наш конструктор и создает, что надо в этом классе
+    this.cost = cost;
+  }
+  // переопределяем метод родителя
+  toString() {
+    return `My Car => Type: ${this.type}, Color: ${this.color}, Cost:${
+      this.cost
+    }, speed: ${super.GetSpeed} `;
+  }
+}
+
+let myCar = new MyCar('moto','green',20000);
+console.log(`${myCar}`);
+
+// вывод: похоже на Python
