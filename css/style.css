@@ -61,3 +61,27 @@ button:hover{
     background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(222,223,25,0.6362920168067228) 100%, rgba(0,212,255,1) 100%);
 }
+
+.exc3Added{
+    border: 1px solid gold;
+}
+
+.exc3{
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 5px;
+    width:50%;
+    margin: 0px 0px 10px 0px;
+}
+
+.radio-description{
+    margin:15px;
+    font-weight: bold;
+}
+
+#exc3-result{
+    border: 1px solid salmon;
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+}

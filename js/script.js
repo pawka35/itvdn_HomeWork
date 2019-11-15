@@ -5,8 +5,8 @@ let exc1 = {
   method: function() {
     //т.к. у нас несколько дивов с параграфами, выбираем, который от первого задания
     let excDiv = document.getElementById("exc1");
-    let allP = excDiv.getElementsByTagName("p");
-
+    //переобразуем htmlCollection в arrray для более удобного перебора
+    let allP = [...excDiv.getElementsByTagName("p")];
     for (currentP in allP) {
       allP[currentP].innerHTML = this.text;
       allP[currentP].classList.remove("exc1-fromFun");
@@ -26,7 +26,7 @@ document.getElementById("fromObj").onclick = () => {
 document.getElementById("fromFun").onclick = () => {
   let text = "Paragraph (from anonim function)";
   let excDiv = document.getElementById("exc1");
-  let allP = excDiv.getElementsByTagName("p");
+  let allP = [...excDiv.getElementsByTagName("p")];
   for (currentP in allP) {
     allP[currentP].innerHTML = text;
     allP[currentP].classList.remove("exc1-fromObj");
@@ -56,3 +56,41 @@ document.getElementById("addP").onclick = () => {
     divExc2.appendChild(newP);
   }
 };
+
+//задание 3
+let exc3 = {
+  doIt: function() {
+    let rad = document.getElementsByName("exc3-radio");
+    //получаем значения которые у нас есть в радио-бутанах
+    let allCl = [rad[0].value, rad[1].value];
+    //для всех радиокнопок навешиваем действие при их выборе
+    for (let i = 0; i < rad.length; i++) {
+      rad[i].onchange = function() {
+        //получаем значение кнопки, чтобы узнать какой класс выделять
+        let curVal = rad[i].value;
+        //получаем какие классы нам не надо выделять (все, кроме выбранного)
+        let nodNeedClass = allCl.filter(item => item != curVal);
+        //для каждого класса, который не надо выделять 
+        for (let rem in nodNeedClass) {
+          //пробегаемся по элментам с этим классом
+          let toRem = document.getElementsByClassName(nodNeedClass[rem]);
+          for (let i = 0; i < toRem.length; i++) {
+            //и убираем класс для выделения
+            toRem[i].classList.remove("exc3Added");
+          }
+        }
+        //выбираем элементы с классом, который надо выделить
+        let finEl = document.getElementsByClassName(curVal);
+        //показываем див, где выводим инфу, колько элементов нашлось
+        document.getElementById('exc3-result').style.display = 'block';
+        document.getElementById("exc3-result").innerHTML = `Найдено ${finEl.length} элементов с классом '${curVal}'.`;
+        //ко всем найденным элементам с заданным классов применяем класс для их выделения 
+        for (let j = 0; j < finEl.length; j++) {
+          finEl[j].classList.add("exc3Added");
+        }
+      };
+    }
+  }
+};
+
+exc3.doIt();
