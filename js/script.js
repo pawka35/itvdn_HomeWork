@@ -21,7 +21,10 @@ function Secundomer()  {
  
   this.main =  ()=> {
     this.date.setMilliseconds(this.date.getMilliseconds()+100);
-    this.outDiv.innerHTML = `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}:${this.date.getMilliseconds()/100}`;
+    this.outDiv.innerHTML = `${this.date.getHours()<10?"0"+this.date.getHours():this.date.getHours()}:`+
+    `${this.date.getMinutes()<10?"0"+this.date.getMinutes():this.date.getMinutes()}:`+
+    `${this.date.getSeconds()<10?"0"+this.date.getSeconds():this.date.getSeconds()}:`+
+    `${this.date.getMilliseconds()/100}`;
   },
 
   this.start =  function() {
@@ -36,7 +39,7 @@ function Secundomer()  {
   
   this.reset =  function(){
     this.date = new Date(0, 0, 0, 0, 0, 0, 0),
-    this.outDiv.innerHTML = '0:0:0:0';
+    this.outDiv.innerHTML = '00:00:00:0';
   }
 };
 
