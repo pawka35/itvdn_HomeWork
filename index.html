@@ -4,11 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
     <title>Work with windows.</title>
   </head>
   <body>
-    
+    <div id="exc1" class="exc">
+      <div id="outPutDiv">00:00:00:0</div>
+      <div class="buttonsDiv">
+        <button id="secStart">Start</button>
+        <button id="secStop">Stop</button>
+        <button id="secReset">Reset</button>
+      </div>
+    </div>
+    <div id="exc2" class="exc">
+      <form action="exc2.html" method="GET">
+        <label for="numberA">Enter number A</label>
+        <input type="text" name="numberA" id="numberA" required />
+        <label for="numberB">Enter number B</label>
+        <input type="text" name="numberB" id="numberB" required />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div class="exc" id="ecx3">
+      <label for="expression">Введите выражение</label>
+      <input type="text" id="expression" />
+      <button id="exc3Button">Computing</button>
+      <div id="exc3Result"></div>
+    </div>
+
+    <div class="exc" id="ecx5">
+      <label for="exc5Input">Введите фразу:</label>
+      <input type="text" id="exc5Input">
+      <button id="exc5Button">Start</button>
+      <div id="exc5OutputDiv"></div>
+      <div> <marquee id="marque" direction="right" scrollamount="10"></marquee></div>
+     
+
+    </div>
   </body>
   <script src="js/script.js"></script>
 </html>
