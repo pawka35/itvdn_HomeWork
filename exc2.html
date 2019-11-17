@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      .mainDiv {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid gray;
+      }
+    </style>
     <title>Document</title>
-</head>
-<body>
-    <div id="info"></div>
-    <div id="summa"></div>
-    <button id="back">Back</button>
-</body>
-<script src="js/exc2.js"></script>
+  </head>
+  <body>
+    <div class="mainDiv">
+      <div id="info">Переданные числа:</div>
+      <div id="summa"></div>
+      <button id="back">Back</button>
+    </div>
+  </body>
+  <script src="js/exc2.js"></script>
 </html>

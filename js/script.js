@@ -159,25 +159,26 @@ function regExpInputs() {
 
   this.emailInput.oninput = () => {
     if (this.re.test(this.emailInput.value)) {
+      this.emailResults.classList.remove('notGood');
+      this.emailResults.classList.add('good');
       this.emailResults.innerHTML = "соответствует";
     } else {
       this.emailResults.innerHTML = "не соответствует";
+      this.emailResults.classList.add('notGood');
+      this.emailResults.classList.remove('good');
     }
   };
 
   this.fileSelector.onchange = () => {
     this.fileListDiv.innerHTML = '';
     if (fileSelector.value == "all") {
-      
       this.fileList.forEach(
         item => (this.fileListDiv.innerHTML += `${item}<br>`)
       );
       return;
     }
 
-    let pattern = new RegExp( // `.*.${fileSelector.value}`;
-      `.*.${fileSelector.value}`);
-    // this.fileListDiv.innerHTML = "";
+    let pattern = new RegExp(`.*.${fileSelector.value}`);
     this.fileList.forEach(item => {
       if (pattern.test(item)) {
         this.fileListDiv.innerHTML += `${item}<br>`;

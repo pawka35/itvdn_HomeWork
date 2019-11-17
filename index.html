@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="exc1" class="exc">
+      <div class="excDescription">Задание 1. Секундомер.</div>
       <div id="outPutDiv">00:00:00:0</div>
       <div class="buttonsDiv">
         <button id="secStart">Start</button>
@@ -16,29 +17,47 @@
         <button id="secReset">Reset</button>
       </div>
     </div>
+
     <div id="exc2" class="exc">
+      <div class="excDescription">Задание 2. Сумма 2-х параметров.</div>
       <form action="exc2.html" method="GET">
         <label for="numberA">Enter number A</label>
-        <input type="text" name="numberA" id="numberA" required />
+        <input
+          type="text"
+          name="numberA"
+          id="numberA"
+          required
+          autocomplete="off"
+        />
         <label for="numberB">Enter number B</label>
-        <input type="text" name="numberB" id="numberB" required />
-        <input type="submit" value="Submit" />
+        <input
+          type="text"
+          name="numberB"
+          id="numberB"
+          required
+          autocomplete="off"
+        />
+        <input type="submit" class="submit" value="Submit" />
       </form>
     </div>
 
     <div class="exc" id="ecx3">
+      <div class="excDescription">Задание 3. Афифметика из текста.</div>
       <label for="expression">Введите выражение</label>
       <input type="text" id="expression" />
       <button id="exc3Button">Computing</button>
       <div id="exc3Result"></div>
     </div>
-    <div class="exc" id="exc4">
+
+    <div class="exc" id="ecx4">
+      <div class="excDescription">Задание 4. Ссылки.</div>
       <a href="#" id="js1">JS урок 1</a>
       <a href="#" id="js2">JS урок 2</a>
       <a href="#" id="js3">JS урок 3</a>
     </div>
 
-    <div class="exc" id="ecx5">
+    <div class="exc" id="exc5">
+      <div class="excDescription">Задание 5. Бегущая строка.</div>
       <label for="exc5Input">Введите фразу:</label>
       <input type="text" id="exc5Input" />
       <button id="exc5Button">Start</button>
@@ -49,18 +68,25 @@
       <!-- <div> <marquee id="marque" direction="right" scrollamount="10"></marquee></div> -->
     </div>
     <div class="exc" id="exc6">
-      <input type="text" name="" id="emailInput">
-      <div id="emailResults"></div>
-
-      <select id="fileSelector">
-          <option value="all">All</option>
-        <option value="txt">*.txt</option>
-        <option value="reg">*.reg</option>
-        <option value="jpg">*.jpg</option>
-        <option value="dat">*.dat</option>
-      </select>
-      <div id="fileList"></div>
-
+      <div class="excDescription">Задание 6. Регулярные выражения.</div>
+      <div class="exc6-email">
+        <div>Введите email:</div>
+        <input type="text" name="" id="emailInput"  />
+        <div id="emailResults" class="notGood">не соответствует</div>
+      </div>
+      <div class="exc6-fileFilter">
+        <div>Выберите фильтр файлов:</div>
+        <div>
+          <select id="fileSelector">
+            <option value="all">All</option>
+            <option value="txt">*.txt</option>
+            <option value="reg">*.reg</option>
+            <option value="jpg">*.jpg</option>
+            <option value="dat">*.dat</option>
+          </select>
+        </div>
+        <div id="fileList"></div>
+      </div>
     </div>
   </body>
   <script src="js/script.js"></script>

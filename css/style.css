@@ -1,10 +1,117 @@
 .exc{
+    width: 50%;
     margin:10px;
     padding: 10px;
     border: 1px solid green;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
+.buttonsDiv{
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.excDescription{
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+
+
+#exc2,#ecx3{
+align-items: center;
+}
+
+#exc2 > form{
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    line-height: 30px ;
+    align-items: center;
+}
+
+input{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin:5px;
+}
+
+.submit, button{
+    margin:5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.submit:hover, button:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: cadetblue;
+    color: whitesmoke;
+}
+
+.submit:disabled, button:disabled{
+    cursor:default;
+    border: 1px solid gray;
+    color: black;
+    background-color: gray;
+
+ }
+
+#exc3Result{
+    border: 5px dotted goldenrod;
+    padding: 5px;
+    margin-top: 10px;
+    color: green;
+}
+
+#exc2,#ecx4,#exc6{
+    margin-left: 200px;
+    border: 1px solid blue;
+}
+
+#exc5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#exc5 div{
+    margin:5px;
+}
+
+.exc6-fileFilter,.exc6-email{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+#fileList{
+    border: 1px solid gray;
+    margin-left: 10px;
+    padding: 5px;
+    text-align: left;
+}
+
+.notGood{
+    border: 1px solid red;
+    color:red;
+    padding: 5px;
+}
+
+.good{
+    border: 1px solid green;
+    color: green;
+    padding: 5px;
+}
 /*сopy from http://blog.kislenko.net/show.php?id=1796 */
 .marquee {
     width: 450px;
