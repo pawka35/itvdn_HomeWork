@@ -99,31 +99,97 @@ function Calculator() {
   };
 }
 
-function RunningString(){
-  this.startButton = document.getElementById('exc5Button');
-  this.exc5OutputDiv = document.getElementById('exc5OutputDiv');
-  this.startButton.onclick = ()=>{
-    let phrase = document.getElementById('exc5Input').value;
-    document.getElementById('spanMarquee').innerHTML = phrase;
+function RunningString() {
+  this.startButton = document.getElementById("exc5Button");
+  this.exc5OutputDiv = document.getElementById("exc5OutputDiv");
+  this.startButton.onclick = () => {
+    let phrase = document.getElementById("exc5Input").value;
+    document.getElementById("spanMarquee").innerHTML = phrase;
     this.run(phrase);
   };
 
   this.run = function animate(string) {
     let phrase = string;
-    setInterval(function () {
-      phrase = '&nbsp;'+phrase;
-      if(phrase.length > exc5OutputDiv.scrollWidth){
-        phrase =  string;
+    setInterval(function() {
+      phrase = "&nbsp;" + phrase;
+      if (phrase.length > exc5OutputDiv.scrollWidth) {
+        phrase = string;
       }
       exc5OutputDiv.innerHTML = phrase;
     }, 100); //интервал прокрутки, мс
-   }
-
+  };
 }
 
+function Refs() {
+  this.ref1 = document.getElementById("js1");
+  this.ref2 = document.getElementById("js2");
+  this.ref3 = document.getElementById("js3");
+  this.winds = [this.win1, this.win2, this.win3];
+
+  this.ref1.onclick = () => {
+    this.openAndClose(this.ref1, "exc4_1.html", "JS1", 0);
+  };
+  this.ref2.onclick = () => {
+    this.openAndClose(this.ref2, "exc4_2.html", "JS2", 1);
+  };
+  this.ref3.onclick = () => {
+    this.openAndClose(this.ref3, "exc4_3.html", "JS3", 2);
+  };
+
+  this.openAndClose = (ref, page, name, number) => {
+    if (!ref.innerHTML.includes("открыт")) {
+      this.winds[number] = window.open(page, name, "width=300px,heigth=300px");
+      ref.innerHTML += "(открыт)";
+    } else {
+      this.winds[number].close();
+      ref.innerHTML = ref.innerHTML.replace("(открыт)", "");
+    }
+  };
+}
+
+function regExpInputs() {
+  this.emailInput = document.getElementById("emailInput");
+  this.emailResults = document.getElementById("emailResults");
+  this.fileSelector = document.getElementById("fileSelector");
+  this.fileListDiv = document.getElementById("fileList");
+  this.fileList = ["1.txt", "image.jpg", "coomon1.dat", "rew.reg"];
+  this.re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  this.fileList.forEach(item => (this.fileListDiv.innerHTML += `${item}<br>`));
+
+  this.emailInput.oninput = () => {
+    if (this.re.test(this.emailInput.value)) {
+      this.emailResults.innerHTML = "соответствует";
+    } else {
+      this.emailResults.innerHTML = "не соответствует";
+    }
+  };
+
+  this.fileSelector.onchange = () => {
+    this.fileListDiv.innerHTML = '';
+    if (fileSelector.value == "all") {
+      
+      this.fileList.forEach(
+        item => (this.fileListDiv.innerHTML += `${item}<br>`)
+      );
+      return;
+    }
+
+    let pattern = new RegExp( // `.*.${fileSelector.value}`;
+      `.*.${fileSelector.value}`);
+    // this.fileListDiv.innerHTML = "";
+    this.fileList.forEach(item => {
+      if (pattern.test(item)) {
+        this.fileListDiv.innerHTML += `${item}<br>`;
+      }
+    });
+  };
+}
 
 window.onload = () => {
   let cals = new Calculator();
   let secundomer = new Secundomer();
   let runningSting = new RunningString();
+  let refs = new Refs();
+  let reg = new regExpInputs();
 };
