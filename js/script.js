@@ -1,25 +1,33 @@
 //для секундомера
 function Secundomer() {
-  (this.date = new Date(0, 0, 0, 0, 0, 0, 0)),
+  //выставляем дату на нуль
+  this.date = new Date(0, 0, 0, 0, 0, 0, 0),
     this.interval,
-    (this.startButton = document.getElementById("secStart")),
-    (this.outDiv = document.getElementById("outPutDiv")),
-    (this.curStamp = 0),
-    (this.startButton.onclick = () => {
+    //ищем кнопки
+    this.startButton = document.getElementById("secStart"),
+    this.outDiv = document.getElementById("outPutDiv"),
+    this.curStamp = 0,
+    //навешивам функцию на кнопку старт
+    this.startButton.onclick = () => {
       this.start();
-    }),
-    (this.stopButton = document.getElementById("secStop")),
-    (this.stopButton.onclick = () => {
+    },
+    this.stopButton = document.getElementById("secStop"),
+    //навешиваем функцию на кнопку стоп
+    this.stopButton.onclick = () => {
       this.stop();
-    }),
-    (this.resetButton = document.getElementById("secReset")),
-    (this.resetButton.onclick = () => {
+    },
+    //навешиваем функцию на кнопку сброса
+    this.resetButton = document.getElementById("secReset"),
+    this.resetButton.onclick = () => {
       this.reset();
-    }),
-    (this.main = () => {
+    },
+
+    //основная функция, которая прибавляет к нашей дате 100 мс и формирует текст для вывода 
+    this.main = () => {
       this.date.setMilliseconds(this.date.getMilliseconds() + 100);
       this.outDiv.innerHTML =
         `${
+          //везде проверяем, если число меньше 10, то прибавляем ведущий 0 для вывода
           this.date.getHours() < 10
             ? "0" + this.date.getHours()
             : this.date.getHours()
@@ -35,19 +43,25 @@ function Secundomer() {
             : this.date.getSeconds()
         }:` +
         `${this.date.getMilliseconds() / 100}`;
-    }),
-    (this.start = function() {
+    },
+
+    //запускаем основную функцию с интервалом 100 мс и также отключаем кнопку запуска
+    this.start = function() {
       this.interval = setInterval(this.main, 100);
       this.startButton.setAttribute("disabled", "disabled");
-    }),
-    (this.stop = function() {
+    },
+
+    //удаляем интервал и освобождаем кнопку запуска
+    this.stop = function() {
       clearInterval(this.interval);
       this.startButton.removeAttribute("disabled");
-    }),
-    (this.reset = function() {
+    },
+
+    //сбрасываем дату, сбрасываем вывод
+    this.reset = function() {
       (this.date = new Date(0, 0, 0, 0, 0, 0, 0)),
         (this.outDiv.innerHTML = "00:00:00:0");
-    });
+    };
 }
 
 function Calculator() {
@@ -99,12 +113,16 @@ function Calculator() {
   };
 }
 
+//к задаче про бегущую строку
 function RunningString() {
   this.startButton = document.getElementById("exc5Button");
   this.exc5OutputDiv = document.getElementById("exc5OutputDiv");
+
   this.startButton.onclick = () => {
     let phrase = document.getElementById("exc5Input").value;
+    //первый способ = просто добавляем в див с навешенными стилями нашу фразу, далее само крутится
     document.getElementById("spanMarquee").innerHTML = phrase;
+    //второй способ - передавем фразу в функцию и там по крутим ее, прибавляя пробелы
     this.run(phrase);
   };
 
@@ -112,6 +130,7 @@ function RunningString() {
     let phrase = string;
     setInterval(function() {
       phrase = "&nbsp;" + phrase;
+      //если понимаем, что достигли края дива, то фразу сбрасываем на первональную (без пробелов)
       if (phrase.length > exc5OutputDiv.scrollWidth) {
         phrase = string;
       }
@@ -120,10 +139,12 @@ function RunningString() {
   };
 }
 
+//задание с 3 ссылками
 function Refs() {
   this.ref1 = document.getElementById("js1");
   this.ref2 = document.getElementById("js2");
   this.ref3 = document.getElementById("js3");
+  //массив для хранения информации об окнах ссылок 
   this.winds = [this.win1, this.win2, this.win3];
 
   this.ref1.onclick = () => {
@@ -147,16 +168,19 @@ function Refs() {
   };
 }
 
+//к заданию по регуляркам
 function regExpInputs() {
   this.emailInput = document.getElementById("emailInput");
   this.emailResults = document.getElementById("emailResults");
   this.fileSelector = document.getElementById("fileSelector");
   this.fileListDiv = document.getElementById("fileList");
   this.fileList = ["1.txt", "image.jpg", "coomon1.dat", "rew.reg"];
+  //все написано до нас, поэтому регулярка с https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
   this.re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   this.fileList.forEach(item => (this.fileListDiv.innerHTML += `${item}<br>`));
 
+  //навешиваем на кождое изменение в поле ввода емайл, если регулярка соответствует, то показываем, что все ок
   this.emailInput.oninput = () => {
     if (this.re.test(this.emailInput.value)) {
       this.emailResults.classList.remove('notGood');
@@ -169,6 +193,7 @@ function regExpInputs() {
     }
   };
 
+  //навешиваем на изменения селектора типов файлов, далее составляем регулярку исходя из выбранного и проверяем 
   this.fileSelector.onchange = () => {
     this.fileListDiv.innerHTML = '';
     if (fileSelector.value == "all") {
@@ -177,7 +202,6 @@ function regExpInputs() {
       );
       return;
     }
-
     let pattern = new RegExp(`.*.${fileSelector.value}`);
     this.fileList.forEach(item => {
       if (pattern.test(item)) {
@@ -187,6 +211,7 @@ function regExpInputs() {
   };
 }
 
+//на загрузку документа вызваем все конструкторы, в иницаилизации которых прописана логика
 window.onload = () => {
   let cals = new Calculator();
   let secundomer = new Secundomer();
