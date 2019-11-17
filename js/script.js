@@ -104,12 +104,20 @@ function RunningString(){
   this.exc5OutputDiv = document.getElementById('exc5OutputDiv');
   this.startButton.onclick = ()=>{
     let phrase = document.getElementById('exc5Input').value;
-    document.getElementById('marque').innerHTML = phrase;
+    document.getElementById('spanMarquee').innerHTML = phrase;
+    this.run(phrase);
   };
 
-  this.byLetter = (phrase)=>{
-    
-  };
+  this.run = function animate(string) {
+    let phrase = string;
+    setInterval(function () {
+      phrase = '&nbsp;'+phrase;
+      if(phrase.length > exc5OutputDiv.scrollWidth){
+        phrase =  string;
+      }
+      exc5OutputDiv.innerHTML = phrase;
+    }, 100); //интервал прокрутки, мс
+   }
 
 }
 
