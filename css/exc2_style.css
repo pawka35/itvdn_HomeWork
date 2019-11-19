@@ -1,0 +1,93 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.prewrapper {
+    border: 1px solid blue;
+    width: 40%;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+    height: 500px;
+    background-image: url(../img/lgn.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+.wrapper{
+    width: auto;
+    padding: 20px;
+    border: 1px solid wheat;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    position: relative;
+    top: 150px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+input{
+    border: black;
+    border-radius: 4px;
+    height: 30px;
+    vertical-align: middle;
+    margin: 5px 0px 5px 0px;
+}
+
+label{
+    color: goldenrod;
+}
+
+button{
+    width: 30%;
+    height: 30px;
+    background-color: goldenrod;
+    border-radius: 5px;
+    align-self: center;
+    border: .5px solid goldenrod;
+}
+
+button:hover{
+    background-color: grey;
+    border: .5px solid wheat;
+    color:wheat;
+    cursor: pointer;
+}
+
+.errorMessage{
+    border: 2px solid goldenrod;
+    background-color: whitesmoke;
+    padding: 3px;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.errorDiv{
+    border: 1px solid red;
+    background-color: #eb8a8a;
+}
+
+.succesMessage{
+    display: flex;
+    border: 1px solid green;
+    color: green;
+    border-radius: 15px;
+    font-weight: bolder;
+    background-color: goldenrod;
+    height: 200px;
+    width: auto;
+    padding: 30px;
+    align-items: center;
+    text-align: center;
+}

@@ -4,20 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/exc2_style.css">
     <title>Авторизация</title>
   </head>
   <body>
     <div class="prewrapper">
       <div class="wrapper">
-        <form action="">
+        <form  id="loginForm" action="">
           <label for="login">Введите имя пользователя</label>
-          <input type="text" id="login" />
+          <input type="text" id="login" autocomplete="off" />
           <label for="password">Введите пароль</label>
-          <input type="text" id="password" />
-          <input type="checkbox" />
-          <button>Войти</button>
+          <input type="password" id="password" />
+          <div>
+            <input type="checkbox" id="chkbx" />
+            <label for="chkbx">Запомнить меня</label>
+          </div>
+          <button id="enterBtn">Войти</button>
         </form>
       </div>
     </div>
+    <script src="js/exc2.js"></script>
   </body>
 </html>

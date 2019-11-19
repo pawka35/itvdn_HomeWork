@@ -8,48 +8,54 @@
     <title>JS and CSS.</title>
   </head>
   <body>
-    <div class="exc" id="exc1">
-      <div class="exc-description">Задача 1</div>
-      <div>
-        <div>Введите число от 0 до 100:</div>
-        <input id="exc-1_input" type="number" min="0" max="100" />
-        <button id="exc-1_button">Угадал?</button>
-        <div id="tryCount"></div>
-        <div id="exc-1_resultDiv"></div>
-        <div id="testDiv"></div>
+    <div id="mainContainer">
+      <div class="exc" id="exc1">
+        <div class="exc-description" id="excDescription1">Задача 1</div>
+        <div>
+          <div>Введите число от 0 до 100:</div>
+          <input id="exc-1_input" type="number" min="0" max="100" />
+          <button id="exc-1_button">Угадал?</button>
+          <div id="tryCount"></div>
+          <div id="exc-1_resultDiv"></div>
+          <div id="testDiv"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="exc" id="exc2">
+      <div class="exc" id="exc2">
+        <div class="exc-description" id="excDescription2">Задача 2</div>
         <div class="exc2-container" id="exc2-container">
           <button id="ecx2_btn">Нажмите для авторизации</button>
         </div>
       </div>
 
-    <div class="exc" id="exc3">
-      <div class="exc3-container" id="exc3-container">
-        <div id="exc3-square1" class="exc3-el"></div>
-        <div id="exc3-square2" class="exc3-el"></div>
-        <div id="exc3-square3" class="exc3-el"></div>
-      </div>
-    </div>
-
-    <div class="exc" id="exc4">
-      <div class="exc4-container" id="exc4-container">
-        <div class="exc-4_textContainer" id="exc-4_textContainer">
-          <div id="exc4-text" class="exc4-text"> Text</div>
-        </div>
-        <div>
-          <button id="exc4-right">rigth</button>
-          <button  id="exc4-left">left</button>
-          <button  id="exc4-up">up</button>
-          <button  id="exc4-down">down</button>
+      <div class="exc" id="exc3">
+        <div class="exc-description" id="excDescription3">Задача 3</div>
+        <div class="exc3-container" id="exc3-container">
+          <div id="exc3-square1" class="exc3-el"></div>
+          <div id="exc3-square2" class="exc3-el"></div>
+          <div id="exc3-square3" class="exc3-el"></div>
         </div>
       </div>
-    </div>
 
-    <div class="exc" id="exc5">
-      <div id="exc5-square"></div>
+      <div class="exc" id="exc4">
+        <div class="exc-description" id="excDescription4">Задача 4</div>
+        <div class="exc4-container" id="exc4-container">
+          <div class="exc-4_textContainer" id="exc-4_textContainer">
+            <div id="exc4-text" class="exc4-text">Text</div>
+          </div>
+          <div>
+            <button id="exc4-right">rigth</button>
+            <button id="exc4-left">left</button>
+            <button id="exc4-up">up</button>
+            <button id="exc4-down">down</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="exc" id="exc5">
+        <div class="exc-description" id="excDescription5">Задача 5</div>
+        <div id="exc5-square"></div>
+      </div>
     </div>
   </body>
   <script src="js/script.js"></script>
