@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" name="" id="inputElement" />
+      <button id="switchButton">SwitchOff</button>
+    </div>
+    <div>
+      <label for="rd1">Без шифра</label>
+      <input type="radio" id="rd1" name="exc2" value="clearText" checked> 
+      <label for="rd2">Зашифровать</label>
+      <input type="radio" id="rd2" name="exc2" value="shifr" >
+      <label for="number">Смещение</label>
+      <input type="number" id="number" value="1" min="1" max="100">
+      <textarea name="" id="textAreaInput" cols="30" rows="10" >Мама мыла раму</textarea>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>

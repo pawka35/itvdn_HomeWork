@@ -1,0 +1,9 @@
+.off{
+    color: yellow;
+    background-color: red;
+}
+
+.on{
+    background-color:green;
+    color: white;
+}
