@@ -8,20 +8,47 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
+    <div id="exc1" class="exc">
+      <div class="description">
+        При первом нажатии на кнопку блокируется ввод, при повторном нажатии -
+        снова возможен ввод.
+      </div>
       <input type="text" name="" id="inputElement" />
       <button id="switchButton">SwitchOff</button>
     </div>
-    <div>
-      <label for="rd1">Без шифра</label>
-      <input type="radio" id="rd1" name="exc2" value="clearText" checked> 
-      <label for="rd2">Зашифровать</label>
-      <input type="radio" id="rd2" name="exc2" value="shifr" >
-      <label for="number">Смещение</label>
-      <input type="number" id="number" value="1" min="1" max="100">
-      <textarea name="" id="textAreaInput" cols="30" rows="10" >Мама мыла раму</textarea>
+    <div class="exc">
+      <div class="description">
+        Реализация
+        <a
+          href="https://ru.wikipedia.org/wiki/%D0%A8%D0%B8%D1%84%D1%80_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8F"
+          target="_blank"
+          >шифра Цезаря.</a
+        >
+      </div>
+      <div class="exc2-main">
+        <div class="exc2-inputs">
+          <div>
+            <label for="rd1">Без шифра</label>
+            <input
+              type="radio"
+              id="rd1"
+              name="exc2"
+              value="clearText"
+              checked
+            />
+            <label for="rd2">Зашифровать</label>
+            <input type="radio" id="rd2" name="exc2" value="shifr" />
+          </div>
+          <div class="offset">
+            <label for="number">Смещение</label>
+            <input type="number" id="number" value="1" min="1" max="100" />
+          </div>
+        </div>
+        <textarea name="" id="textAreaInput" cols="30" rows="10">
+Мама мыла раму</textarea
+        >
+      </div>
     </div>
-
     <script src="js/script.js"></script>
   </body>
 </html>

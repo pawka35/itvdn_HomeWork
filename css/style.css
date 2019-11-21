@@ -7,3 +7,32 @@
     background-color:green;
     color: white;
 }
+
+.exc,.description{
+    border:1px solid green;
+    margin: 10px;
+    padding: 10px;
+}
+
+.description{
+    border:1px solid seagreen;
+}
+
+.exc2-main{
+    display: flex;
+    flex-direction: column;
+}
+
+/* .exc2-inputs{
+    flex-direction:row;
+
+} */
+
+#number{
+    width: 50px;
+}
+
+.offset{
+    border: sienna 1px solid;
+    width: 30%;
+}
