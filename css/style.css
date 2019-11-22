@@ -1,3 +1,7 @@
+body{
+    width: 50%;
+}
+
 .off{
     color: yellow;
     background-color: red;
@@ -12,10 +16,12 @@
     border:1px solid green;
     margin: 10px;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .description{
     border:1px solid seagreen;
+    margin: 0px 0px 15px 10px;
 }
 
 .exc2-main{
@@ -23,16 +29,24 @@
     flex-direction: column;
 }
 
-/* .exc2-inputs{
-    flex-direction:row;
-
-} */
 
 #number{
-    width: 50px;
+    width: 35px;
+    height: 12px;
+    margin-bottom: 10px;
 }
 
 .offset{
     border: sienna 1px solid;
-    width: 30%;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 0px 0px 10px;
+}
+
+#textAreaInput{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    font-size: 18px;
 }

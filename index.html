@@ -13,8 +13,10 @@
         При первом нажатии на кнопку блокируется ввод, при повторном нажатии -
         снова возможен ввод.
       </div>
-      <input type="text" name="" id="inputElement" />
-      <button id="switchButton">SwitchOff</button>
+      <span class="offset">
+        <input type="text" name="" id="inputElement" />
+        <button id="switchButton">SwitchOff</button>
+      </span>
     </div>
     <div class="exc">
       <div class="description">
@@ -27,8 +29,7 @@
       </div>
       <div class="exc2-main">
         <div class="exc2-inputs">
-          <div>
-            <label for="rd1">Без шифра</label>
+          <span class="offset">
             <input
               type="radio"
               id="rd1"
@@ -36,13 +37,14 @@
               value="clearText"
               checked
             />
-            <label for="rd2">Зашифровать</label>
+            <label for="rd1">Без шифра</label>
             <input type="radio" id="rd2" name="exc2" value="shifr" />
-          </div>
-          <div class="offset">
+            <label for="rd2">Зашифровать</label>
+          </span>
+          <span class="offset">
             <label for="number">Смещение</label>
             <input type="number" id="number" value="1" min="1" max="100" />
-          </div>
+          </span>
         </div>
         <textarea name="" id="textAreaInput" cols="30" rows="10">
 Мама мыла раму</textarea
