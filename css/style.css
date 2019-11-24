@@ -1,4 +1,10 @@
-.exc3-field{
+.exc{
+    border: 1px solid green;
+    margin:10px;
+    padding: 10px;
+}
+
+.exc3-field,.exc4-field{
     height: 300px;
     border: 1px solid red;
 }

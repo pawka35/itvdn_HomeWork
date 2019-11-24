@@ -5,16 +5,18 @@ document.addEventListener("DOMContentLoaded", function() {
   const EXC2_TEXT_ID = "exc2-text";
   const EXC3_FILED_ID = "exc3-field";
   const EXC3_BUTTON_ID = "exc3-button";
+  const EXC4_FILED_ID = "exc4-field";
 
   //end constants block
   init();
 
   function init() {
     console.log("loaded!");
-    // exc1();
+    //exc1();
     //exc2();
-    exc3();
-  }
+    //exc3();
+    //exc4();
+  };
 
   function exc1() {
     let txtArea = document.getElementById(EXC1_TEXTAREA_ID);
@@ -58,22 +60,45 @@ document.addEventListener("DOMContentLoaded", function() {
   } //end exc2
 
   function exc3() {
-      let field = document.getElementById(EXC3_FILED_ID);
-      let bnt = document.getElementById(EXC3_BUTTON_ID);
+    let field = document.getElementById(EXC3_FILED_ID);
+    let bnt = document.getElementById(EXC3_BUTTON_ID);
 
-      bnt.addEventListener("mouseover", function (e) {
-        elemRun(this, e);
+    bnt.addEventListener("mouseover", function(e) {
+      elemRun(this, e);
     });
 
-    function elemRun(elem, event){
-        console.log(event.clientX, elem.offsetLeft);
-        elem.style.left += 100+'px';
+    function elemRun(elem, event) {
+      let btnWidth = parseInt(window.getComputedStyle(elem, null)["width"]);
+      let btnHeight = parseInt(window.getComputedStyle(elem, null)["height"]);
+      elem.style.left = randomInteger(0, field.clientWidth - btnWidth) + "px";
+      elem.style.top = randomInteger(0, field.clientHeight - btnHeight) + "px";
     }
-    //   bnt.addEventListener('mouseover',(e)=>{
-    //     console.log(e.clientX, e.target.offsetLeft);
-    //     e.target.offsetLeft = e.clientX;
-    //     console.log(e.clientX, e.target.offsetLeft);
 
-    //   });
-  }
+    function randomInteger(min, max) {
+      let rand = min + Math.random() * (max - min);
+      return Math.floor(rand);
+    }
+  } //end exc3
+
+  function exc4() {
+    document.addEventListener("keydown", e => {
+      e.preventDefault();
+      if ((e.keyCode = 0 || e.keyCode < 32)) {
+        return;
+      }
+      switch (e.keyCode) {
+        case 83: //нажата S
+          if (e.ctrlKey && e.shiftKey) { //также нажаты ctr и shit
+            alert("Сохранено всё");
+          } else if (e.ctrlKey) { //также нажате ctr
+            alert("Сохранено");
+          }
+          break;
+
+        case 65: //нажата d
+          if (e.ctrlKey) alert("Выбрано всё"); // также нажата ctrl
+          break;
+      }
+    });
+  } //end exc4
 }); //end of onload
