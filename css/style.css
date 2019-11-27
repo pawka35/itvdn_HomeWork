@@ -1,0 +1,107 @@
+*{
+    margin: 0px 15px 0px 15px;
+    padding: 0px;
+}
+header {
+  background-color: rgb(149, 161, 149);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-column-gap: 2px; */
+  /* grid-row-gap: 2px; */
+  grid-gap: 10px;
+  grid-auto-rows: minmax(50px, auto);
+}
+
+header > div {
+  background-color: yellow;
+}
+
+.header-login {
+  place-self: end;
+ 
+  /* align-self: start; */
+}
+
+.header-info{
+    grid-column: 2/4;
+}
+
+nav>ul{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+}
+
+nav{
+    border: 1px solid green;
+}
+
+.goods, .drinks{
+display: grid;
+grid-template-columns: repeat(4,1fr);
+grid-template-rows: minmax(350px,auto);
+gap: 20px;
+margin-top: 20px;
+}
+
+.drinks{
+    grid-template-columns: repeat(6,1fr);
+    margin-bottom: 20px;
+    
+
+}
+
+.currentGood{
+    border: 1px solid red;
+    /* height: 350px;     */
+    
+}
+
+.drinks-current{
+    border: 1px solid red;
+    /* height: 350px;     */
+    
+}
+
+.currentGood > .foto{
+    height: 70%;
+    /* background-color: green; */
+    background-image: url(/images/spain.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
+
+.currentGood > .description{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.currentGood > .recept{
+    color:#878686;
+    font-size: 15px;
+}
+
+.currentGood > .price{
+float: left;
+}
+
+.drinks-current-description, .drinks-current-price{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    margin-bottom: 10px;
+
+}
+
+.drinks-current-foto{
+    height: 70%;
+    background-color: green;
+    background-image: url(/images/cola.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
