@@ -1,7 +1,13 @@
-*{
-    margin: 0px 15px 0px 15px;
-    padding: 0px;
+* {
+  margin: 0px 15px 0px 15px;
+  padding: 0px;
 }
+
+@font-face {
+  font-family: "Dodo";
+  src: url("/fonts/dodo.woff2") format("woff2");
+}
+
 header {
   background-color: rgb(149, 161, 149);
   display: grid;
@@ -18,90 +24,119 @@ header > div {
 
 .header-login {
   place-self: end;
- 
+
   /* align-self: start; */
 }
 
-.header-info{
-    grid-column: 2/4;
+.header-info {
+  grid-column: 2/4;
 }
 
-nav>ul{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    place-items: center;
+nav > ul {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
 }
 
-nav{
-    border: 1px solid green;
+nav {
+  border: 1px solid green;
 }
 
-.goods, .drinks{
-display: grid;
-grid-template-columns: repeat(4,1fr);
-grid-template-rows: minmax(350px,auto);
-gap: 20px;
-margin-top: 20px;
+.goods,
+.drinks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: minmax(350px, auto);
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.drinks{
-    grid-template-columns: repeat(6,1fr);
-    margin-bottom: 20px;
-    
-
+.drinks {
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 20px;
 }
 
-.currentGood{
+.currentGood,
+.drinks-current {
+  border: 1px solid blue;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* .drinks-current{
     border: 1px solid red;
-    /* height: 350px;     */
+    display: flex;
+    flex-direction: column;
+    /* height: 350px;     
     
+} */
+
+.currentGood > .foto {
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid fuchsia;
+  grid-column: 1/3;
 }
 
-.drinks-current{
-    border: 1px solid red;
-    /* height: 350px;     */
-    
+.currentGood > .description {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px 0 7px;
+  border: 1px solid green;
+  padding: 3px;
+  grid-column: 1/3;
+  font-family: "Dodo";
 }
 
-.currentGood > .foto{
-    height: 70%;
-    /* background-color: green; */
-    background-image: url(/images/spain.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto;
+.currentGood > .recept {
+  border: 1px solid green;
+  margin: 10px 0 7px;
+  color: #878686;
+  font-size: 15px;
+  line-height: 1.375;
+  grid-column: 1/3;
+  font-family: system-ui, Segoe UI;
 }
 
-.currentGood > .description{
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 5px;
-    padding: 5px;
+.currentGood > .price {
+  margin: 10px 0 7px;
+  float: right;
+  font-weight: bold;
+  font-family: "Dodo";
 }
 
-.currentGood > .recept{
-    color:#878686;
-    font-size: 15px;
+.goods-buy-button {
+  font-family: "Dodo";
+  margin: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ff6900;
+  border: 1px solid #ff6900;
 }
 
-.currentGood > .price{
-float: left;
+.drinks-current-description,
+.drinks-current-price {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 10px;
+  grid-column: 1/3;
 }
 
-.drinks-current-description, .drinks-current-price{
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px;
-    margin-bottom: 10px;
-
-}
-
-.drinks-current-foto{
-    height: 70%;
-    background-color: green;
-    background-image: url(/images/cola.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto;
+.drinks-current-foto {
+  height: 70%;
+  background-color: green;
+  background-image: url(/images/cola.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  /* grid-column: 1/3; */
 }
