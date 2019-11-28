@@ -1,7 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
   //Constants block
   const COLOCHECKER_ID = "colorSelect";
-  const OUTPUTINFO_ID = "outputInfo";
   const TEXTAREA_ID = "textOutput";
   const FONT_SIZE_INPUT_ID = "fontSizeInput";
 
@@ -13,7 +12,6 @@ window.addEventListener("DOMContentLoaded", () => {
     let elements = {
       //заполняем ассициативный массив элементами, которыми манипулируем
       colorChecker: document.getElementById(COLOCHECKER_ID),
-      outputInfo: document.getElementById(OUTPUTINFO_ID),
       textArea: document.getElementById(TEXTAREA_ID),
       fntSize: document.getElementById(FONT_SIZE_INPUT_ID)
     };
@@ -24,8 +22,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function readCookies(elements) {
     if (window.localStorage.color) {
-      //если в куках есть значение цвета текста
-      elements["textArea"].style.color = window.localStorage.color; //присваиваем цвет текскту
+      //если в куках есть значение цвета фона для текста
+      elements["textArea"].style.backgroundColor = window.localStorage.color; //присваиваем цвет фону
       elements["colorChecker"].value = window.localStorage.color; //выставляем значение инпута в соотв. с полученным
     }
     if (window.localStorage.fntSize) {
@@ -54,10 +52,15 @@ window.addEventListener("DOMContentLoaded", () => {
       switch (e.keyCode) {
         case 38: // если нажали кнопку вверх
           fntSize.value = +fntSize.value + 1; //увеличиваем размер на 1
-          fntSize.dispatchEvent(new Event("input")); //имитируем этого значения с клавиатуры
+          fntSize.dispatchEvent(new Event("input")); //имитируем ввод этого значения с клавиатуры
           break;
         case 40: //тоже для кнопки вниз
-          fntSize.value -= 1;
+          if (fntSize.value - 1 <= 0) { //проверяем что размер не станет орицательным
+            e.preventDefault();
+          }else{
+            fntSize.value -= 1;
+          }
+
           fntSize.dispatchEvent(new Event("input"));
           break;
         default:
@@ -73,7 +76,7 @@ window.addEventListener("DOMContentLoaded", () => {
     colorChecker.addEventListener("change", e => {
       //изменение значения инпута выбора цвета
       //   console.log(colorChecker.value);
-      textArea.style.color = colorChecker.value; //делаем текст выбранного цвета
+      textArea.style.backgroundColor = colorChecker.value; //делаем текст выбранного цвета
       window.localStorage.color = colorChecker.value; //записываем в куки
     });
   }

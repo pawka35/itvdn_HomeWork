@@ -1,14 +1,17 @@
 section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  
   gap: 10px;
 }
 
 
-textarea {
+.textOutput {
   grid-column: 1/4;
   padding: 10px;
+  border: 1px solid salmon;
   height: 250px;
+  overflow: hidden;
 }
 
 #fontSizeInput{
