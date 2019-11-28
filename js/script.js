@@ -3,6 +3,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const COLOCHECKER_ID = "colorSelect";
   const TEXTAREA_ID = "textOutput";
   const FONT_SIZE_INPUT_ID = "fontSizeInput";
+  const RESET_BUTTON_ID = "resetButton";
+  const DEFAULT_COLOR = '#ffffff';
+  const DEFAULT_FNT_SIZE = '12px';
 
   //End of constants block
 
@@ -13,7 +16,8 @@ window.addEventListener("DOMContentLoaded", () => {
       //заполняем ассициативный массив элементами, которыми манипулируем
       colorChecker: document.getElementById(COLOCHECKER_ID),
       textArea: document.getElementById(TEXTAREA_ID),
-      fntSize: document.getElementById(FONT_SIZE_INPUT_ID)
+      fntSize: document.getElementById(FONT_SIZE_INPUT_ID),
+      resetButton: document.getElementById(RESET_BUTTON_ID)
     };
 
     readCookies(elements); //функция для чтения значений из cookie
@@ -21,21 +25,29 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   function readCookies(elements) {
+    console.log("sfd");
     if (window.localStorage.color) {
       //если в куках есть значение цвета фона для текста
       elements["textArea"].style.backgroundColor = window.localStorage.color; //присваиваем цвет фону
       elements["colorChecker"].value = window.localStorage.color; //выставляем значение инпута в соотв. с полученным
+    } else {
+      //если нет, то скидываем на "по-умолчанию"
+      elements["textArea"].style.backgroundColor = DEFAULT_COLOR;
+      elements["colorChecker"].value = DEFAULT_COLOR; 
     }
     if (window.localStorage.fntSize) {
       //тоже для значения размера щрифта
       elements["fntSize"].value = parseInt(window.localStorage.fntSize);
       elements["textArea"].style.fontSize = window.localStorage.fntSize;
+    }else{
+        elements["fntSize"].value = parseInt(DEFAULT_FNT_SIZE);
+        elements["textArea"].style.fontSize = DEFAULT_FNT_SIZE;
     }
   }
 
   function addEvents(elements) {
     let colorChecker = elements["colorChecker"]; //определяем элементы
-    let outputInfo = elements["outputInfo"];
+    let resetBtn = elements["resetButton"];
     let textArea = elements["textArea"];
     let fntSize = elements["fntSize"];
 
@@ -55,9 +67,10 @@ window.addEventListener("DOMContentLoaded", () => {
           fntSize.dispatchEvent(new Event("input")); //имитируем ввод этого значения с клавиатуры
           break;
         case 40: //тоже для кнопки вниз
-          if (fntSize.value - 1 <= 0) { //проверяем что размер не станет орицательным
+          if (fntSize.value - 1 <= 0) {
+            //проверяем что размер не станет орицательным
             e.preventDefault();
-          }else{
+          } else {
             fntSize.value -= 1;
           }
 
@@ -78,6 +91,11 @@ window.addEventListener("DOMContentLoaded", () => {
       //   console.log(colorChecker.value);
       textArea.style.backgroundColor = colorChecker.value; //делаем текст выбранного цвета
       window.localStorage.color = colorChecker.value; //записываем в куки
+    });
+
+    resetBtn.addEventListener("click", e => {
+      window.localStorage.clear();
+      readCookies(elements);
     });
   }
 });
