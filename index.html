@@ -47,17 +47,17 @@
       <div class="currentGood">
         <div
           class="foto"
-          style="background-image: url(images/spain.jpg);"
+          style="background-image: url(images/peperoniFresh.jpg);"
         ></div>
         <div class="description">
-          Испанские колбаски чоризо
+            Пепперони Фреш с томатами
         </div>
         <div class="recept">
-          Томаты свежие, острая чоризо, моцарелла, соус чипотле
+            Томаты, пикантная пепперони, моцарелла, томатный соус
         </div>
 
         <div class="price">
-          от 345 ₽
+          от 245 ₽
         </div>
         <button class="goods-buy-button">Выбрать</button>
       </div>
@@ -250,6 +250,65 @@
         <div class="delivery-description-text">
           тут карта из яндекс карт
         </div>
+      </div>
+    </section>
+
+    <section id="selectSection" style="display: none;">
+      <div class="selectSection-wrapper">
+        <div class="selectSection-foto" id="selectSection-foto"></div>
+        <div class="selectSection-description">Испанские колбаски чоризо</div>
+        <div class="selectSection-parametrs">
+          25 см, традиционное тесто, 350 г
+        </div>
+        <div class="selectSection-recept">
+          Томаты свежие, острая чоризо, моцарелла, соус чипотле
+        </div>
+
+        <form action="#">
+          <div class="selectSection-sizeSelector">
+            <div class="descLabel"><label>Выбери размер:</label></div>
+            <label for="bigSize">
+              <input type="radio" name="size" id="bigSize" /> Большая
+              <img src="" alt="" />
+            </label>
+            <label for="middleSize">
+              <input type="radio" name="size" id="middleSize" checked /> Средняя
+              <img src="" alt="" />
+            </label>
+            <label for="smallSize">
+              <input type="radio" name="size" id="smallSize" /> Маленькая
+            </label>
+          </div>
+          
+          <div class="selectSection-ingridientSelector">
+            <div class="descLabel"><label>Добавь ингридиенты:</label></div>
+            <input id="parmezan" type="checkbox" name="ingridient" />
+            <label for="parmezan"></label>
+
+            <input id="chorizo" type="checkbox" name="ingridient" />
+            <label for="chorizo"></label>
+
+            <input id="halapenio" type="checkbox" name="ingridient" />
+            <label for="halapenio"></label>
+          </div>
+
+          <div class="selectSection-userInfo">
+              <div class="descLabel"><label>Данные для доставки:</label></div>
+            <div class="selectSection-userInfo-userPhone">
+              <label for="userPhone">Ваш телефон:</label>
+              <input type="text" name="userPhone" id="userPhone" />
+            </div>
+            <div >
+              <label for="userPhone">Ваш адрес:</label>
+              <input type="text" name="userAddres" id="userAddres" />
+            </div>
+          </div>
+          <div class="selectSection-price-wrapper">
+            <label>Цена:</label>
+            <div class="selectSection-price" id="selectSection-price">128 р</div>
+            <button>Купить</button>
+          </div>
+        </form>
       </div>
     </section>
 

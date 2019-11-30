@@ -33,10 +33,9 @@ header {
 
 .header-info span {
   color: orangered;
-  
 }
 
-.header-login{
+.header-login {
   place-self: center;
 }
 
@@ -59,7 +58,6 @@ nav > ul {
   font-family: "Dodo";
   cursor: pointer;
 }
-
 
 /* 
 nav {
@@ -179,11 +177,11 @@ nav {
   grid-template-rows: repeat(2, fr);
   margin: 10px 15px 20px;
   font-family: "Dodo";
-  gap:20px;
+  gap: 20px;
 }
 
 .delivery-current {
-  margin-top:10px;
+  margin-top: 10px;
   /* border: 1px solid orangered; */
   grid-row: 1/3;
 }
@@ -203,10 +201,10 @@ nav {
   color: #ff6900;
   text-transform: uppercase;
 }
-.delivery-description-text{
+.delivery-description-text {
   font-size: 16px;
   line-height: 1.375;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 footer {
@@ -215,22 +213,21 @@ footer {
   color: #fff;
   background-color: #373535;
   grid-template-columns: 1fr 1fr 1fr 2fr 2fr;
-  font-family: 'Dodo';
+  font-family: "Dodo";
   margin-bottom: 10px;
   border-radius: 8px;
 }
 
 .current-footer {
   padding: 10px;
-  
 }
 
-.current-footer-description{
+.current-footer-description {
   font-size: 18px;
   margin-bottom: 5px;
 }
 
-.current-footer-description-text {
+.current-foote r-description-text {
   opacity: 0.7;
   font-size: 14px;
 }
@@ -241,4 +238,140 @@ footer {
 
 .current-footer + .longer {
   grid-column: 3/5;
+}
+
+/* Select current pizza parametrs////////////////////////////////////////////////*/
+#selectSection {
+  width: 70%;
+  position: fixed;
+  top: 30px;
+  left: 13%;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.selectSection-wrapper {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 40px;
+}
+
+.selectSection-foto {
+  grid-row: 1/6;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/spain.jpg");
+  width: 60%;
+  height: 60%;
+  place-self: center;
+}
+
+.selectSection-description {
+  font-family: "Dodo";
+  font-size: 26px;
+}
+
+.selectSection-parametrs {
+  color: rgb(135, 134, 134);
+  font-size: 15px;
+  line-height: 1.375;
+}
+
+.selectSection-recept {
+  line-height: 1.375;
+  font-size: 15px;
+}
+
+.selectSection-ingridientSelector {
+  margin: 10px;
+}
+
+.selectSection-sizeSelector {
+  margin: 10px;
+}
+
+/*checkbox like img*/
+/* .selectSection-ingridientSelector{
+} */
+
+.selectSection-ingridientSelector input[type="checkbox"] {
+  display: none;
+}
+
+.selectSection-ingridientSelector input + label {
+  margin: 10px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+}
+
+.selectSection-ingridientSelector input + label[for="parmezan"] {
+  background-image: url("../images/parmezan.png");
+}
+
+.selectSection-ingridientSelector input + label[for="chorizo"] {
+  background-image: url("../images/chorizo.png");
+}
+
+.selectSection-ingridientSelector input + label[for="halapenio"] {
+  background-image: url("../images/halapenio.png");
+}
+
+.selectSection-ingridientSelector input[type="checkbox"]:checked + label {
+  outline: 3px solid green;
+  outline-color: 5px;
+}
+/*end checkbox like img*/
+
+.selectSection-price-wrapper {
+  margin: 10px;
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.selectSection-price-wrapper > button {
+  align-self: flex-end;
+}
+
+.descLabel {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.selectSection-userInfo {
+  padding: 5px;
+  font-family: "Dodo";
+}
+
+.selectSection-userInfo > div {
+  margin: 10px;
+}
+
+.selectSection-price-wrapper {
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+}
+
+.selectSection-price-wrapper > div, .selectSection-price-wrapper > label{
+  font-family: "Dodo";
+  font-size: 20px;
+  font-weight: bold;
+  width: 70%;
+}
+.selectSection-price-wrapper > label{
+  width: auto;
+}
+.selectSection-price-wrapper > button {
+  font-weight: bold;
+  height: 40px;
+  width: 100px;
+
 }
