@@ -249,6 +249,7 @@ footer {
   background-color: whitesmoke;
   border: 1px solid black;
   border-radius: 20px;
+  display: none;
 }
 
 .selectSection-wrapper {
@@ -256,6 +257,15 @@ footer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px 40px;
+}
+
+.selectSection-close{
+  place-self: end;
+  width: 20px;
+}
+
+.selectSection-close > button{
+  width: 20px;
 }
 
 .selectSection-foto {
@@ -374,4 +384,38 @@ footer {
   height: 40px;
   width: 100px;
 
+}
+
+#messageSection{
+  width: 70%;
+  position: fixed;
+  top: 130px;
+  height: 250px;
+  left: 13%;
+  /* background-color: coral; */
+  border: 1px solid black;
+  border-radius: 20px;
+  font-family: 'Dodo';
+  text-align: center;
+  display: none;
+}
+
+.messageSection-wrapper{
+  margin: 30px;
+}
+
+.messageSection-description{
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.messageSection-text{
+  margin: 10px 0px;
+  text-align: left;
+}
+
+#messageSectionBtn{
+  width: 150px;
+  text-align: center;
 }

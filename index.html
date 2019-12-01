@@ -13,7 +13,7 @@
       <div class="header-info">
         Доставка пиццы <span>%Ваш город%</span><br />880032232434
       </div>
-      <div class="header-login">У вас в корзине</div>
+      <div class="header-login">Личный кабинет</div>
     </header>
     <nav>
       <ul>
@@ -50,10 +50,10 @@
           style="background-image: url(images/peperoniFresh.jpg);"
         ></div>
         <div class="description">
-            Пепперони Фреш с томатами
+          Пепперони Фреш с томатами
         </div>
         <div class="recept">
-            Томаты, пикантная пепперони, моцарелла, томатный соус
+          Томаты, пикантная пепперони, моцарелла, томатный соус
         </div>
 
         <div class="price">
@@ -65,17 +65,17 @@
       <div class="currentGood">
         <div
           class="foto"
-          style="background-image: url(images/spain.jpg);"
+          style="background-image: url(images/cheese_pizza.jpg);"
         ></div>
         <div class="description">
-          Испанские колбаски чоризо
+            Сырная 
         </div>
         <div class="recept">
-          Томаты свежие, острая чоризо, моцарелла, соус чипотле
+            Томатный соус, моцарелла
         </div>
 
         <div class="price">
-          от 345 ₽
+            от 245 ₽
         </div>
         <button class="goods-buy-button">Выбрать</button>
       </div>
@@ -83,17 +83,16 @@
       <div class="currentGood">
         <div
           class="foto"
-          style="background-image: url(images/spain.jpg);"
+          style="background-image: url(images/chikken.jpg);"
         ></div>
         <div class="description">
-          Испанские колбаски чоризо
+            Кисло-сладкий цыпленок
         </div>
         <div class="recept">
-          Томаты свежие, острая чоризо, моцарелла, соус чипотле
+            Кисло-сладкий соус, моцарелла, цыпленок, томатный соус
         </div>
-
         <div class="price">
-          от 345 ₽
+          от 295 ₽
         </div>
         <button class="goods-buy-button">Выбрать</button>
       </div>
@@ -253,17 +252,14 @@
       </div>
     </section>
 
-    <section id="selectSection" style="display: none;">
-      <div class="selectSection-wrapper">
+    <section id="selectSection" >
+      <div class="selectSection-wrapper"> 
+        <div class="selectSection-close"><button id="clsButton">X</button></div>
         <div class="selectSection-foto" id="selectSection-foto"></div>
-        <div class="selectSection-description">Испанские колбаски чоризо</div>
-        <div class="selectSection-parametrs">
-          25 см, традиционное тесто, 350 г
-        </div>
-        <div class="selectSection-recept">
-          Томаты свежие, острая чоризо, моцарелла, соус чипотле
-        </div>
-
+        <div class="selectSection-description"></div>
+        <div class="selectSection-parametrs"></div>
+        <div class="selectSection-recept"></div>
+       
         <form action="#">
           <div class="selectSection-sizeSelector">
             <div class="descLabel"><label>Выбери размер:</label></div>
@@ -279,7 +275,7 @@
               <input type="radio" name="size" id="smallSize" /> Маленькая
             </label>
           </div>
-          
+
           <div class="selectSection-ingridientSelector">
             <div class="descLabel"><label>Добавь ингридиенты:</label></div>
             <input id="parmezan" type="checkbox" name="ingridient" />
@@ -293,22 +289,36 @@
           </div>
 
           <div class="selectSection-userInfo">
-              <div class="descLabel"><label>Данные для доставки:</label></div>
+            <div class="descLabel"><label>Данные для доставки:</label></div>
             <div class="selectSection-userInfo-userPhone">
               <label for="userPhone">Ваш телефон:</label>
               <input type="text" name="userPhone" id="userPhone" />
             </div>
-            <div >
+            <div>
               <label for="userPhone">Ваш адрес:</label>
-              <input type="text" name="userAddres" id="userAddres" />
+              <input
+                type="text"
+                name="userAddres"
+                id="userAddres"
+                placeholder="город, улица, дом,квартира"
+              />
             </div>
           </div>
           <div class="selectSection-price-wrapper">
             <label>Цена:</label>
-            <div class="selectSection-price" id="selectSection-price">128 р</div>
-            <button>Купить</button>
+            <div class="selectSection-price" id="selectSection-price"></div>
+            <button id="selectSection-buyButton">Купить</button>
           </div>
         </form>
+      </div>
+    </section>
+
+    <section id="messageSection">
+      <div class="messageSection-wrapper">
+        <div class="messageSection-description">Заголово</div>
+        <hr />
+        <div class="messageSection-text">Текст сообщения</div>
+        <button id="messageSectionBtn">ОК</button>
       </div>
     </section>
 
