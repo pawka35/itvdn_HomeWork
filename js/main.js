@@ -113,6 +113,33 @@ window.addEventListener("DOMContentLoaded", () => {
       .getElementById("exc3-table")
       .getElementsByTagName("tbody")[0];
 
+
+    let radioGraphs = [...document.getElementsByName("graph")];
+    radioGraphs.forEach(item => {
+      item.addEventListener("change", e => {
+        changeGraphType(e.target.id);
+      });
+    });
+
+    function changeGraphType(radioBnt) {
+      console.log("cha", radioBnt);
+      switch (radioBnt) {
+        case "line":
+          createLeaner("convasContainer", valueArr, 500, 200, colors);
+          break;
+        case "bar":
+          createDiagram("convasContainer", valueArr, 500, 200, colors);
+          break;
+        case "circle":
+          let myDiagram = new Diagram({
+            canvas: document.getElementById("canvasContainer"),
+            data: valueArr,
+            colors: colors
+          });
+          myDiagram.draw();
+      }
+    }
+
     addToTblBtn.addEventListener("click", e => {
       //добавляем значение в таблицу
       var newRow = tableBody.insertRow(tableBody.rows.length);
@@ -132,26 +159,10 @@ window.addEventListener("DOMContentLoaded", () => {
       newCell2.style.textAlign = "center";
       newCell2.appendChild(newText2);
       newCell3.style.backgroundColor = newColor;
-
       valueInp.value = "";
       nameInp.value = "";
-      // console.log(valueArr);
-
-      // createDiagram("convasContainer", valueArr, 500, 200, colors);
-      createLeaner(
-        "convasContainer",
-        [20, 30, 40, 20, 60, 70, 80, 90, 100, 20, 30, 199],
-        500,
-        200,
-        colors
-      );
-      // let myDiagram = new Diagram({
-      //   canvas: document.getElementById("canvasContainer"),
-      //   data: valueArr,
-      //   colors: colors
-      // });
-
-      // myDiagram.draw();
+      let radioGraph = document.querySelector('input[name="graph"]:checked');
+      changeGraphType(radioGraph.id);
     });
   }
 
@@ -159,29 +170,25 @@ window.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("canvasContainer");
     canvas.width = width + 20;
     canvas.height = height + 20;
+
+    let max = data.reduce(function(cur, prev) {
+      return Math.max(cur, prev);
+    });
+    let koef = (height - 25) / max; //коэфициент пропорционального уменьшения
+    console.log(koef);
+
     let shag = Math.floor(parseInt(width) / data.length);
-    console.log(width, data.length, Math.floor(width / data.length));
     let context = canvas.getContext("2d");
-
     context.beginPath();
-    context.moveTo(10, height - data[0]);
+    context.moveTo(10, height - data[0] * koef);
+    context.strokeText(data[0], 10, height - data[0] * koef - 15);
     for (let i = 1; i < data.length; i++) {
-      context.lineTo(i * shag, height - data[i]);
-      context.strokeText(data[i], i * shag, height - data[i] - 15);
+      context.lineTo(i * shag, height - data[i] * koef);
+      context.strokeText(data[i], i * shag, height - data[i] * koef - 15);
       context.textBaseline = "hanging";
+      console.log(height, height - data[i] * koef);
     }
-
-    // context.lineTo(20,height-data[1]);
-    // context.lineTo(30,height-data[2]);
-    // context.closePath();
     context.stroke();
-
-    // for(let i=0; i<data.length;i++){
-    //   context.moveTo(i*shag,height);
-    //   context.lineTo(i*shag,height-10);
-    //   context.strokeText("x", i*shag,height);
-    // }
-    // context.stroke();
 
     /*чертим оси*/
     context.strokeText("0", 0, height);
@@ -190,10 +197,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     context.beginPath();
     context.moveTo(0, 0);
-    context.lineTo(0, height - 5);
+    context.lineTo(0, height);
 
-    context.moveTo(0, height - 5);
-    context.lineTo(width, height - 5);
+    context.moveTo(0, height);
+    context.lineTo(width, height);
     context.stroke();
     /*закончили чертить оси*/
   }
