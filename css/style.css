@@ -1,27 +1,28 @@
-.exc-checker{
+.exc-checker {
   /* display: flex; */
   width: 60%;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid red;
 }
 
-.description{
+.description {
   grid-column: 1/4;
   padding: 5px;
-  margin:10px;
+  margin: 10px;
 }
 
-.ecx1{
+.ecx1 {
   width: 60%;
   /* display: grid; */
   border: 1px solid yellow;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   display: none;
 }
 
-.exc1-image{
+.exc1-image,
+exc2-pri {
   width: 100px;
   height: 100px;
   border: 1px solid green;
@@ -33,9 +34,124 @@
   /* background-image: url("../images/exc1/3.png"); */
 }
 
-.exc1-btn{
+.exc1-btn {
   margin: 10px;
   width: 40%;
-  
+}
 
+/*/////////////////////   ECX2    ////////////////////////////////////////*/
+.ecx2 {
+  /* display: grid; */
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.exc2-image-preview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid salmon;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.description-exc2 {
+  grid-column: 1/6;
+  margin: 10px;
+}
+
+.exc2-image-bigView {
+  height: 500px;
+  width: 500px;
+  background-color: whitesmoke;
+  position: fixed;
+  top: 20px;
+  left: 30%;
+  display: none;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.b-show {
+  display: block;
+  animation: showBlock .7s linear forwards;
+}
+
+@keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.exc2-image-bigView-image {
+  margin: 0px 5px;
+  height: 85%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#exc2-image-bigView-close {
+  text-align: end;
+  margin: 5px 15px;
+  color: red;
+  cursor: pointer;
+}
+
+/*/////////////////////   ECX2    ////////////////////////////////////////*/
+.exc3{
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+.ex3-enterValue{
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(2,1fr);
+  justify-items: center;
+  height:70px ;
+
+}
+.ex3-enterValue input{
+  height: 25px;
+  margin: 10px 5px;
+}
+
+ .ex3-enterValue label[for='exc3-NameInput']{
+  place-self: center start;
+  padding: 0px 5px;
+
+}
+
+.ex3-enterValue label[for='exc3-valInput']{
+  grid-column: 2/4;
+  place-self: center start;
+  padding: 0px 5px;
+} 
+
+.exc3-tableDiv{
+  border: 1px solid red;
+  position: relative;
+}
+
+.exc3-diagram{
+  grid-column: 3/6;
+}
+
+#canvasContainer{
+  border: 1px solid red;
+  display: block;
+  height: 200px;
+  padding: 5px 5px 5px 5px;
+}
+
+#exc3-table td{
+  font-size: 12px;
 }

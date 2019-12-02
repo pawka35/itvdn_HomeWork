@@ -1,33 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Document</title>
-</head>
-<body>
-  <div>
-    <ul class="exc-checker">
-      <li id="mn_exc1" class="mnBtn">Задание 1</li>
-      <li id="mn_exc2" class="mnBtn">Задание 2</li>
-      <li id="mn_exc3" class="mnBtn">Задание 3</li>
-    </ul>
-  </div>
-  <div class="mainPage">
-    Выберите задание
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul class="exc-checker">
+        <li id="mn_exc1" class="mnBtn">Задание 1</li>
+        <li id="mn_exc2" class="mnBtn">Задание 2</li>
+        <li id="mn_exc3" class="mnBtn">Задание 3</li>
+      </ul>
+    </div>
+    <div class="mainPage">
+      Выберите задание
+    </div>
 
-  <div class="ecx1" id="exc1">
-    <div class="description">Создайте страницу с тремя кнопками, при нажатии на каждую из кнопок должно меняться изображение,
-        выводимое на странице.</div>
-    <div class="exc1-image" id="exc1-image"></div>
-    <button class="exc1-btn" id="exc1-btn1">Рис.1</button>
+    <div class="ecx1" id="exc1">
+      <div class="description">
+        Создайте страницу с тремя кнопками, при нажатии на каждую из кнопок
+        должно меняться изображение, выводимое на странице.
+      </div>
+      <div class="exc1-image" id="exc1-image"></div>
+      <button class="exc1-btn" id="exc1-btn1">Рис.1</button>
+      <button class="exc1-btn" id="exc1-btn2">Рис.2</button>
+      <button class="exc1-btn" id="exc1-btn3">Рис.3</button>
+    </div>
+
+    <div class="ecx2" id="exc2">
+      <div class="description-exc2">
+        Создайте страницу-галерею. На странице должен выводиться список картинок
+        preview небольших размеров. При нажатии на каждое изображение превью
+        должно отображаться большое изображение.
+      </div>
+      <div class="exc2-image-preview" id="exc2-image1"></div>
+      <div class="exc2-image-preview" id="exc2-image2"></div>
+      <div class="exc2-image-preview" id="exc2-image3"></div>
+      <div class="exc2-image-preview" id="exc2-image4"></div>
+      <!-- <button class="exc1-btn" id="exc1-btn1">Рис.1</button>
     <button class="exc1-btn" id="exc1-btn2">Рис.2</button>
-    <button class="exc1-btn" id="exc1-btn3">Рис.3</button>
+    <button class="exc1-btn" id="exc1-btn3">Рис.3</button> -->
+      <div class="exc2-image-bigView" id="exc2-image-bigView">
+        <div id="exc2-image-bigView-close">X</div>
+        <div
+          class="exc2-image-bigView-image"
+          id="exc2-image-bigView-image"
+        ></div>
+      </div>
+    </div>
 
-  </div>
-  <script src="js/main.js"></script>
-</body>
+    <div class="exc3" id="exc3">
+      <div class="ex3-enterValue">
+        <label for="exc3-NameInput">Параметр</label>
+        <label for="exc3-valInput">Значение</label>
+        <input type="text" name="" id="exc3-NameInput">
+    
+        <input type="text" name="" id="exc3-valInput" />
+        <!-- <button>Добавить</button> -->
+        <input type="submit" name="" id="ecx3-addBtn" value="Добавить">
+      </div>
+      <div class="exc3-tableDiv">
+        <table id="exc3-table">
+          <thead>
+            <tr>
+              <th>Значение</th>
+              <th>Величина</th>
+              <th>Цвет</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="exc3-diagram">
+          <canvas id="canvasContainer"></canvas>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>
