@@ -12,6 +12,11 @@
   margin: 10px 10px;
 }
 
+.exc-checker-checked{
+  border: 1px solid green;
+  background-color: greenyellow;
+}
+
 .mainPage{
   width: 60%;
   text-align: center;
@@ -25,13 +30,16 @@
   margin: 10px;
 }
 
-.ecx1 {
+.ecx1, .ecx2 {
   width: 60%;
   /* display: grid; */
-  border: 1px solid yellow;
+  border: 2px solid yellow;
+  border-radius: 5px;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   display: none;
+  margin: 0px 50px;
+  padding: 10px 5px;
 }
 
 .exc1-image,
@@ -66,6 +74,7 @@ exc2-pri {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .description-exc2 {
@@ -117,14 +126,18 @@ exc2-pri {
 /*/////////////////////   ECX2    ////////////////////////////////////////*/
 .exc3 {
   border: 1px solid green;
-  display: grid;
+  display: none;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  padding: 10px;
+  gap: 15px;
+  border: 2px solid yellow;
+  border-radius: 5px; 
+  display: none;
+  margin: 0px 50px;
+  padding: 10px 5px;
 }
 
 .ex3-enterValue {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -132,7 +145,7 @@ exc2-pri {
   height: 70px;
 }
 .ex3-enterValue input {
-  height: 25px;
+  height: 20px;
   margin: 10px 5px;
 }
 
@@ -148,21 +161,46 @@ exc2-pri {
 }
 
 .exc3-tableDiv {
-  border: 1px solid red;
-  position: relative;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin:0px;
+  /* position: relative; */
 }
 
 .exc3-diagram {
   grid-column: 3/6;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 10px;
 }
 
 #canvasContainer {
-  border: 1px solid red;
+  /* border: 1px solid black;
+  border-radius: 5px; */
   display: block;
   height: 200px;
-  padding: 5px 5px 5px 5px;
+  /* padding: 5px 5px 5px 5px; */
 }
 
 #exc3-table td {
   font-size: 12px;
+  padding:3px;
+  /* border: 1px solid black; */
+  border-bottom: .5px black solid;
+  border-left: .5px solid black;
+}
+
+#exc3-table th {
+  border-bottom: 2px black solid;
+}
+
+.exc3-type-select{
+  border: 1px solid black;
+}
+.exc3-type-select>input{
+  margin: 10px 0px 0px 30px;
+}
+.exc3-type-select>label{
+  cursor: pointer;
 }
