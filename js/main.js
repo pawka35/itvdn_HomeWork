@@ -113,10 +113,12 @@ window.addEventListener("DOMContentLoaded", () => {
       .getElementById("exc3-table")
       .getElementsByTagName("tbody")[0];
 
-
     let radioGraphs = [...document.getElementsByName("graph")];
     radioGraphs.forEach(item => {
       item.addEventListener("change", e => {
+        if (valueArr.length == 0) {
+          return;
+        }
         changeGraphType(e.target.id);
       });
     });
@@ -185,8 +187,8 @@ window.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; i < data.length; i++) {
       context.lineTo(i * shag, height - data[i] * koef);
       context.strokeText(data[i], i * shag, height - data[i] * koef - 15);
-      context.textBaseline = "hanging";
-      console.log(height, height - data[i] * koef);
+      // context.textBaseline = "hanging";
+      // console.log(height, height - data[i] * koef);
     }
     context.stroke();
 

@@ -8,15 +8,16 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="mainPage">
+      Выберите задание:
+    </div>
+
     <div>
       <ul class="exc-checker">
         <li id="mn_exc1" class="mnBtn">Задание 1</li>
         <li id="mn_exc2" class="mnBtn">Задание 2</li>
         <li id="mn_exc3" class="mnBtn">Задание 3</li>
       </ul>
-    </div>
-    <div class="mainPage">
-      Выберите задание
     </div>
 
     <div class="ecx1" id="exc1">
@@ -56,11 +57,11 @@
       <div class="ex3-enterValue">
         <label for="exc3-NameInput">Параметр</label>
         <label for="exc3-valInput">Значение</label>
-        <input type="text" name="" id="exc3-NameInput">
-    
+        <input type="text" name="" id="exc3-NameInput" />
+
         <input type="text" name="" id="exc3-valInput" />
         <!-- <button>Добавить</button> -->
-        <input type="submit" name="" id="ecx3-addBtn" value="Добавить">
+        <input type="submit" name="" id="ecx3-addBtn" value="Добавить" />
       </div>
       <div class="exc3-tableDiv">
         <table id="exc3-table">
@@ -71,21 +72,19 @@
               <th>Цвет</th>
             </tr>
           </thead>
-          <tbody>
-            
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
       <div class="exc3-diagram">
-          <canvas id="canvasContainer"></canvas>
-          <div>
-            <label for="line">Line</label>
-            <input type="radio" name="graph" id="line" checked>
-            <label for="bar">Bar</label>
-            <input type="radio" name="graph" id="bar">
-            <label for="line">Circle</label>
-            <input type="radio" name="graph" id="circle">
-          </div>
+        <canvas id="canvasContainer"></canvas>
+        <div>
+          <label for="line">Line</label>
+          <input type="radio" name="graph" id="line" checked />
+          <label for="bar">Bar</label>
+          <input type="radio" name="graph" id="bar" />
+          <label for="line">Circle</label>
+          <input type="radio" name="graph" id="circle" />
+        </div>
       </div>
     </div>
 

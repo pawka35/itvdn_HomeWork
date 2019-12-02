@@ -1,9 +1,22 @@
 .exc-checker {
-  /* display: flex; */
   width: 60%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.exc-checker > li {
+  cursor: pointer;
   border: 1px solid red;
+  display: block;
+  text-align: center;
+  margin: 10px 10px;
+}
+
+.mainPage{
+  width: 60%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .description {
@@ -74,7 +87,7 @@ exc2-pri {
 
 .b-show {
   display: block;
-  animation: showBlock .7s linear forwards;
+  animation: showBlock 0.7s linear forwards;
 }
 
 @keyframes showBlock {
@@ -102,56 +115,54 @@ exc2-pri {
 }
 
 /*/////////////////////   ECX2    ////////////////////////////////////////*/
-.exc3{
+.exc3 {
   border: 1px solid green;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 10px;
 }
 
-.ex3-enterValue{
+.ex3-enterValue {
   border: 1px solid green;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: repeat(2,1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   justify-items: center;
-  height:70px ;
-
+  height: 70px;
 }
-.ex3-enterValue input{
+.ex3-enterValue input {
   height: 25px;
   margin: 10px 5px;
 }
 
- .ex3-enterValue label[for='exc3-NameInput']{
+.ex3-enterValue label[for="exc3-NameInput"] {
   place-self: center start;
   padding: 0px 5px;
-
 }
 
-.ex3-enterValue label[for='exc3-valInput']{
+.ex3-enterValue label[for="exc3-valInput"] {
   grid-column: 2/4;
   place-self: center start;
   padding: 0px 5px;
-} 
+}
 
-.exc3-tableDiv{
+.exc3-tableDiv {
   border: 1px solid red;
   position: relative;
 }
 
-.exc3-diagram{
+.exc3-diagram {
   grid-column: 3/6;
 }
 
-#canvasContainer{
+#canvasContainer {
   border: 1px solid red;
   display: block;
   height: 200px;
   padding: 5px 5px 5px 5px;
 }
 
-#exc3-table td{
+#exc3-table td {
   font-size: 12px;
 }
