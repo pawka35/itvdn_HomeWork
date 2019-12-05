@@ -1,0 +1,140 @@
+/* @font-family: 'Fira Sans', sans-serif;
+@font-family: 'Lobster', cursive;
+@font-family: 'Pacifico', cursive; */
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  border: 1px solid green;
+}
+
+.header-logo {
+  background-image: url(../images/logo.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 40px;
+  background-color: #4867aa;
+}
+
+.header-text {
+font-family: Lobster;
+  font-weight: bold;
+  font-size: 26px;
+  background-color: #4867AA;
+  color: wheat;
+}
+.welcome{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 3px 10px;
+    border: .7px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.welcome-close{
+    grid-column: 1/4;
+    place-self: end;
+    margin-right: 10px;
+    border: .7px solid gray;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: honeydew;
+}
+
+.welcome-close:hover{
+    background-color: lightcoral;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.welcome-text{
+    grid-column: 2/4;
+    font-family: Fira Sans;
+    font-size: 23px;
+    padding: 10px;
+   text-decoration: underline;
+
+}
+
+.welcome-cite{
+    grid-column: 3/4;
+    font-family: Fira Sans;
+    font-style: italic;
+    padding: 10px;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    /* grid-template-rows: repeat(5,1fr); */
+    padding: 5px;
+    margin: 10px;
+    gap: 15px;
+}
+
+.main-userInfo, .main-friends{
+    border: 1px solid red;
+    padding: 10px;    
+    /* height:  100px; */
+}
+
+.main-news{
+    border: 1px solid green;
+    grid-row: 1/4;
+    grid-column: 2/3;
+
+}
+.main-friends{
+    display: grid;
+}
+.main-friends .loader >img{
+    height: 100px;  
+}
+
+.main-friends .loader {
+    background-color: #130831;
+}
+
+.friends{
+    display: grid;
+    border: .5px solid black;
+    grid-template-columns:1fr 3fr 1fr ;
+    padding:10px;
+    margin:2px;
+    border-radius: 5px;
+}
+
+.friends:hover{
+    opacity: 0.2;
+}
+
+.active:hover{
+    background-color: green;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.friends-avatar{
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50px;
+}
+
+
+.friends-status{
+    place-self: center;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+}
