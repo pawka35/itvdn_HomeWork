@@ -1,3 +1,61 @@
 .chat {
-  background-color: blue;
+  /* background-color: blue; */
+}
+
+.chat-friendInfo {
+  /* border: 1px solid green; */
+  /* height:  */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: lightgray;
+}
+
+.chat-friendInfo-Foto {
+  /* border: 1px solid yellow; */
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border-radius: 100px; */
+  place-self: center;
+  margin: 3px;
+}
+
+.chat-friendInfo-Name {
+  /* border: 1px solid blue; */
+  place-self: center;
+  font-family: "Lobster";
+  font-size: 25px;
+}
+
+.chat-friendInfo-Name::before {
+  content: "Ваш собеседник: ";
+  text-decoration: underline;
+}
+
+#chat-output {
+  height: 150px;
+  border: 0.5px solid gray;
+  padding: 5px;
+  overflow-y: auto;
+  margin: 5px;
+}
+
+#chat-input {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 5px;
+}
+
+#chat-input > textarea {
+  height: auto;
+  grid-column: 2/3;
+  /* width: 100%; */
+}
+
+#chat-input > button {
+  width: 50%;
+  place-self: center;
 }
