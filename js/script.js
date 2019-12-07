@@ -52,6 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function showNewFrind(result) { //функция для добавдения нового пользователя в панель слева
     console.log(result);
     if (result._meta.code == 200) { //если ответ от сервера, что друг создался
+      _get('main-menu-addFriendForm').style.display ='none';//прячем форму добавления
       let data = result.result; //берем данные для добавления из ответа
       let userList = _get("main-friends");  // получаем панель, где все пользователи
       let newFriendDiv = document.createElement("div"); //создаем элемены и формируем панель нового пользователя
@@ -195,14 +196,16 @@ function showFriendsList(res) { //функция отображения поль
     newFriendDiv.appendChild(newActive);
     newPhoto.style.backgroundImage = `url(${res.result[i]._links.avatar.href})`;
     userList.appendChild(newFriendDiv); //отображаем пользователя в меню
+
+    newFriendDiv.addEventListener("mouseover", e => {//если водим над панелью, пропадает окно с кнопкой удаленич
+      let menuDiv = _get("deleteFriend");
+      let btn = _get("delBtnID");
+      if (btn) menuDiv.removeChild(btn);
+      menuDiv.style.display = "none";
+    });
   }
 
-  newFriendDiv.addEventListener("mouseover", e => {//если водим над панелью, пропадает окно с кнопкой удаленич
-    let menuDiv = _get("deleteFriend");
-    let btn = _get("delBtnID");
-    if (btn) menuDiv.removeChild(btn);
-    menuDiv.style.display = "none";
-  });
+ 
 }
 
 function deleteFriend(friend) { //функция удаления друга
