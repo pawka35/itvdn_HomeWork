@@ -275,9 +275,9 @@ function goToChat(frDiv) {
       let message = messageInput.value;
       let xhr = new XMLHttpRequest();
       if (message=="") return;
-      //если не работает из-за corse, раскоментируйте url и закоментируйте текущий
-      //let url = `${CORSE_HACK}http://aiproject.ru/api/`;
-      let url = `http://aiproject.ru/api/`;
+      let url = `${CORSE_HACK}http://aiproject.ru/api/`;
+      //если не работает из-за corse, раскоментируйте url и закоментируйте текущий, установите плагин
+      //let url = `http://aiproject.ru/api/`;
 
       //это для другого чат-бота...просто для истории оставил ссылку и формат сообщения
       //let url = 'https://xu.su/api/send'; //another chat bot
