@@ -1,5 +1,5 @@
 //функция для поиска компонента по его айди
-function _get(id) { 
+function _get(id) {
   return document.getElementById(id);
 }
 
@@ -24,13 +24,16 @@ window.addEventListener("DOMContentLoaded", () => {
     getFromAPI(NEWS_ENDPOINT, "GET", showNews);
 
     let addFriend = _get("addFriend"); //кнопка для добавления друга
-    addFriend.addEventListener("click", () => { //вешаем дейтсвие на нажетие 
+    addFriend.addEventListener("click", () => {
+      //вешаем дейтсвие на нажетие
       _get(ADD_FRIEND_FORM).style.display = "grid"; //показываем форму для заполнения
-      _get(ADD_FRIEND_BTN).addEventListener("click", e => { //вешаем действие на сабмит формы
-        e.preventDefault(); 
-        let frm = document.forms["addFriendForm"];//получаем форму
+      _get(ADD_FRIEND_BTN).addEventListener("click", e => {
+        //вешаем действие на сабмит формы
+        e.preventDefault();
+        let frm = document.forms["addFriendForm"]; //получаем форму
         // console.log(frm);
-        let data = JSON.stringify({ //формируем из полей формы данные для отправки
+        let data = JSON.stringify({
+          //формируем из полей формы данные для отправки
           email: frm["emailFriend"].value,
           first_name: frm["first_name"].value,
           last_name: frm["last_name"].value,
@@ -38,7 +41,12 @@ window.addEventListener("DOMContentLoaded", () => {
           avatar: "https://lorempixel.com/250/250/people/?89233"
         });
         // console.log(data);
-        getFromAPI(USERS_ENDPOINT, "POST", showNewFrind, decodeURIComponent(data)); //отдаем на отправку серверу
+        getFromAPI(
+          USERS_ENDPOINT,
+          "POST",
+          showNewFrind,
+          decodeURIComponent(data)
+        ); //отдаем на отправку серверу
       });
     });
 
@@ -47,14 +55,16 @@ window.addEventListener("DOMContentLoaded", () => {
       _get(WELLCOME_BANNER).style.display = "none"; //закрываем баннер сверху
     });
   }
- 
+
   //вообще по-уму это надо отрефакторить и данные передавать в функцию, котороая вызывается вначале, когда всех пользователей получаем
-  function showNewFrind(result) { //функция для добавдения нового пользователя в панель слева
+  function showNewFrind(result) {
+    //функция для добавдения нового пользователя в панель слева
     console.log(result);
-    if (result._meta.code == 200) { //если ответ от сервера, что друг создался
-      _get('main-menu-addFriendForm').style.display ='none';//прячем форму добавления
+    if (result._meta.code == 200) {
+      //если ответ от сервера, что друг создался
+      _get("main-menu-addFriendForm").style.display = "none"; //прячем форму добавления
       let data = result.result; //берем данные для добавления из ответа
-      let userList = _get("main-friends");  // получаем панель, где все пользователи
+      let userList = _get("main-friends"); // получаем панель, где все пользователи
       let newFriendDiv = document.createElement("div"); //создаем элемены и формируем панель нового пользователя
       let newP = document.createElement("div");
       let newPhoto = document.createElement("div");
@@ -76,14 +86,44 @@ window.addEventListener("DOMContentLoaded", () => {
       newFriendDiv.appendChild(newActive);
       newPhoto.style.backgroundImage = `url(${data._links.avatar.href})`;
       userList.appendChild(newFriendDiv);
+
+      //если надо удалить пользователя, нажимаем правой кнопкой мыши
+      newFriendDiv.addEventListener("contextmenu", e => {
+        e.preventDefault();
+        let menuDiv = _get("deleteFriend"); //находим нашу менюшку для удаления
+        menuDiv.style.display = "grid";
+        menuDiv.style.position = "absolute";
+        menuDiv.style.top = //отображаем менюшку для удаления рядом с курсором
+          +e.clientY + document.documentElement.scrollTop + 5 + "px";
+        menuDiv.style.left =
+          +e.clientX + document.documentElement.scrollLeft + 5 + "px";
+
+        let delBtn = document.createElement("button"); //добавляем в меню кнопку удаления
+        delBtn.id = "delBtnID";
+        delBtn.innerHTML = "Удалить друга";
+        delBtn.addEventListener("click", () => {
+          deleteFriend(newFriendDiv);
+        });
+        menuDiv.appendChild(delBtn);
+      }); //тут закончили организацию удаления
+
+      newFriendDiv.addEventListener("mouseover", e => {
+        //если водим над панелью, пропадает окно с кнопкой удаленич
+        let menuDiv = _get("deleteFriend");
+        let btn = _get("delBtnID");
+        if (btn) menuDiv.removeChild(btn);
+        menuDiv.style.display = "none";
+      });
     } else {
       console.log(result);
       alert(result._meta.message);
     }
   }
 
-  function showNews(info) { //функция для отображения новостей
-    info.articles.forEach(item => { //для всех полученнных новосетй
+  function showNews(info) {
+    //функция для отображения новостей
+    info.articles.forEach(item => {
+      //для всех полученнных новосетй
       let newsDiv = _get("main-news"); //получаем контейнер для отображения
       newsDiv.classList.add("news-container"); //теперь формируем саму новость (заголовок, содержание и пр)
       let newArticle = document.createElement("div");
@@ -101,11 +141,11 @@ window.addEventListener("DOMContentLoaded", () => {
       title.innerHTML = item.title;
       url.innerHTML = `<a href="${item.url}" target="_blank">Читать в источнике</a>`;
       photo.style.backgroundImage = `url(${item.urlToImage})`;
-      newArticle.appendChild(title); 
+      newArticle.appendChild(title);
       newArticle.appendChild(photo);
       newArticle.appendChild(desc);
       newArticle.appendChild(url);
-      newsDiv.appendChild(newArticle);//добавляем сформированную новость в контейнер
+      newsDiv.appendChild(newArticle); //добавляем сформированную новость в контейнер
     });
   }
 });
@@ -120,14 +160,16 @@ function getFromAPI(url, method, showFunction, dataToSend) {
   let res;
   let xhr = new XMLHttpRequest(); // Создание объекта для HTTP запроса.
   xhr.open(method, url, true);
-  if (url.includes(USERS_ENDPOINT)) { //если обращаемся к апи где пользователи...для новостного нам овтор. не нужна
+  if (url.includes(USERS_ENDPOINT)) {
+    //если обращаемся к апи где пользователи...для новостного нам овтор. не нужна
     xhr.setRequestHeader(
       "Authorization",
       "Bearer a5ceU_1231n7Z2tsOpOt9G_hYHPmVZu4FYUL"
     );
   }
 
-  if (dataToSend) { //если мы передаем какие-то данные, то указываем, что передаем json
+  if (dataToSend) {
+    //если мы передаем какие-то данные, то указываем, что передаем json
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("Accept", "application/json");
   }
@@ -146,9 +188,11 @@ function getFromAPI(url, method, showFunction, dataToSend) {
   xhr.send(dataToSend);
 }
 
-function showFriendsList(res) { //функция отображения пользователей справа на панели
+function showFriendsList(res) {
+  //функция отображения пользователей справа на панели
   let userList = _get("main-friends");
-  for (let i = 0; i < 10; i++) { //берем только 10 .. ну просто 
+  for (let i = 0; i < 10; i++) {
+    //берем только 10 .. ну просто
     let newFriendDiv = document.createElement("div");
     let newP = document.createElement("div");
     let newPhoto = document.createElement("div");
@@ -161,18 +205,20 @@ function showFriendsList(res) { //функция отображения поль
     newP.innerHTML = res.result[i].first_name + " " + res.result[i].last_name;
     newFriendDiv.dataset.id = res.result[i].id;
 
-    if (res.result[i].status != "active") { //если статус пользователя не актив, то помечаем
+    if (res.result[i].status != "active") {
+      //если статус пользователя не актив, то помечаем
       newActive.style.backgroundColor = "red";
     } else {
-      newFriendDiv.classList.add("active");//если он активный, то вешаем зеленый огонек
+      newFriendDiv.classList.add("active"); //если он активный, то вешаем зеленый огонек
       newActive.style.backgroundColor = "green";
-      newFriendDiv.addEventListener("click", e => {//и прик клике на него переходим к чату с ботом
+      newFriendDiv.addEventListener("click", e => {
+        //и прик клике на него переходим к чату с ботом
         // console.log(e.button);
         goToChat(newFriendDiv); //функция чата
       });
     }
 
-   //если надо удалить пользователя, нажимаем правой кнопкой мыши
+    //если надо удалить пользователя, нажимаем правой кнопкой мыши
     newFriendDiv.addEventListener("contextmenu", e => {
       e.preventDefault();
       let menuDiv = _get("deleteFriend"); //находим нашу менюшку для удаления
@@ -190,14 +236,15 @@ function showFriendsList(res) { //функция отображения поль
         deleteFriend(newFriendDiv);
       });
       menuDiv.appendChild(delBtn);
-    });//тут закончили организацию удаления
+    }); //тут закончили организацию удаления
     newFriendDiv.appendChild(newPhoto);
     newFriendDiv.appendChild(newP);
     newFriendDiv.appendChild(newActive);
     newPhoto.style.backgroundImage = `url(${res.result[i]._links.avatar.href})`;
     userList.appendChild(newFriendDiv); //отображаем пользователя в меню
 
-    newFriendDiv.addEventListener("mouseover", e => {//если водим над панелью, пропадает окно с кнопкой удаленич
+    newFriendDiv.addEventListener("mouseover", e => {
+      //если водим над панелью, пропадает окно с кнопкой удаленич
       let menuDiv = _get("deleteFriend");
       let btn = _get("delBtnID");
       if (btn) menuDiv.removeChild(btn);
@@ -206,7 +253,8 @@ function showFriendsList(res) { //функция отображения поль
   }
 }
 
-function deleteFriend(friend) { //функция удаления друга
+function deleteFriend(friend) {
+  //функция удаления друга
   getFromAPI(`${USERS_ENDPOINT}/${friend.dataset.id}`, "DELETE", deleteResult);
   // console.log(res);
   let userList = _get("main-friends");
@@ -215,23 +263,24 @@ function deleteFriend(friend) { //функция удаления друга
   menuDiv.style.display = "none";
 }
 
-function deleteResult(res) { //если удаление прошло неуспешно, то отображаем сообщение
+function deleteResult(res) {
+  //если удаление прошло неуспешно, то отображаем сообщение
   console.log(res._meta.code);
   if (res._meta.code != 204) {
-    alert(`Удаление не удалось!`)
+    alert(`Удаление не удалось!`);
     console.log(res);
-  };
+  }
 }
 
 function goToChat(frDiv) {
   //открываем страницу с чатом с другом
   window.scrollTo(0, 0); //прокручиваем окно наверх (чат всегда наверху)
   let chat = _get("chat");
-  chat.style.display = 'grid';
-  _get('main-news').style.display='none';
-  _get('chat-output').innerHTML = ""; //убираем все что было в чате
+  chat.style.display = "grid";
+  _get("main-news").style.display = "none";
+  _get("chat-output").innerHTML = ""; //убираем все что было в чате
 
-   //из-за corse пришлось убрать динамическую загрузку страницы...было более красиво
+  //из-за corse пришлось убрать динамическую загрузку страницы...было более красиво
   // let xhr = new XMLHttpRequest(); // Создание объекта для HTTP запроса.
   // xhr.open("GET", "_chat.html", false);
   // xhr.send();
@@ -272,7 +321,7 @@ function goToChat(frDiv) {
       //фукнция отправки сообщения боту
       let message = messageInput.value;
       let xhr = new XMLHttpRequest();
-      if (message=="") return;
+      if (message == "") return;
       let url = `${CORSE_HACK}http://aiproject.ru/api/`;
       //если не работает из-за corse, раскоментируйте url и закоментируйте текущий, установите плагин
       //let url = `http://aiproject.ru/api/`;
@@ -284,7 +333,11 @@ function goToChat(frDiv) {
       // console.log(url);
       //юзер-айди - такой странный, т.к. бот должен запоминать собеседников и будет как-будто продолжаем разговор
       xhr.open("POST", url, true);
-      question = { ask: `${message}`, userid: `${_get('chat-friendInfo-Name').innerHTML}`, key: "" };
+      question = {
+        ask: `${message}`,
+        userid: `${_get("chat-friendInfo-Name").innerHTML}`,
+        key: ""
+      };
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
