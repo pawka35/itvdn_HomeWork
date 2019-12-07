@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
           avatar: "https://lorempixel.com/250/250/people/?89233"
         });
         // console.log(data);
-        getFromAPI(USERS_ENDPOINT, "POST", showNewFrind, data); //отдаем на отправку серверу
+        getFromAPI(USERS_ENDPOINT, "POST", showNewFrind, decodeURIComponent(data)); //отдаем на отправку серверу
       });
     });
 
@@ -204,8 +204,6 @@ function showFriendsList(res) { //функция отображения поль
       menuDiv.style.display = "none";
     });
   }
-
- 
 }
 
 function deleteFriend(friend) { //функция удаления друга
