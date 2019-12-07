@@ -16,8 +16,8 @@
       <div class="header-logo"></div>
       <div class="header-text">Асоциальная сеть</div>
     </header>
-    <section class="welcome">
-      <div class="welcome-close">X</div>
+    <section class="welcome" id="welcome">
+      <div class="welcome-close" id="welcome-close">X</div>
       <div class="welcome-text">
         Никаких людей, никаких знакомых! Только фейки, только роботы. Отдохни от
         всех.
@@ -28,14 +28,69 @@
       </div>
     </section>
     <section class="main">
-      <div class="main-userInfo">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque
-        animi iusto dolor deserunt quasi, officia aperiam amet eius quisquam
-        repudiandae omnis fugiat cupiditate labore adipisci magnam veritatis
-        impedit enim sapiente! Fugiat distinctio libero neque in voluptas
+      <div class="main-menu">
+        <div class="main-menu-actions">
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li class="undone">Моя музыка</li>
+            <li class="undone">Мои картины</li>
+            <li class="undone">Мои магазины</li>
+            <li id="addFriend">Добавить друга</li>
+          </ul>
+        </div>
+        <div class="main-menu-addFriendForm" id="main-menu-addFriendForm">
+          <form action="#" name="addFriendForm">
+            <div>
+            <label for="first_name">Имя</label><br>
+            <input type="text" name="" id="first_name" required>
+          </div>
+          <div>
+            <label for="last_name">Фамилия</label><br>
+            <input type="text" name="" id="last_name" required>
+          </div>
+          <div>
+            <label for="genre">Пол</label><br>
+            <select name="genre" id="genre">
+              <option value="male">Мужской</option>
+              <option value="female">Женский</option>
+            </select>
+          </div>
+          <div>
+            <label for="emailFriend">Эл.почта</label required><br>
+            <input type="email" name="emailFriend" id="emailFriend">
+          </div>
+          <div>
+            <input type="submit" name="" id="addFriend-btn" value="Добавить">
+          </div>
+            <!--status:active-->
+          </form>
+        </div>
       </div>
-      <div class="main-news" id="main-news">
-        <div>
+     
+      <div id="main-news-wrapper" class="main-news">
+
+          <div class="chat" id="chat">
+            <div class="chat-warning">
+              Если чат не работает, установите и включите 
+              <a href=" https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf">этот плагин</a> для гугл-хром.
+              либо поменяйте url в функции sendMessage (строка 265) в файле script.js (но там ограничение на кол-во запросов)
+            </div>
+              <div class="chat-friendInfo">
+                <div class="chat-friendInfo-Foto" id="chat-friendInfo-Foto"></div>
+                <div class="chat-friendInfo-Name" id="chat-friendInfo-Name"></div>
+              </div>
+              <div id="chat-output">
+                <!-- <textarea name="" id="" cols="100%" rows="20" readonly></textarea> -->
+              </div>
+              <!-- <input type="text" name="" id="chat-input" /> -->
+              <div id="chat-input">
+                Можно отправить по Ctr+Enter
+                <textarea name="" id="chat-input-textArea"></textarea>
+                <button id="sendMessage">Отправить</button>
+              </div>
+            </div>
+          <div>
+        <div  id="main-news">
           <select name="" id="">
             <option value="ru">Россия</option>
             <option value="ua">Украина</option>
@@ -44,8 +99,14 @@
           </select>
         </div>
       </div>
+      </div>
       <div class="main-adds">
+        <label>
         Здесь могла быть ваша реклама. Неэффективно, дорого, бесполезно.
+      </label>
+      <div class='main-adds-photo'>
+        
+      </div>
       </div>
       <div class="main-friends" id="main-friends">
         <div class="loader">
@@ -55,9 +116,12 @@
       <div></div>
     </section>
 
-    <input type="text" name="" id="message" />
     <div id="outputDiv"></div>
+   
+    <div class="deleteFriend" id="deleteFriend">
+   
+    </div>
+
     <script src="js/script.js"></script>
-    <!-- <script src="js/chat.js"></script> -->
   </body>
 </html>

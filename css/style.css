@@ -79,11 +79,43 @@ header {
   gap: 15px;
 }
 
-.main-userInfo,
+.main-menu,
 .main-friends {
-  border: 1px solid red;
-  padding: 10px;
+  /* border: 1px solid red; */
+  padding: 5px;
   /* height:  100px; */
+}
+
+.main-menu ul{
+ display: grid;
+ gap:20px;
+}
+.main-menu li {
+  list-style-type: none;
+  border:.5px solid gray;
+  padding: 5px;
+}
+
+.main-menu li+.undone{
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+#addFriend {
+  cursor: pointer;
+}
+
+.main-menu-addFriendForm {
+  display: none;
+
+  /* grid-template-rows: repeat(5,1fr); */
+  border: 1px solid black;
+  margin: 10px 0px 0px 10px;
+  padding: 5px;
+}
+
+.main-menu-addFriendForm div {
+  margin: 10px 0px 0px 10px;
 }
 
 .main-news {
@@ -105,8 +137,6 @@ header {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   border-radius: 5px;
-
-
 }
 
 .news-title {
@@ -117,9 +147,9 @@ header {
   background-color: lightgray;
 }
 
-.news-desc{
- grid-column: 2/4;
- padding: 15px;
+.news-desc {
+  grid-column: 2/4;
+  padding: 15px;
 }
 
 .news-photo {
@@ -134,9 +164,9 @@ header {
   /* place-self: start; */
 }
 
-.news-url{
-    grid-column: 3/4;
-    padding: 5px;
+.news-url {
+  grid-column: 3/4;
+  padding: 5px;
 }
 
 .main-friends {
@@ -183,4 +213,108 @@ header {
   height: 15px;
   width: 15px;
   border-radius: 15px;
+}
+
+.deleteFriend {
+  display: none;
+  background-color: whitesmoke;
+  width: 150px;
+  height: 70px;
+  place-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.deleteFriend button {
+  width: 100px;
+  height: 25px;
+}
+
+.main-adds {
+  padding: 5px;
+  margin-bottom: 10px;
+  font-family: Pacifico;
+  background-color: lightgreen;
+  border-radius: 5px;
+}
+
+.main-adds-photo {
+  height: 150px;
+  margin-top: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 20px;
+  background-image: url(../images/adds.png);
+}
+
+/*for chat*/
+.chat {
+  display: none;
+}
+
+.chat-friendInfo {
+  /* border: 1px solid green; */
+  /* height:  */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  background-color: lightgray;
+}
+
+.chat-friendInfo-Foto {
+  /* border: 1px solid yellow; */
+  width: 70px;
+  height: 70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border-radius: 100px; */
+  place-self: center;
+  margin: 3px;
+}
+
+.chat-friendInfo-Name {
+  /* border: 1px solid blue; */
+  place-self: center;
+  font-family: "Lobster";
+  font-size: 25px;
+}
+
+.chat-friendInfo-Name::before {
+  content: "Ваш собеседник: ";
+  text-decoration: underline;
+}
+
+#chat-output {
+  height: 150px;
+  border: 0.5px solid gray;
+  padding: 5px;
+  overflow-y: auto;
+  margin: 5px;
+}
+
+#chat-input {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: 5px;
+}
+
+#chat-input > textarea {
+  padding: 4px;
+  height: auto;
+  grid-column: 2/3;
+  /* width: 100%; */
+}
+
+#chat-input > button {
+  width: 50%;
+  place-self: center;
+}
+
+.chat-warning{
+  padding: 15px;
+  background-color: lightpink;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
