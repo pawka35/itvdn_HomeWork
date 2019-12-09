@@ -1,144 +1,142 @@
-// https://support.travelpayouts.com/hc/ru/articles/115000343268-API-данных-отелей#hotelphoto
+const CORSE_HACK = "https://cors-anywhere.herokuapp.com/";
+let countryList = document.getElementById("hotel-list");
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("dsf");
-  getFromAPI(
-    "http://api-gateway.travelata.ru/directory/countries",
-    "GET",
-    fillCountryList
-  );
+  // console.log("dsf");
+  testFetch("http://api-gateway.travelata.ru/directory/countries")
+    .then(result => result.json())
+    .then(res => {
+      res.data.forEach(element => {
+        let newCountry = document.createElement("option");
+        newCountry.innerHTML = element.name;
+        newCountry.value = element.name;
+        newCountry.dataset.id = element.id;
+        countryList.appendChild(newCountry);
+      });
+
+      countryList.addEventListener("change", e => {
+        let selId = e.target[e.target.selectedIndex].dataset.id;
+        getCities(selId);
+      });
+    });
 });
 
-function fillCountryList(data) { //выводим доступные страны
-  // console.log(data.data);
-  let countryList = document.getElementById("hotel-list");
-  data.data.forEach(element => {
-    let newCountry = document.createElement("option");
-    newCountry.innerHTML = element.name;
-    newCountry.value = element.name;
-    newCountry.dataset.id = element.id;
-    countryList.appendChild(newCountry);
-  });
-
-  countryList.addEventListener("change", e => { //при выборе страны делаем запрос на города
-    let selId = e.target[e.target.selectedIndex].dataset.id;
-    // console.log(selId);
-    // e.options[e.selectedIndex].value;
-    getFromAPI(
-      " http://api-gateway.travelata.ru/directory/resorts",
-      "GET",
-      fillResorts,
-      (transData = selId)
-    );
-  });
-}
-
-function fillResorts(data, transData) { //выводим города
-  //выведем города выбранной страны
-//   console.log(data.data, transData);
+function getCities(countryId) {
+  //получаем список курортов в стране
+  console.log(countryId);
   let container = document.getElementById("hotels-list-wrapper");
   let citySelect = document.createElement("select");
 
-  data.data.forEach(item => {
-    // console.log(item.countryId);
-    if (item.countryId == transData) {
-      let newCity = document.createElement("option");
-      newCity.innerHTML = item.name;
-      newCity.value = item.id;
-
-      console.log(item, transData);
-    
-      citySelect.appendChild(newCity);
-    }
-  });
-
-  citySelect.addEventListener("change", e => { //при выборе города делаем запросы на отели этого города
-    // console.log(e.target.value);
-    fillHotels(e.target.value);
+  testFetch("http://api-gateway.travelata.ru/directory/resorts")
+    .then(res => res.json())
+    .then(res => {
+      res.data.forEach(item => {
+        if (item.countryId == countryId) {
+          let newCity = document.createElement("option");
+          newCity.innerHTML = item.name;
+          newCity.value = item.id;
+          citySelect.appendChild(newCity);
+        }
+      });
+    });
+  citySelect.addEventListener("change", e => {
+    //при выборе курорта делаем запросы на его отели
+    getHotels(e.target.value);
   });
   container.appendChild(citySelect);
 }
 
-function fillHotels(city){ //выводим отели
-    getFromAPI(`http://api-gateway.travelata.ru/directory/resortHotels?resortId=${city}`,"GET", showHotels);
-};
-
-
-function showHotels(data){ //показываем отели в данном городе
-    let container = document.getElementById("hotels-list-wrapper");
-     let hotelSelect = document.createElement("select");
-   console.log(data.data);
-    data.data.forEach(item=>{
+function getHotels(resortId) {
+  // получаем отели выбранного курорта
+  let container = document.getElementById("hotels-list-wrapper");
+  let hotelSelect = document.createElement("select");
+  testFetch(
+    `http://api-gateway.travelata.ru/directory/resortHotels?resortId=${resortId}`
+  )
+    .then(res => res.json())
+    .then(data => { //выводим полученные отели
+      data.data.forEach(item => {
         let newHotel = document.createElement("option");
         newHotel.innerHTML = item.name;
         newHotel.value = item.name;
         hotelSelect.appendChild(newHotel);
-    });
-    hotelSelect.addEventListener('change',(e)=>{//при выборе отеля ищем его уже в другом api
-        findCurrentHotel(e.target.value);
-    });
-    container.appendChild(hotelSelect);
+      });
+      hotelSelect.addEventListener("change", e => {
+        //при выборе отеля ищем его уже в другом api, чтобы получить подробную информацию
+        getCurrentHotel(e.target.value);
+      });
+      container.appendChild(hotelSelect);
+    })
+    .catch(error => console.log(error));
 }
 
-function findCurrentHotel(hotelname){ //ищем конкретный отель
-    let data = JSON.stringify({
-        query:`${hotelname}'`,
-        lang:'ru',
-        lookFor:'both',
-        limit:10
-    });
-
-    getFromAPI("http://engine.hotellook.com/api/v2/lookup.json","POST",showCurrentHote,null,data);
-}
-
-function showCurrentHote(data){ //показываем инфомацию по конкретному отелю
-    // https://yasen.hotellook.com/photos/hotel_photos?id=27926056 запрос id фото отеля
-    // https://photo.hotellook.com/image_v2/limit/photo_id/800/520.auto вставить фото отеля
-    console.log(data.results.hotels);
-//     fullName: "Suites & aparments by Goya, Гуаякиль, Эквадор"
-// id: "6972161"
-// label: "Suites & aparments by Goya"
-// location: {lon: -79.89407, lat: -2.14937}
-// locationId: 913
-// locationName: "Гуаякиль, Эквадор"
-// _score: 431583
-    //   http://iatageo.com/getCode/ lon / lat
-
-
-
-
-}
-// getFromAPI(https://multitour.ru/mtapi/)
-
-function getFromAPI(url, method, showFunction, transData = null, dataToSend) {
-  //   console.log(transData);
-  let res;
-  let xhr = new XMLHttpRequest(); // Создание объекта для HTTP запроса.
-  xhr.open(method, url, true);
-  // if (url.includes(USERS_ENDPOINT)) {
-  //   //если обращаемся к апи где пользователи...для новостного нам овтор. не нужна
-  //   xhr.setRequestHeader(
-  //     "Authorization",
-  //     "Bearer a5ceU_1231n7Z2tsOpOt9G_hYHPmVZu4FYUL"
-  //   );
-  // }
-  // if (dataToSend) {
-  //     //если мы передаем какие-то данные, то указываем, что передаем json
-  //     xhr.setRequestHeader("Content-Type", "application/json");
-  //     xhr.setRequestHeader("Accept", "application/json");
-  //   }
-
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      res = JSON.parse(xhr.response);
-      //   console.log(transData);
-      showFunction(res, transData); //передаем ответ в функцию для отображения
-    }
-    if (xhr.status == 401) {
-      res = JSON.parse(xhr.response);
-    }
-    // let loader = document.getElementsByClassName("loader")[0];
-    // loader.style.display = "none";
+function getCurrentHotel(hotelName) { //получаем информацию по конкретному отелю
+  console.log(hotelName);
+  let options = {
+    method: "POST",
+    body: JSON.stringify({
+      query: `${hotelName}'`,
+      lang: "ru",
+      lookFor: "both",
+      limit: 10
+    })
   };
-  xhr.send(dataToSend);
+  testFetch(`http://engine.hotellook.com/api/v2/lookup.json`, options)
+    .then(res => res.json())
+    .then(data => {
+      showCurrentHote(data); // передаем для вывода в документ
+    });
+}
+
+function showCurrentHote(data) {
+  //показываем инфомацию по конкретному отелю
+  let needHotel = data.results.hotels[0]; //возьмем только 1-ый найденный отель
+  let hotelId = needHotel.id;
+  let newHotel = document.createElement("div");
+  // https://yasen.hotellook.com/photos/hotel_photos?id=27926056 запрос id фото отеля
+  // https://photo.hotellook.com/image_v2/limit/photo_id/800/520.auto вставить фото отеля
+  // console.log(data.results.hotels[0]);
+  //сегодня посмотрел урок про fetch, будем пробовать к использованию
+  testFetch(
+    `${CORSE_HACK}https://yasen.hotellook.com/photos/hotel_photos?id=${data.results.hotels[0].id}`
+  )
+    .then(result => result.json()) // как получили ответ, парсим json
+    .then(result => {
+      //отбираем 3 картинки (может прийти больше)
+      for (let i = 0; i < 3; i++) {
+        testFetch(
+          //получили id картинки, теперьь надо запросить саму картинку
+          `${CORSE_HACK}https://photo.hotellook.com/image_v2/limit/${result[hotelId][i]}/800/520.auto`
+        )
+          .then(result => {
+            //когда придет ответ - складываем картинки в массив
+            let im = new Image();
+            im.url = result.url;
+            let hotelPhoto = document.createElement("img");
+            hotelPhoto.src = im.url;
+            newHotel.appendChild(hotelPhoto);
+          })
+          .catch(error => console.log(error)); //если что-то пошло не так, то отображаем ошибку
+      }
+    })
+    .then(res => {
+      newHotel.className = "newHotel-wrapper";
+      let loc = document.createElement("div");
+      loc.className = "newHotel-location";
+      loc.innerHTML = needHotel.locationName;
+
+      let hotName = document.createElement("div");
+      hotName.innerHTML = needHotel.label;
+
+      newHotel.appendChild(loc);
+      newHotel.appendChild(hotName);
+      // newHotel.appendChild(hotPhoto);
+      document.getElementById("hotels-list-wrapper").appendChild(newHotel);
+    }) //выводим див с информацией об отеле
+    .catch(error => console.log(error));
+}
+
+//сегодня посмотрел урок про fetch, надо тренироваться
+function testFetch(url, options) {
+  return fetch(url, options);
 }
