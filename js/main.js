@@ -264,6 +264,7 @@ function getYandexWeather(lat, lon) {
       "X-Yandex-API-Key": "d1ebab50-32b5-4f4e-9169-96df13730071"
     }
   };
+  //let url = `${CORSE_HACK}https://api.weather.yandex.ru/v1/forecast?lat=${lat}&lon=${lon}&lang="ru_RU"&limit=2`;
   let url = `https://api.weather.yandex.ru/v1/forecast?lat=${lat}&lon=${lon}&lang="ru_RU"&limit=2`;
 
   return fetch(url, options)
