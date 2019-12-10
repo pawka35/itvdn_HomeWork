@@ -1,12 +1,15 @@
 const CORSE_HACK = "https://cors-anywhere.herokuapp.com/";
 // let countryList = document.getElementById("hotel-list");
+let myMap;
 
 document.addEventListener("DOMContentLoaded", () => {
+  getWeather();
+
   let wrapper = document.getElementById("hotels-list-wrapper");
   let coutrySelector = document.createElement("select");
   coutrySelector.classList.add("hotel-list-coutry");
 
-  testFetch("http://api-gateway.travelata.ru/directory/countries")
+  fetch("http://api-gateway.travelata.ru/directory/countries")
     .then(result => result.json())
     .then(res => {
       res.data.forEach(element => {
@@ -27,11 +30,32 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function clearSelectors(beg) {
+  //очищаем дивы и пр для нового запроса
   let wrapper = document.getElementById("hotels-list-wrapper");
   let selectors = wrapper.getElementsByTagName("select");
   for (i = beg; selectors.length > i; i++) {
     wrapper.removeChild(selectors[i]);
+    console.log(beg);
   }
+
+  let hotelDiv = document.getElementsByClassName("newHotel-wrapper")[0];
+  if (!!hotelDiv) {
+    console.log(hotelDiv);
+    wrapper.removeChild(hotelDiv);
+  }
+  let mapDiv = document.getElementById("map");
+
+  if (!!mapDiv) {
+    if (!!myMap) {
+      //если была карта, ее убираем
+      myMap.destroy();
+    }
+    wrapper.removeChild(mapDiv);
+  }
+  //очищаем вывод погоды на курорте
+  let wDiv = document.getElementById("footer-weather-hotel");
+  wDiv.style.display = "none";
+  wDiv.innerHTML = "";
 }
 
 function getCities(countryId) {
@@ -42,7 +66,7 @@ function getCities(countryId) {
   citySelect.id = "citySelect";
   citySelect.classList.add("hotel-list-city");
 
-  testFetch("http://api-gateway.travelata.ru/directory/resorts")
+  fetch("http://api-gateway.travelata.ru/directory/resorts")
     .then(res => res.json())
     .then(res => {
       res.data.forEach(item => {
@@ -67,7 +91,7 @@ function getHotels(resortId) {
   let container = document.getElementById("hotels-list-wrapper");
   let hotelSelect = document.createElement("select");
   hotelSelect.classList.add("hotel-list-hotels");
-  testFetch(
+  fetch(
     `http://api-gateway.travelata.ru/directory/resortHotels?resortId=${resortId}`
   )
     .then(res => res.json())
@@ -101,10 +125,11 @@ function getCurrentHotel(hotelName) {
       limit: 10
     })
   };
-  testFetch(`http://engine.hotellook.com/api/v2/lookup.json`, options)
+  fetch(`http://engine.hotellook.com/api/v2/lookup.json`, options)
     .then(res => res.json())
     .then(data => {
       let needHotel = data.results.hotels[0];
+      console.log(needHotel);
       let newHotel = document.createElement("div");
       newHotel.className = "newHotel-wrapper";
       let loc = document.createElement("div");
@@ -120,28 +145,44 @@ function getCurrentHotel(hotelName) {
       // newHotel.appendChild(hotPhoto);
       document.getElementById("hotels-list-wrapper").appendChild(newHotel);
 
-      let showMap = document.createElement("button");//кнопка показать на карте
+      let showMap = document.createElement("button"); //кнопка показать на карте
       showMap.innerHTML = "Показать на карте";
       showMap.classList = "showMap";
-      showMap.addEventListener("click", e => {//при нажатии обращаемся к функции API яндекс-карт
+      showMap.addEventListener("click", e => {
+        //при нажатии обращаемся к функции API яндекс-карт
         showHotelMap(needHotel.location.lat, needHotel.location.lon);
+        console.log(e.target);
+        e.target.disabled = true;
       });
-      newHotel.appendChild(showMap); 
+      newHotel.appendChild(showMap);
       showHotlePhoto(needHotel.id, newHotel); // получаем фото отеля в отдельном потоке
+
+      //запрашиваем погоду в координатах донного отеля:
+      let promise = getYandexWeather(
+        needHotel.location.lat,
+        needHotel.location.lon
+      );
+      promise.then(res => {
+        let wDiv = document.getElementById("footer-weather-hotel");
+        wDiv.innerHTML += `Текущая температура там: ${res.fact}&#8451;<br>Ощущается как: ${res.feelLike}&#8451;`;
+        wDiv.style.display = "block";
+      });
     });
 }
 
-function showHotlePhoto(hotelId,container) {
-  testFetch(
-    `${CORSE_HACK}https://yasen.hotellook.com/photos/hotel_photos?id=${hotelId}`
+function showHotlePhoto(hotelId, container) {
+  fetch(
+    // `${CORSE_HACK}https://yasen.hotellook.com/photos/hotel_photos?id=${hotelId}`
+    `https://yasen.hotellook.com/photos/hotel_photos?id=${hotelId}`
   )
     .then(result => result.json()) // как получили ответ, парсим json
     .then(result => {
       //отбираем 3 картинки (может прийти больше)
       for (let i = 0; i < 3; i++) {
-        testFetch(
+        fetch(
           //получили id картинки, теперьь надо запросить саму картинку
-          `${CORSE_HACK}https://photo.hotellook.com/image_v2/limit/${result[hotelId][i]}/800/520.auto`
+          //`${CORSE_HACK}https://photo.hotellook.com/image_v2/limit/${result[hotelId][i]}/800/520.auto`
+          `https://photo.hotellook.com/image_v2/limit/${result[hotelId][i]}/800/520.auto`
         )
           .then(result => {
             //когда придет ответ - складываем картинки в массив
@@ -153,7 +194,7 @@ function showHotlePhoto(hotelId,container) {
             hotelPhoto.classList = "hotelPhoto";
             container.appendChild(hotelPhoto);
           })
-          .catch(error =>{
+          .catch(error => {
             console.log(error);
           }); //если что-то пошло не так, то отображаем ошибку
       }
@@ -161,13 +202,8 @@ function showHotlePhoto(hotelId,container) {
     .catch(error => alert(error));
 }
 
-//сегодня посмотрел урок про fetch, надо тренироваться
-function testFetch(url, options) {
-  return fetch(url, options);
-}
-
 function showHotelMap(lat, lon) {
-  let myMap;
+  // let myMap;
   let container = document.getElementById("hotels-list-wrapper");
   let mapDiv = document.createElement("div");
   mapDiv.id = "map";
@@ -176,18 +212,11 @@ function showHotelMap(lat, lon) {
   ymaps.ready(init);
 
   function init() {
-    (myMap = new ymaps.Map(
-      "map",
-      {
-        // При инициализации карты обязательно нужно указать
-        // её центр и коэффициент масштабирования.
-        center: [parseFloat(lat), parseFloat(lon)],
-        zoom: 14
-      }
-      // {
-      //  // searchControlProvider: "yandex#search"
-      // }
-    )),
+    (myMap = new ymaps.Map("map", {
+      // При инициализации карты обязательно нужно указать её центр и коэффициент масштабирования.
+      center: [parseFloat(lat), parseFloat(lon)],
+      zoom: 14
+    })),
       (myGeoObject = new ymaps.GeoObject(
         {
           // Описание геометрии.
@@ -203,18 +232,43 @@ function showHotelMap(lat, lon) {
           }
         },
         {
-          // Опции.
-          // Иконка метки будет растягиваться под размер ее содержимого.
+          // Опции.  Иконка метки будет растягиваться под размер ее содержимого.
           preset: "islands#blackStretchyIcon",
           // Метку можно перемещать.
           draggable: false
         }
       ));
     myMap.geoObjects.add(myGeoObject);
-
-    // document.getElementById("destroyButton").onclick = function() {
-    //   // Для уничтожения используется метод destroy.
-    //   myMap.destroy();
-    // };
   }
+}
+
+//немного потренируемся с геолокацией
+function getWeather() {
+  navigator.geolocation.getCurrentPosition(updateLocation);
+}
+
+//как получили логкацию, будем запращивать по ней температуру и выводить в футер
+function updateLocation(pos) {
+  let promise = getYandexWeather(pos.coords.latitude, pos.coords.longitude);
+  promise.then(res => {
+    document.getElementById("footer-weather-here").innerHTML += `
+        Текущая температура у вас: ${res.fact}&#8451;<br>Ощущается как: ${res.feelLike}&#8451;
+        `;
+  });
+}
+
+//функция получения температуры по долготе и широте от api яндекса
+function getYandexWeather(lat, lon) {
+  let options = {
+    headers: {
+      "X-Yandex-API-Key": "d1ebab50-32b5-4f4e-9169-96df13730071"
+    }
+  };
+  let url = `https://api.weather.yandex.ru/v1/forecast?lat=${lat}&lon=${lon}&lang="ru_RU"&limit=2`;
+
+  return fetch(url, options)
+    .then(result => result.json())
+    .then(res => {
+      return { fact: res.fact.temp, feelLike: res.fact.feels_like };
+    });
 }

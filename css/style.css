@@ -98,3 +98,46 @@
   border: 1px solid black;
 
 }
+
+header{
+background-image: url(../img/logo.jpg);
+/* background-repeat: no-repeat; */
+background-size: contain;
+height: 120px;
+}
+
+.header-text{
+  position: relative;
+  top: 40px;
+  left: 120px;
+  color: yellow;
+  font-size: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  background-color: gray;
+  height: 120px;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 10px 10px;
+}
+
+#footer-weather-here, #footer-weather-hotel{
+  /* position: relative;
+  top: 20px;
+  left: 30px; */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 20%;
+  background-color: cornsilk;
+  border-radius: 5px;
+}
+
+.footer-preweather{
+  text-decoration: underline;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
