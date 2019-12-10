@@ -104,6 +104,7 @@ background-image: url(../img/logo.jpg);
 /* background-repeat: no-repeat; */
 background-size: contain;
 height: 120px;
+border-radius: 10px 10px 0px 0px;
 }
 
 .header-text{
@@ -140,4 +141,38 @@ footer{
   text-decoration: underline;
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+nav{
+  /* border: .7px black solid; */
+  margin:5px 0px 5px 0px;
+  padding: 5px;
+
+}
+
+ul.nav{
+  margin-left: 0px;
+  padding-left: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+
+ul.nav a {
+  /* display: block; */
+  width: 5em;
+  padding:10px;
+  margin: 0 5px;
+  background-color: #f4f4f4;
+  border: 1px dashed #333;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+
+ul.nav a:hover{
+  background-color: lightgray;
+  color: green;
 }
