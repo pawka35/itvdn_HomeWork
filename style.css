@@ -1,0 +1,39 @@
+canvas{
+    border: 1px solid black;
+}
+
+#score::before{
+    content: 'Набрано очков: ';
+}
+
+#gameover{
+
+    height: 300px;
+    width: 70%;
+    background-color: lightpink;
+    display: none;
+    position: relative;
+    left: 10%;
+    top:10px;
+}
+
+#message, #result{
+    height: 10%;
+    width: 70%;
+    display: inline-block;
+    justify-items: center;
+    /* background-color: lightpink; */
+    border: 1px solid black;
+    /* display: fixed; */
+    position: relative;
+    left: 10%;
+    top:30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#result{
+    height: 70%;
+    margin-top: 10px;
+    background-color: lightskyblue;
+}
