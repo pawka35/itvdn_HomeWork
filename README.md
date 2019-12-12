@@ -1,3 +1,4 @@
 # itvdn_HomeWork
 For ITVDN Front-end course
-Each branch => leeson homework
+HW 26 Canvas
+Snake Game
