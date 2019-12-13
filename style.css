@@ -37,3 +37,9 @@ canvas{
     margin-top: 10px;
     background-color: lightskyblue;
 }
+
+#rules{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
