@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Video Player</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/webamp@1.4.0/built/webamp.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Video Player</title>
+  </head>
+  <body>
+    <div class="player">
+      <video
+        src="http://193.16.10.131/nemed.mp4"
+        width="640"
+        height="480"
+        poster="https://sun9-10.userapi.com/c636024/v636024440/268c4/ijSlPYvKGdk.jpg?ava=1"
+      ></video>
+      <div class="progress">
+        <progress value="0" max="100"></progress>
+      </div>
+      <div class="controls">
+        <button id="play">&#9658</button>
+        <button id="stop">&#9724</button>
+        <button id="next">&#10095&#10095</button>
+        <button id="prev">&#10094&#10094</button>
+        <button id="fullScreen">&#9974</button>
+      </div>
+    </div>
+    <!-- <div id="winamp-container"></div> -->
+  </body>
+  <script src="js/script.js"></script>
 </html>
