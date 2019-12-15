@@ -32,9 +32,9 @@ function myPlayer() {
   this.nextSong = document.querySelector("#next");
   this.prevSong = document.querySelector("#prev");
   this.mute = document.querySelector("#mute");
-  this.sound = document.querySelector('#sound');
+  this.sound = document.querySelector("#sound");
   this.playList;
-  this.playingClip=null;
+  this.playingClip = null;
 
   window.addEventListener("DOMContentLoaded", () => {
     let worker = new Worker("js/worker.js"); //запускаем воркер, который получит список файлов
@@ -70,10 +70,13 @@ function myPlayer() {
   function playlSong() {
     //проигрывание клипа
     let fromLoc = JSON.parse(localStorage.getItem("clips")); //загружаем наши клипы из стораджа
-    if(!!fromLoc[playingClip].timeStamp){ //если у данного клипа есть место окончания просмотра
-      video.currentTime = fromLoc[playingClip].timeStamp; //то перематываем на место окончания просмотра
+    if (!!fromLoc) {
+      //если есть записанные данные
+      if (!!fromLoc[playingClip].timeStamp) {//если существует место прошлого останова
+        video.currentTime = fromLoc[playingClip].timeStamp; //то перематываем на место окончания просмотра
       }
-   
+    }
+
     video.play(); //начинаем проигрывание
     let tmpPl = [...document.querySelectorAll(".playlist-currentSong")]; //выбираем все наши дивы с клипами
     tmpPl.forEach((element, index) => {
@@ -87,7 +90,6 @@ function myPlayer() {
     setTimeout(() => {
       //без таймера не успевало получить данные о клиппе
       sound.value = video.volume;
-      console.log(video.volume,"SDddddddd");
       progress.max = video.duration; //выставляем макс значение полосы прогресса, согласно продолжительности клипа
       document.querySelector("#curDur").innerHTML = secondsToDate(
         video.duration
@@ -116,7 +118,6 @@ function myPlayer() {
 
   stop.addEventListener("click", () => {
     //стоп
-    console.log(playList[playingClip]);
     video.pause();
     video.currentTime = 0;
     progress.value = 0;
@@ -124,7 +125,7 @@ function myPlayer() {
 
   btnPlay.addEventListener("click", () => {
     //плей
-    if(!playingClip) playingClip = 0; //если песня не играла, то начинаем с 0
+    if (!playingClip) playingClip = 0; //если песня не играла, то начинаем с 0
     changeSong(playingClip);
   });
 
@@ -158,31 +159,27 @@ function myPlayer() {
     }
   });
 
-  document.addEventListener("keydown",(e)=>{
-    e.preventDefault();//предотвращаем перемотку документа вверх/вниз
-    switch 
-      (e.keyCode) 
-     {
-      case 40: 
-      if (video.volume>0.1)video.volume-=0.1;
-          break;
-      case 38: 
-      if (video.volume<1)video.volume+=0.1;
-          break;
-     };
-     sound.value = video.volume;
-    });
-      
-  
+  document.addEventListener("keydown", e => {
+    e.preventDefault(); //предотвращаем перемотку документа вверх/вниз
+    switch (e.keyCode) {
+      case 40:
+        if (video.volume > 0.1) video.volume -= 0.1;
+        break;
+      case 38:
+        if (video.volume < 1) video.volume += 0.1;
+        break;
+    }
+    sound.value = video.volume;
+  });
 
   function playNextPrev(direction) {
     //перемотка на 10 сек туда-сюда
     switch (direction) {
       case "next":
-        video.currentTime +=10;
+        video.currentTime += 10;
         break;
       case "prev":
-        video.currentTime -=10;
+        video.currentTime -= 10;
         break;
     }
   }
