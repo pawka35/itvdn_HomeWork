@@ -1,31 +1,84 @@
-
-.player{  
-   
-    display: grid;
-    grid-template-rows: 10px 1px 1px 1px;
-    width: 80%;
-    width: 640px;
-    height: 480px;
+.player {
+  display: grid;
+  grid-template-rows: 20fr 1fr;
+  grid-template-columns: 4fr 2fr;
+  width: 70%;
+  padding: 5px; 
 }
 
-video{
-    grid-row: 1/11;
-    border: 1px black solid;
+video {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  place-self: center center;
+  width: 640px;
+  height: 320px;
 }
 
-.controls{
-    height: 30px;
+.playlist {
+    padding: 5px;
+  grid-row: 1/2;
+  grid-column: 2/3;
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 300px;
+  place-self:  center;
 }
 
-.controls button{
-    height: 45px;
-    width: 45px;
-    border-radius: 45px;
-    border:1px solid black;
-    font-size: 20px;
+.playlist-title{
+    background-color: gray;
+    margin: 3px;
+    color: wheat;
+    text-align: center;
+}
 
+.progress {
+  grid-row: 2/3;
+  border-radius: 4px;
 }
-.progress progress{
-    width: 100%;
-    border: 1px solid red;
+
+.controls {
+  height: 30px;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  margin-top: 5px;
 }
+
+.controls button {
+  height: 45px;
+  width: 45px;
+  border-radius: 45px;
+  border: .5px solid black;
+  font-size: 20px;
+  grid-column: 1/1;
+}
+
+.controls button:hover {
+    cursor: pointer;
+    background-color: rosybrown;
+  }
+  
+
+
+.progress progress {
+  grid-column: 1/1;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: red;
+ 
+}
+
+.playlist-currentSong{
+    border: .5px solid gray;
+    margin:5px;
+    padding: 3px;
+}
+.playlist-currentSong:hover{
+cursor: pointer;
+background-color: lightgray;
+}
+
+.playingSong{
+    background-color: lightpink;
+}
+
