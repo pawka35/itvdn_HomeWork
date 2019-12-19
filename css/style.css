@@ -13,7 +13,6 @@
 }
 
 header {
-  /* border: 1px solid black;    */
   height: 80px;
   grid-column: 1/5;
   display: flex;
@@ -22,30 +21,26 @@ header {
 .header_picture {
   margin-left: 10px;
   height: 100%;
-  width: 20%;
+  width: 30%;
   background-image: url("../img/logo.png");
-  margin-right: 77px;
+  background-repeat: no-repeat;
+  margin-right: 5px;
 }
 
 header nav {
   width: 100%;
-  border: 1px solid red;
 }
 
 header nav > ul {
-  border: 1px solid green;
   position: relative;
   top: 20%;
-  display: flex; 
+  display: flex;
   flex-direction: row;
-  align-items: baseline;
-  /* height: px; */
-  justify-content: space-around;
 }
 
 header ul li {
-    height: 25px;
-    background-color: #97D04B;
+  height: 25px;
+  background-color: #97d04b;
   list-style-type: none;
   padding-top: 5px;
   /* border: 1px solid black; */
@@ -53,22 +48,24 @@ header ul li {
   width: 70%;
   color: white;
   font-weight: bold;
+  padding-left: 10px;
 }
 
-.home_li{
-    width: 30%;
-    margin-left: 0px;
+.home_li {
+  width: 30%;
+  margin-left: 0px;
 }
 
 .banner {
   grid-column: 1/5;
-  /* border: 1px solid yellowgreen; */
   display: grid;
-  grid-template-columns: 510px auto;
+  grid-template-columns: 5fr 4fr;
   padding-top: 20px;
   padding-left: 10px;
-  column-gap: 10px;
+  /* column-gap: 5px; */
+
 }
+
 
 .banner_BigPicture {
   background-image: url("../img/leaf.png");
@@ -76,22 +73,27 @@ header ul li {
 }
 
 .banner_Text {
-  /* background-color: green; */
+  color: #898989;
+  font-size: 32px;
+  overflow: hidden;
+}
+
+.banner_Text > div {
+  font-size: 18px;
+  margin-top: 20px;
+  overflow: hidden;
 }
 
 .news {
   grid-column: 1/5;
-  /* background-color: rgb(170, 128, 128); */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 50px auto;
   gap: 0px 5px;
   color: #898989;
 }
 
 .news_caption {
   grid-column: 1/5;
-  /* border: 1px solid red; */
   padding: 10px;
   font-size: 30px;
   font-weight: bold;
@@ -99,10 +101,8 @@ header ul li {
 
 /* контейнер для статьи */
 .news_article {
-  /* border: 1px solid green; */
   display: grid;
   grid-template-rows: 150px 50px 35px 110px 35px;
-  /* column-gap : 30px; */
   margin-left: 10px;
 }
 
@@ -115,6 +115,7 @@ header ul li {
   font-size: 20px;
   font-weight: bold;
   color: #898989;
+  margin-top: 10px;
 }
 .news_article_pubDate {
   /* background-color: magenta; */
