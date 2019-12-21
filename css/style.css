@@ -1,0 +1,50 @@
+.city {
+  animation: strobe 1s infinite;
+}
+
+@keyframes strobe {
+  from {
+    fill: red;
+    stroke: black;
+  }
+  to {
+    fill: wheat;
+    stroke: wheat;
+  }
+}
+
+.city:hover {
+  cursor: pointer;
+  animation-play-state: paused;
+}
+
+.buy_tickets {
+  display: none;
+  width: 200px;
+  background-color: blanchedalmond;
+  position: relative;
+  border: 1px solid black;
+  overflow: hidden;
+  /* animation: disclosure .5s forwards;  */
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+@keyframes disclosure {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 100px;
+  }
+}
+
+@keyframes closure {
+  from {
+    height: 100px;
+  }
+  to {
+    height: 0px;
+  }
+}
