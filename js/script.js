@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cities.forEach(city =>
     city.addEventListener("mouseenter", e => {
-    //   console.log(e.clientY, e.target.cy.baseVal.value);
-      byuWindow.style.top = e.clientY - map.height.baseVal.value - 50 + "px";
-      byuWindow.style.left = e.clientX + "px";
+      console.log(e.clientY, e.target.cy.baseVal.value);
+      byuWindow.style.top = e.clientY + 20 + "px";
+      byuWindow.style.left = e.clientX + 20 + "px";
       cityName.innerHTML = e.target.id.capitalize();
       byuWindow.style.animation = "disclosure .5s forwards";
       byuWindow.style.display = "inline-block";
