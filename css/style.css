@@ -1,13 +1,16 @@
 header {
-  height: 200px; }
-
-.logo {
-  width: 20%; }
+  height: 200px;
+}
+header .logo {
+  width: 20%;
+}
 
 footer {
-  display: grid; }
+  display: grid;
+}
 
 body {
   color: red;
   -webkit-transition: all 2s ease-in;
-  transition: all 2s ease-in; }
+  transition: all 2s ease-in;
+}
