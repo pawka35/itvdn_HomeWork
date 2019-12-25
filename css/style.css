@@ -1,3 +1,12 @@
+header {
+  height: 200px; }
+
+.logo {
+  width: 20%; }
+
+footer {
+  display: grid; }
+
 body {
   color: red;
   -webkit-transition: all 2s ease-in;

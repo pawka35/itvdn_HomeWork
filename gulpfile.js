@@ -10,7 +10,7 @@ gulp.task("default", function() {
 
 gulp.task("sassToCSS", function(done) {
   gulp
-    .src("./dev/style.scss")
+    .src("./dev/*.scss")
     .pipe(
       sass({
         errorLogToConsole: true
@@ -19,11 +19,13 @@ gulp.task("sassToCSS", function(done) {
     )
     .on("error", console.error.bind(console))
     // .pipe(rename({suffix: '.min'}))
-    .pipe(autoprefixer({
+    .pipe(
+      autoprefixer({
         cascade: false
-    }))
+      })
+    )
     .pipe(gulp.dest("./css/"));
-    done();
+  done();
 });
 
 //Отслеживание изменений
