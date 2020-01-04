@@ -1,7 +1,11 @@
 @import 'header';
+@import 'article';
 @import 'footer';
 
+
+
 body{
+    margin:10px;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 2px solid gray;
 }
