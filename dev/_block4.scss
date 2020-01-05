@@ -1,0 +1,33 @@
+@import "mixin";
+
+.block4 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  
+&_title{
+    @include titleText();
+}
+
+&_descr{
+    @include someText(12);
+    margin{
+        top: 10px;
+        bottom: 10px;
+    }
+}
+
+  &_video {
+    margin:10px;
+
+  
+    iframe{
+        border-radius: 15px;
+        border:1px solid white;
+    }
+}
+
+}

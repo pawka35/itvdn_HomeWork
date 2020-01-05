@@ -1,0 +1,13 @@
+@mixin titleText(){
+    font-size: 22px;
+    color: #313131;
+    font-family: $ourFont;
+    font-weight: bold;
+}
+
+@mixin someText($fontSize){
+    font-size: $fontSize+"px";
+    color: #313131;
+    font-family: $ourFont;
+    font-weight: bold;
+}

@@ -1,3 +1,4 @@
+@import "mixin";
 $fillColor: #431d91;
 $subFillColor: #fafafa;
 $ourFont: "Lato";
@@ -19,11 +20,12 @@ $ourFont: "Lato";
     color: #fff;
 
     &_title  {
-      font-size: 22px;
-      color: #313131;
-      font-family: $ourFont;
-      font-weight: bold;
+      // font-size: 22px;
+      // color: #313131;
+      // font-family: $ourFont;
+      // font-weight: bold;
       padding-left: 10px;
+      @include titleText();
       //   text-align: center;
     }
 
@@ -67,11 +69,11 @@ $ourFont: "Lato";
     &_title{
         grid-row: 1/2;
         grid-column: 1/4;
-        font-size: 22px;
-        color: #313131;
-        font-family: $ourFont;
-        font-weight: bold;
-        padding-left: 10px;
+        @include titleText();
+        // font-size: 22px;
+        // color: #313131;
+        // font-family: $ourFont;
+        // font-weight: bold;
     }
 
     &_img{
@@ -81,6 +83,7 @@ $ourFont: "Lato";
         background-image: url("../img/eleph_plan.jpg");
         background-size: cover;
         background-repeat: no-repeat;
+        
 
     }
 
@@ -88,6 +91,7 @@ $ourFont: "Lato";
         grid-row: 2/3;
         grid-column: 2/4;
         font-family: $ourFont;
+     
     }
 
     &_button{
