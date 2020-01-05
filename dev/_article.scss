@@ -1,3 +1,6 @@
+@import "block3";
+@import "block2";
+
 @font-face {
   font-family: "Lato";
   src: url("/fonts/Lato-Regular.ttf") format("truetype");
@@ -5,7 +8,6 @@
 
 $ourFont: "Lato";
 $spinnerHeight: 250px;
-$artMargin:40px;
 
 .corusel {
   .spinner {
@@ -121,12 +123,9 @@ $artMargin:40px;
       overflow-y: hidden;
       font-size: 16px;
       text-overflow: ellipsis;
+      font-family: $ourFont;
+      line-height: 1.2;
     }
   }
 }
 
-.block2{
-    margin-top: $artMargin;
-    height: 300px;
-    background-color:green;
-}
