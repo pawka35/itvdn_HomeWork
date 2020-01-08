@@ -64,6 +64,8 @@ header {
         }
       }
 
+      
+
       /* Links inside the dropdown */
       .dropdown-content a {
         color: black;
@@ -88,6 +90,7 @@ header {
 @keyframes showMenu {
   from {
     opacity: 0;
+    z-index: 9999999;
     border: 1px solid wheat;
   }
   to {

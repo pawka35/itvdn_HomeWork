@@ -20,5 +20,4 @@
             TweenLite.delayedCall(4, nextSlide);                                
     }
     
-    
 })();
