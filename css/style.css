@@ -265,14 +265,16 @@ header {
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  justify-content: center; }
+  justify-content: center;
+  background-color: #e1e1e1;
+  padding: 10px; }
   .block4_title {
     font-size: 22px;
     color: #313131;
     font-family: "Lato";
     font-weight: bold; }
   .block4_descr {
-    font-size: "12px";
+    font-size: 12;
     color: #313131;
     font-family: "Lato";
     font-weight: bold; }
@@ -284,6 +286,62 @@ header {
     .block4_video iframe {
       border-radius: 15px;
       border: 1px solid white; }
+
+.block5 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  height: auto;
+  margin-top: 30px;
+  position: relative; }
+  .block5 .priceDiv_header, .block5 .priceDiv_footer {
+    font-size: 10px;
+    color: #fff;
+    font-family: "Lato";
+    font-weight: bold;
+    display: -webkit-box;
+    display: flex;
+    height: 40px;
+    background-color: #431d91;
+    color: #fff;
+    font-size: 14px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center; }
+    .block5 .priceDiv_header else, .block5 .priceDiv_footer else {
+      font-weight: normal; }
+  .block5 .priceDiv_body {
+    font-size: 12px;
+    color: #313131;
+    font-family: "Lato";
+    font-weight: bold;
+    background-color: #e1e1e1;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    padding: 10px;
+    line-height: 2.5;
+    text-align: center; }
+    .block5 .priceDiv_body else {
+      font-weight: normal; }
+  .block5 .priceDiv .bestPrice {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    border: 1px solid #aeaeae;
+    background-color: #e1e1e1;
+    display: -webkit-box;
+    display: flex;
+    position: absolute;
+    top: -20px;
+    left: 63%;
+    font-size: 10px;
+    text-align: center;
+    -webkit-box-align: center;
+    align-items: center; }
 
 @font-face {
   font-family: "Lato";
@@ -375,7 +433,34 @@ header {
       line-height: 1.2; }
 
 footer {
-  display: grid; }
+  display: grid;
+  height: 100px;
+  background-color: #313131;
+  margin-top: 30px;
+  grid-template-columns: 1fr 5fr 1fr;
+  padding: 5px;
+  justify-items: center;
+  -webkit-box-align: center;
+  align-items: center; }
+  footer .title {
+    grid-column: 2/3;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    font-family: "Lato";
+    font-weight: bold; }
+    footer .title else {
+      font-weight: normal; }
+  footer .decr {
+    align-self: flex-start;
+    grid-column: 2/3;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    font-family: "Lato";
+    font-weight: bold; }
+    footer .decr else {
+      font-weight: normal; }
 
 body {
   margin: 10px;

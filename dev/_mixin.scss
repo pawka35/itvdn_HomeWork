@@ -6,8 +6,19 @@
 }
 
 @mixin someText($fontSize){
-    font-size: $fontSize+"px";
+    font-size: $fontSize;
     color: #313131;
     font-family: $ourFont;
     font-weight: bold;
+}
+
+@mixin someTextColor($fontSize, $color, $bold){
+    font-size: $fontSize;
+    color: $color;
+    font-family: $ourFont;
+    @if $bold=1 {
+    font-weight: bold;
+    }else{
+        font-weight: normal;
+    }
 }

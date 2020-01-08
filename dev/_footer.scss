@@ -1,3 +1,27 @@
+@import "mixin";
+
 footer{
     display: grid;
+    height: 100px;
+    background-color: #313131;
+    margin-top: 30px;
+    grid-template-columns: 1fr 5fr 1fr;
+    padding: 5px;
+    justify-items: center;
+    align-items: center;
+
+    .title{
+        grid-column: 2/3;
+        text-align: center;
+        @include someTextColor(14px, #fff, 1);
+      
+    }
+
+    .decr{
+        align-self: flex-start;
+        grid-column: 2/3;
+        text-align: center;
+        @include someTextColor(12px, #fff, 0);
+    }
 }
+
