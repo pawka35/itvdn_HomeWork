@@ -1,0 +1,100 @@
+.btn {
+  display: inline-block;
+  border: none;
+  color: white;
+  text-decoration: none;
+  padding: 15px 50px;
+  font-size: 20px;
+  letter-spacing: 1.5;
+  border-radius: 5px;
+  text-align: center;
+  width: 130px;
+  cursor: pointer;
+  font-family: Oswald;
+  margin: 10px;
+  opacity: 0.9;
+  transition: all .6s ease; }
+  .btn-html {
+    background-color: #ffd800;
+    box-shadow: 3px 3px 7px #f0cb00; }
+    .btn-html:hover {
+      background-color: #e6c200;
+      box-shadow: 3px 3px 7px #998200; }
+  .btn-css {
+    background-color: #4f71b5;
+    box-shadow: 3px 3px 7px #486aac; }
+    .btn-css:hover {
+      background-color: #4565a5;
+      box-shadow: 3px 3px 7px #2f446f; }
+  .btn-js {
+    background-color: #00ff21;
+    box-shadow: 3px 3px 7px #00f01f; }
+    .btn-js:hover {
+      background-color: #00e61e;
+      box-shadow: 3px 3px 7px #009914; }
+
+.section-about {
+  background-color: #f6f6f6; }
+  .section-about .container {
+    grid-template-columns: repeat(2, 1fr); }
+
+.about-left {
+  border-right: 2px solid gray;
+  font-size: 18px;
+  font-family: sans-serif;
+  padding-top: 60px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 10px; }
+  .about-left h2 {
+    margin: 0px;
+    bottom: 40px;
+    font-family: Oswald;
+    font-size: 40px; }
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+.about-right {
+  padding-top: 60px;
+  padding-left: 50px;
+  padding-right: 30px;
+  padding-bottom: 10px; }
+
+body {
+  padding: 0px;
+  margin: 0px;
+  color: black; }
+
+.grid {
+  display: grid; }
+
+header.grid {
+  min-height: 100vh;
+  background-size: cover;
+  background-image: url("../img/header.jpg");
+  position: relative;
+  background-position: center;
+  align-content: center; }
+  header.grid::before {
+    content: '';
+    background-color: gray;
+    opacity: 0.65;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: absolute; }
+  header.grid .header-container {
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 60px 20px; }
+    header.grid .header-container h1 {
+      font-size: 60px;
+      font-family: Oswald;
+      text-transform: uppercase;
+      margin: 20px 0px;
+      line-height: 1.5; }

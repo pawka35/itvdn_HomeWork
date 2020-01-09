@@ -1,0 +1,38 @@
+.section-about{
+    background-color: #f6f6f6;
+    .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.about-left{
+    border-right: $size-main/5 solid $color-gray;
+    font-size: $size-main+8px;
+    font-family: $font-second;
+    padding: {
+        top:$size-main*6;
+        left:$size-main*6;
+        right:$size-main*6;
+        bottom:$size-main;
+    };
+    h2{
+        margin: $size-zero;
+        bottom: $size-main*4;
+        font-family: $font-main;
+        font-size: $size-main*4;
+    }
+}
+
+.img-responsive{
+    display: block;
+    max-width: $size-width+0%;
+    height: auto;
+}
+
+.about-right{
+    padding: {
+        top:$size-main*6;
+        left:$size-main*5;
+        right:$size-main*3;
+        bottom:$size-main;
+    };
+}

@@ -1,0 +1,61 @@
+$size-zero:0px;
+$size-main:10px;
+$size-width:100;
+
+$color-blue: #4f71b5;
+$color-orange: #ffd800;
+$color-green: #00ff21;
+$position: center;
+$font-main: Oswald;
+$font-second: sans-serif;
+$color-dark: black;
+$color-gray: gray;
+
+@import "buttons";
+@import "sectionAbout";
+
+body{
+    padding: $size-zero;
+    margin: $size-zero;
+    color: $color-dark;
+}
+
+.grid{
+    display: grid;
+
+}
+
+header.grid{
+    min-height: $size-width+vh ;
+    background-size: cover;
+    background-image: url("../img/header.jpg");
+    position: relative;
+    background-position:$position ;
+    align-content: $position;
+    &::before{
+        content:'';
+        background-color:$color-gray;
+        opacity: 0.65;
+        top:$size-zero;
+        left:$size-zero;
+        bottom: $size-zero;
+        right:$size-zero;
+        position: absolute;
+    }
+
+    .header-container{
+        z-index: 1;
+       color: lighten($color-dark, 100%);
+       text-align: $position;
+        padding: $size-main*6 $size-main*2;
+
+        h1{
+            font-size: $size-main*6;
+            font-family: $font-main;
+            text-transform: uppercase;
+            margin: $size-main*2 $size-zero;
+            line-height: 1.5;
+        }
+
+    }
+}

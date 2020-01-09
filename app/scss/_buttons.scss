@@ -1,0 +1,41 @@
+.btn{
+    display: inline-block;
+    border: none;
+    color: lighten($color-dark, 100%);
+    text-decoration: none;
+    padding: $size-main*1.5 $size-main*5;
+    font-size: $size-main*2;
+    letter-spacing: 1.5;
+    border-radius: $size-main/2;
+    text-align: $position;
+    width: $size-main*13;
+    cursor: pointer;
+    font-family: $font-main;
+    margin: $size-main;
+    opacity: 0.9;
+    transition: all .6s ease;
+    &-html{
+        background-color: $color-orange;
+        box-shadow: 3px 3px 7px darken($color-orange, 3%);
+        &:hover{
+            background-color: darken($color-orange, 5%);
+            box-shadow: 3px 3px 7px darken($color-orange, 20%);
+        }
+    }
+    &-css{
+        background-color: $color-blue;
+        box-shadow: 3px 3px 7px darken($color-blue, 3%);
+        &:hover{
+            background-color: darken($color-blue, 5%);
+            box-shadow: 3px 3px 7px darken($color-blue, 20%);
+        }
+    }
+    &-js{
+        background-color: $color-green;
+        box-shadow: 3px 3px 7px darken($color-green, 3%);
+        &:hover{
+            background-color: darken($color-green, 5%);
+            box-shadow: 3px 3px 7px darken($color-green, 20%);
+        }
+    }
+}
