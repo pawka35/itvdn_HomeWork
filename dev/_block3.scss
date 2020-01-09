@@ -19,7 +19,7 @@ $ourFont: "Lato";
     font-size: 12px;
     color: #fff;
 
-    &_title  {
+    &_title {
       // font-size: 22px;
       // color: #313131;
       // font-family: $ourFont;
@@ -62,51 +62,88 @@ $ourFont: "Lato";
   &_rightSide {
     grid-column: 4/6;
     display: grid;
-    grid-template-columns:1.5fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
     grid-template-rows: 0.5fr 1fr 1fr;
-    gap:10px;
+    gap: 10px;
 
-    &_title{
-        grid-row: 1/2;
-        grid-column: 1/4;
-        @include titleText();
-        // font-size: 22px;
-        // color: #313131;
-        // font-family: $ourFont;
-        // font-weight: bold;
+    &_title {
+      grid-row: 1/2;
+      grid-column: 1/4;
+      @include titleText();
+      // font-size: 22px;
+      // color: #313131;
+      // font-family: $ourFont;
+      // font-weight: bold;
     }
 
-    &_img{
-        background-color: red;
-        grid-column: 1/2;
-        grid-row: 2/4;
-        background-image: url("../img/eleph_plan.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        
-
+    &_img {
+      background-color: red;
+      grid-column: 1/2;
+      grid-row: 2/4;
+      background-image: url("../img/eleph_plan.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
-    &_textBlock{
-        grid-row: 2/3;
-        grid-column: 2/4;
-        font-family: $ourFont;
-     
+    &_textBlock {
+      grid-row: 2/3;
+      grid-column: 2/4;
+      font-family: $ourFont;
     }
 
-    &_button{
-        grid-row: 3/4;
-        grid-column: 2/4;
+    &_button {
+      grid-row: 3/4;
+      grid-column: 2/4;
 
-        button{
-            background-color: #431d91;
-            border: 1px solid #431d91;
-            color: white;
+      button {
+        background-color: #431d91;
+        border: 1px solid #431d91;
+        color: white;
 
-            &:hover{
-            color: yellow;
-            }
+        &:hover {
+          color: yellow;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .block3 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    &_leftSide {
+      font-size: 10px;
+
+      &_title {
+        padding-left: 10px;
+        @include titleText();
+        text-align: center;
+      
+      }
+    }
+
+    &_rightSide {
+      grid-column: 4/6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &_title {
+        text-align: center;
+      }
+
+      &_img {
+        display: none;
+      }
+
+      &_textBlock {
+       text-align: center;
+        font-family: $ourFont;
+        padding: 3px;
+      }
     }
   }
 }

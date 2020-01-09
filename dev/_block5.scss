@@ -21,6 +21,10 @@
       justify-content: center;
     }
 
+    &_footer:hover{
+      cursor: pointer;
+    }
+
     &_body {
       @include someTextColor(12px, #313131, 0);
       background-color: darken(#fafafa, 10%);
@@ -44,6 +48,21 @@
       font-size: 10px;
       text-align: center;
       align-items: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .block5 {
+    display: flex;
+    flex-direction: column;
+    .priceDiv {
+      &_footer {
+        margin-bottom: 5px;
+      }      
+      .bestPrice {
+       display: none;
+      }
     }
   }
 }

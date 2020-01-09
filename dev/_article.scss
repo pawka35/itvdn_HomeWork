@@ -67,20 +67,15 @@ $spinnerHeight: 250px;
 
   &_current {
     display: grid;
-    // grid-template-rows: repeat(3,1fr);
     grid-template-rows: 50px 20px 100px;
     grid-template-columns: repeat(4, 1fr);
-    // gap: 15px;
     border: 1px solid #313131;
     padding: 5px;
     border-radius: 3px;
-    height: 200px;
+    // height: 200px;
     color: #313131;
 
-    &_logo_1,
-    &_logo_2,
-    &_logo_3,
-    &_logo_4 {
+    &_logo {
       background-color: white;
       background-size: contain;
       background-repeat: no-repeat;
@@ -91,20 +86,13 @@ $spinnerHeight: 250px;
       grid-column: 2/4;
       position: relative;
       top: -30px;
-    }
 
-    &_logo_1 {
-      background-image: url("../img/umeniya.png");
-    }
-    &_logo_2 {
-      background-image: url("../img/shipped.png");
-    }
-    &_logo_3 {
-      background-image: url("../img/yeat.png");
-    }
-
-    &_logo_4 {
-      background-image: url("../img/wash.png");
+      &:hover {
+        cursor: pointer;
+        top: -20px;
+        transform: scale(1.2);
+        background-color: lighten(gray, 30%);
+      }
     }
 
     &_desc {
@@ -131,3 +119,30 @@ $spinnerHeight: 250px;
   }
 }
 
+@media only screen and (max-width: 680px) {
+  .block1 {
+    display: flex;
+    flex-direction: column;
+
+    &_current {
+      padding: 2px;
+
+      &_logo {
+        top: 0px;
+        margin-bottom: 10px;
+
+        &:hover {
+          top: 0px;
+        }
+      }
+
+      &_desc {
+        font-size: 12px;
+      }
+
+      &_text {
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -20,61 +20,47 @@ header {
     width: 60%; }
     header .logo .name {
       font-size: 30px;
-      font-family: "Lato"; }
+      font-family: Lato; }
     header .logo .slogan {
       font-size: 12px;
-      color: #8f58ff;
-      font-family: "Lato";
+      color: #431d91;
+      font-family: Lato;
       align-self: flex-end;
       margin-right: 45%; }
   header .navigation {
     place-self: end;
-    align-self: center; }
-    header .navigation nav {
-      font-size: 16px;
-      /* Links inside the dropdown */ }
-      header .navigation nav .dropbtn {
-        cursor: pointer;
-        margin-right: 10px; }
-      header .navigation nav .dropdown {
-        position: relative;
-        display: inline-block; }
-        header .navigation nav .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f9f9f9;
-          border-radius: 5px;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          opacity: 0; }
-      header .navigation nav .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
+    align-self: center;
+    font-family: Lato; }
+    header .navigation select {
+      display: none;
+      border-radius: 5px;
+      border: 1px solid #431d91;
+      padding: 3px; }
+    header .navigation nav ul {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      flex-direction: row; }
+      header .navigation nav ul li a {
+        color: #313131;
         text-decoration: none;
-        display: block; }
-      header .navigation nav .dropdown-content a:hover {
-        opacity: 0.7;
-        background-color: #979797; }
-      header .navigation nav .dropdown:hover .dropdown-content {
-        display: block;
-        -webkit-animation: showMenu 1s forwards;
-        animation: showMenu 1s forwards; }
+        padding: 10px 10px;
+        -webkit-transition: all 0.5s ease 0s;
+        transition: all 0.5s ease 0s; }
+        header .navigation nav ul li a:hover {
+          background-color: #431d91;
+          color: #fde428;
+          -webkit-transition: all 0.5s ease 0s;
+          transition: all 0.5s ease 0s;
+          border-radius: 5px; }
 
-@-webkit-keyframes showMenu {
-  from {
-    opacity: 0;
-    border: 1px solid wheat; }
-  to {
-    opacity: 1;
-    border: 1px solid black; } }
-
-@keyframes showMenu {
-  from {
-    opacity: 0;
-    border: 1px solid wheat; }
-  to {
-    opacity: 1;
-    border: 1px solid black; } }
+@media only screen and (max-width: 680px) {
+  header .navigation nav ul {
+    display: none;
+    font-size: 10px; }
+  header .navigation select {
+    display: inline-block; } }
 
 .block3 {
   margin-top: 30px;
@@ -159,6 +145,43 @@ header {
         .block3_rightSide_button button:hover {
           color: yellow; }
 
+@media only screen and (max-width: 680px) {
+  .block3 {
+    margin-top: 30px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column; }
+    .block3_leftSide {
+      font-size: 10px; }
+      .block3_leftSide_title {
+        padding-left: 10px;
+        font-size: 22px;
+        color: #313131;
+        font-family: "Lato";
+        font-weight: bold;
+        text-align: center; }
+    .block3_rightSide {
+      grid-column: 4/6;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center; }
+      .block3_rightSide_title {
+        text-align: center; }
+      .block3_rightSide_img {
+        display: none; }
+      .block3_rightSide_textBlock {
+        text-align: center;
+        font-family: "Lato";
+        padding: 3px; } }
+
 .block2 {
   margin-top: 40px;
   height: 400px;
@@ -194,7 +217,8 @@ header {
     font-family: "Lato"; }
     .block2_current.left {
       grid-template-columns: 1fr 3fr; }
-    .block2_current .img, .block2_current .imgLeft {
+    .block2_current .img,
+    .block2_current .imgLeft {
       background-size: cover;
       background-repeat: no-repeat;
       height: 30px;
@@ -202,7 +226,8 @@ header {
       grid-row: 1/2;
       grid-column: 2/3;
       place-self: end; }
-    .block2_current .title, .block2_current .titleLeft {
+    .block2_current .title,
+    .block2_current .titleLeft {
       grid-row: 1/2;
       grid-column: 1/2;
       place-self: center end;
@@ -254,6 +279,10 @@ header {
       .block2_current.sixth .img {
         background-image: url(/img/ipadIcons/icon6.png); }
 
+@media only screen and (max-width: 680px) {
+  .block2_ipad {
+    display: none; } }
+
 .block4 {
   display: -webkit-box;
   display: flex;
@@ -287,6 +316,10 @@ header {
       border-radius: 15px;
       border: 1px solid white; }
 
+@media only screen and (max-width: 680px) {
+  iframe {
+    width: 100%; } }
+
 .block5 {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -311,6 +344,8 @@ header {
     justify-content: center; }
     .block5 .priceDiv_header else, .block5 .priceDiv_footer else {
       font-weight: normal; }
+  .block5 .priceDiv_footer:hover {
+    cursor: pointer; }
   .block5 .priceDiv_body {
     font-size: 12px;
     color: #313131;
@@ -342,6 +377,18 @@ header {
     text-align: center;
     -webkit-box-align: center;
     align-items: center; }
+
+@media only screen and (max-width: 680px) {
+  .block5 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column; }
+    .block5 .priceDiv_footer {
+      margin-bottom: 5px; }
+    .block5 .priceDiv .bestPrice {
+      display: none; } }
 
 @font-face {
   font-family: "Lato";
@@ -392,9 +439,8 @@ header {
     border: 1px solid #313131;
     padding: 5px;
     border-radius: 3px;
-    height: 200px;
     color: #313131; }
-    .block1_current_logo_1, .block1_current_logo_2, .block1_current_logo_3, .block1_current_logo_4 {
+    .block1_current_logo {
       background-color: white;
       background-size: contain;
       background-repeat: no-repeat;
@@ -405,14 +451,12 @@ header {
       grid-column: 2/4;
       position: relative;
       top: -30px; }
-    .block1_current_logo_1 {
-      background-image: url("../img/umeniya.png"); }
-    .block1_current_logo_2 {
-      background-image: url("../img/shipped.png"); }
-    .block1_current_logo_3 {
-      background-image: url("../img/yeat.png"); }
-    .block1_current_logo_4 {
-      background-image: url("../img/wash.png"); }
+      .block1_current_logo:hover {
+        cursor: pointer;
+        top: -20px;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        background-color: #cdcdcd; }
     .block1_current_desc {
       grid-row: 2/3;
       grid-column: 1/5;
@@ -431,6 +475,25 @@ header {
       text-overflow: ellipsis;
       font-family: "Lato";
       line-height: 1.2; }
+
+@media only screen and (max-width: 680px) {
+  .block1 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column; }
+    .block1_current {
+      padding: 2px; }
+      .block1_current_logo {
+        top: 0px;
+        margin-bottom: 10px; }
+        .block1_current_logo:hover {
+          top: 0px; }
+      .block1_current_desc {
+        font-size: 12px; }
+      .block1_current_text {
+        font-size: 12px; } }
 
 footer {
   display: grid;
