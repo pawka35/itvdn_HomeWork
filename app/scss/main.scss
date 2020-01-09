@@ -13,6 +13,9 @@ $color-gray: gray;
 
 @import "buttons";
 @import "sectionAbout";
+@import "sectionForm";
+@import "photoSection";
+@import "sectionBlog";
 
 body{
     padding: $size-zero;
