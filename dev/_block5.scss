@@ -1,4 +1,3 @@
-@import "mixin";
 
 .block5 {
   display: grid;
@@ -14,7 +13,7 @@
       @include someTextColor(10px, #fff, 1);
       display: flex;
       height: 40px;
-      background-color: #431d91;
+      background-color:$mainBlueColor;
       color: #fff;
       font-size: 14px;
       align-items: center;
@@ -27,8 +26,8 @@
     }
 
     &_body {
-      @include someTextColor(12px, #313131, 0);
-      background-color: darken(#fafafa, 10%);
+      @include someTextColor(12px, $FontColor, 0);
+      background-color: darken($subFillColor, 10%);
       display: flex;
       flex-direction: column;
       padding: 10px;
@@ -40,8 +39,8 @@
       height: 40px;
       width: 40px;
       border-radius: 50px;
-      border: 1px solid darken(#fafafa, 30%);
-      background-color: darken(#fafafa, 10%);
+      border: 1px solid darken($subFillColor, 30%);
+      background-color: darken($subFillColor, 10%);
       display: flex;
       position: absolute;
       top: -20px;

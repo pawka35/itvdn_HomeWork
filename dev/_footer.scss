@@ -1,9 +1,7 @@
-@import "mixin";
-
 footer{
     display: grid;
     height: 100px;
-    background-color: #313131;
+    background-color: $FontColor;
     margin-top: 30px;
     grid-template-columns: 1fr 5fr 1fr;
     padding: 5px;

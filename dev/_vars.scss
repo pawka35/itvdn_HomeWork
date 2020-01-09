@@ -1,11 +1,15 @@
 @font-face {
-    font-family: "Lato";
-    src: url("/fonts/Lato-Regular.ttf") format("truetype");
-  }
+  font-family: "Lato";
+  src: url("../fonts/Lato-Regular.ttf") format("truetype");
+}
 
 $headerHeight: 50px;
 $ourFont: Lato;
 $bgColor: white;
 $FontColor: #313131;
+$FontYellowColor: yellow;
 $mainBlueColor: #431d91;
 $marginFromBoard: 30px;
+$artMargin: 40px;
+$subFillColor: #fafafa;
+

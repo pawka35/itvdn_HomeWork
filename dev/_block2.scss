@@ -1,12 +1,3 @@
-@mixin ipadText() {
-  color: #ffffff;
-  font-family: $ourFont;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-$artMargin: 40px;
-$ourFont: "Lato";
 .block2 {
   margin-top: $artMargin;
   height: 400px;
@@ -93,7 +84,7 @@ $ourFont: "Lato";
       grid-row: 2/3;
       grid-column: 2/3;
       .img {
-        background-image: url(/img/ipadIcons/icon1.png);
+        background-image: url("../img/ipadIcons/icon1.png");
       }
     }
 
@@ -101,7 +92,7 @@ $ourFont: "Lato";
       grid-row: 3/4;
       grid-column: 2/3;
       .img {
-        background-image: url(/img/ipadIcons/icon2.png);
+        background-image: url("../img/ipadIcons/icon2.png");
       }
     }
 
@@ -109,7 +100,7 @@ $ourFont: "Lato";
       grid-row: 4/5;
       grid-column: 2/3;
       .img {
-        background-image: url(/img/ipadIcons/icon3.png);
+        background-image: url("../img/ipadIcons/icon3.png");
       }
     }
 
@@ -117,7 +108,7 @@ $ourFont: "Lato";
       grid-row: 2/3;
       grid-column: 5/6;
       .img {
-        background-image: url(/img/ipadIcons/icon4.png);
+        background-image: url("../img/ipadIcons/icon4.png");
       }
     }
 
@@ -125,7 +116,7 @@ $ourFont: "Lato";
       grid-row: 3/4;
       grid-column: 5/6;
       .img {
-        background-image: url(/img/ipadIcons/icon5.png);
+        background-image: url("../img/ipadIcons/icon5.png");
       }
     }
 
@@ -133,7 +124,7 @@ $ourFont: "Lato";
       grid-row: 4/5;
       grid-column: 5/6;
       .img {
-        background-image: url(/img/ipadIcons/icon6.png);
+        background-image: url("../img/ipadIcons/icon6.png");
       }
     }
   }
@@ -141,7 +132,7 @@ $ourFont: "Lato";
 
 @media only screen and (max-width: 680px) {
   .block2 {
-    &_ipad{
+    &_ipad {
       display: none;
     }
   }

@@ -1,3 +1,10 @@
+@mixin ipadText() {
+    color: #ffffff;
+    font-family: $ourFont;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
 @mixin titleText(){
     font-size: 22px;
     color: #313131;

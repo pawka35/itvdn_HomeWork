@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Lato";
-  src: url("/fonts/Lato-Regular.ttf") format("truetype"); }
+  src: url("../fonts/Lato-Regular.ttf") format("truetype"); }
 
 header {
   height: 50px;
@@ -50,7 +50,7 @@ header {
         transition: all 0.5s ease 0s; }
         header .navigation nav ul li a:hover {
           background-color: #431d91;
-          color: #fde428;
+          color: yellow;
           -webkit-transition: all 0.5s ease 0s;
           transition: all 0.5s ease 0s;
           border-radius: 5px; }
@@ -67,7 +67,7 @@ header {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
-  font-family: "Lato"; }
+  font-family: Lato; }
   .block3_leftSide {
     grid-column: 2/4;
     background-color: #fff;
@@ -82,7 +82,7 @@ header {
       padding-left: 10px;
       font-size: 22px;
       color: #313131;
-      font-family: "Lato";
+      font-family: Lato;
       font-weight: bold; }
     .block3_leftSide_data {
       height: 25px;
@@ -122,7 +122,7 @@ header {
       grid-column: 1/4;
       font-size: 22px;
       color: #313131;
-      font-family: "Lato";
+      font-family: Lato;
       font-weight: bold; }
     .block3_rightSide_img {
       background-color: red;
@@ -134,7 +134,7 @@ header {
     .block3_rightSide_textBlock {
       grid-row: 2/3;
       grid-column: 2/4;
-      font-family: "Lato"; }
+      font-family: Lato; }
     .block3_rightSide_button {
       grid-row: 3/4;
       grid-column: 2/4; }
@@ -160,7 +160,7 @@ header {
         padding-left: 10px;
         font-size: 22px;
         color: #313131;
-        font-family: "Lato";
+        font-family: Lato;
         font-weight: bold;
         text-align: center; }
     .block3_rightSide {
@@ -180,7 +180,7 @@ header {
         display: none; }
       .block3_rightSide_textBlock {
         text-align: center;
-        font-family: "Lato";
+        font-family: Lato;
         padding: 3px; } }
 
 .block2 {
@@ -196,7 +196,7 @@ header {
     place-self: center;
     text-align: center;
     line-height: 1.6;
-    font-family: "Lato";
+    font-family: Lato;
     font-size: 18px; }
   .block2_ipad {
     grid-column: 3/5;
@@ -207,7 +207,7 @@ header {
     background-position: center; }
   .block2_current {
     color: #ffffff;
-    font-family: "Lato";
+    font-family: Lato;
     font-size: 14px;
     font-weight: bold;
     display: grid;
@@ -215,7 +215,7 @@ header {
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 3fr 1fr;
     gap: 10px;
-    font-family: "Lato"; }
+    font-family: Lato; }
     .block2_current.left {
       grid-template-columns: 1fr 3fr; }
     .block2_current .img,
@@ -253,32 +253,32 @@ header {
       grid-row: 2/3;
       grid-column: 2/3; }
       .block2_current.first .img {
-        background-image: url(/img/ipadIcons/icon1.png); }
+        background-image: url("../img/ipadIcons/icon1.png"); }
     .block2_current.second {
       grid-row: 3/4;
       grid-column: 2/3; }
       .block2_current.second .img {
-        background-image: url(/img/ipadIcons/icon2.png); }
+        background-image: url("../img/ipadIcons/icon2.png"); }
     .block2_current.third {
       grid-row: 4/5;
       grid-column: 2/3; }
       .block2_current.third .img {
-        background-image: url(/img/ipadIcons/icon3.png); }
+        background-image: url("../img/ipadIcons/icon3.png"); }
     .block2_current.fourth {
       grid-row: 2/3;
       grid-column: 5/6; }
       .block2_current.fourth .img {
-        background-image: url(/img/ipadIcons/icon4.png); }
+        background-image: url("../img/ipadIcons/icon4.png"); }
     .block2_current.fifth {
       grid-row: 3/4;
       grid-column: 5/6; }
       .block2_current.fifth .img {
-        background-image: url(/img/ipadIcons/icon5.png); }
+        background-image: url("../img/ipadIcons/icon5.png"); }
     .block2_current.sixth {
       grid-row: 4/5;
       grid-column: 5/6; }
       .block2_current.sixth .img {
-        background-image: url(/img/ipadIcons/icon6.png); }
+        background-image: url("../img/ipadIcons/icon6.png"); }
 
 @media only screen and (max-width: 680px) {
   .block2_ipad {
@@ -301,12 +301,12 @@ header {
   .block4_title {
     font-size: 22px;
     color: #313131;
-    font-family: "Lato";
+    font-family: Lato;
     font-weight: bold; }
   .block4_descr {
     font-size: 12;
     color: #313131;
-    font-family: "Lato";
+    font-family: Lato;
     font-weight: bold; }
     .block4_descr margin {
       top: 10px;
@@ -331,7 +331,7 @@ header {
   .block5 .priceDiv_header, .block5 .priceDiv_footer {
     font-size: 10px;
     color: #fff;
-    font-family: "Lato";
+    font-family: Lato;
     font-weight: bold;
     display: -webkit-box;
     display: flex;
@@ -351,7 +351,7 @@ header {
   .block5 .priceDiv_body {
     font-size: 12px;
     color: #313131;
-    font-family: "Lato";
+    font-family: Lato;
     font-weight: bold;
     background-color: #e1e1e1;
     display: -webkit-box;
