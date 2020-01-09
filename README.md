@@ -1,3 +1,3 @@
 # itvdn_HomeWork
 For ITVDN Front-end course
-Each branch => leeson homework
+Lesson 31 HTML&CSS Practice
